@@ -11,9 +11,18 @@ A former Canonical (the company that sponsors the Ubuntu Linux distribution) emp
 
 Fedora historically used a SysV-based init system.  After upstart came out, they switched to it... although at the time upstart was not very complete and was primarily configured in SysV-compatibility mode.
 
-5+ years ago, Red Hat employee and Fedora developer __Lennart Poettering__ did a survey of the various init systems available for various flavors of Unix/Linux.  He compared features and performance and then created a new init system named systemd.  systemd is designed to be a modern init system specifically for Linux... and as such it takes advantage of some Linux-only features... which makes it less portable.  Some advanced things that systemd does is parallel execution, socket and dbus service activation, automatic cgroup resource management / scheduling, and multi-seat support.  It has a system boot profiler with graphing and by disabling unneeded (and / or slow) services, you can greatly speed up your boot times.  systemd has had "feature creep" set in and it has expanded beyond traditional init features.  Another one of its goals is to do common system configuration (hostname, file system mounting, etc) and do it in a distribution agnostic way.  systemd also has man security enhancement features.
+5+ years ago, Red Hat employee and Fedora developer __Lennart Poettering__ did a survey of the various init systems available for various flavors of Unix/Linux.
+He compared features and performance and then created a new init system named systemd.
+systemd is designed to be a modern init system specifically for Linux... and as such it takes advantage of some Linux-only features... which makes it less portable.
+Some advanced things that systemd does is parallel execution, socket and dbus service activation, automatic cgroup resource management / scheduling, and multi-seat support.
+It has a system boot profiler with graphing and by disabling unneeded (and / or slow) services, you can greatly speed up your boot times.
+systemd has had "feature creep" set in and it has expanded beyond traditional init features. 
+Another one of its goals is to do common system configuration (hostname, file system mounting, etc) and do it in a distribution agnostic way.
+systemd also has man security enhancement features.
 
-Many distributions have switched to systemd including all of the top, mainstream distributions like RHEL, Fedora, Debian, Ubuntu, Mint, Arch, etc.  gentoo defaults to a different init system named OpenRC.  A group of disgruntled-over-systemd users forked Debian and created [Devuan](https://devuan.org/).
+Many distributions have switched to systemd including all of the top, mainstream distributions like RHEL, Fedora, Debian, Ubuntu, Mint, Arch, etc.
+gentoo defaults to a different init system named OpenRC.
+A group of disgruntled-over-systemd users forked Debian and created [Devuan](https://devuan.org/).
 
 ## systemd
 
