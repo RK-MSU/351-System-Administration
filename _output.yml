@@ -1,0 +1,17 @@
+bookdown::gitbook:
+  css: style.css
+  number_sections: no
+  split_by: chapter
+  config:
+    search: false
+    sharing: false
+    info: false
+    toc:
+      collapse: chapter
+      toc_depth: 1
+      scroll_highlight: true
+      toc_float: true
+      before: |
+        <li><a href="./">System Administration</a></li>
+#      after: |
+#        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>

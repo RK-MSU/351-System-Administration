@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body style="font-family: 'Lato', sans-serif;">
+<p><strong>Screencast:</strong>&nbsp;<a href="https://www.cs.montana.edu/users/sdowdle/csci351/videos/09-filesystem-hierarchy.webm" target="_blank" rel="noopener">09-filesystem-hierarchy.webm</a> or <a href="https://www.cs.montana.edu/users/sdowdle/csci351/videos/09-filesystem-hierarchy.mp4" target="_blank" rel="noopener">09-filesystem-hierarchy.mp4</a></p>
+<p><span style="font-weight: bold;"><strong>References:<br /></strong></span><span style="font-weight: bold;">UaLSAH REFERENCE - Chapter 6 - The Filesystem<br /></span><span style="font-weight: bold;">TLCL - Chapter 3, Guided Tour<br /><br /></span>Unix tries to make everything a file:</p>
+<div style="margin-left: 40px;">Processes are a file (/proc/###)<br />Devices are a file (/dev/sda1)</div>
+<p>A description and comparison to where Microsoft Windows stores things and where Mac OS X stores things may be helpful.<br /><span style="font-weight: bold;"><br />Linux filesystem hierarchy</span> (UaLSAH pg 145 - 147 also man hier)</p>
+<div style="margin-left: 40px;">/bin<br />
+<div style="margin-left: 40px;">Most rudimentary binaries</div>
+<br />/boot <br />
+<div style="margin-left: 40px;">Kernel, driver disk images, bootloader config</div>
+<br />/dev <br />
+<div style="margin-left: 40px;">character, block, major / minor</div>
+<br />/etc<br />
+<div style="margin-left: 40px;">Global config files</div>
+<br />/home<br />
+<div style="margin-left: 40px;">Users' directories - dot files and dot folders for configs</div>
+<br />/lib<br />
+<div style="margin-left: 40px;">Most rudimentary libraries and firmware</div>
+<br />/lost+found <br />
+<div style="margin-left: 40px;">Where damaged files go after fsck</div>
+<br />/media<br />
+<div style="margin-left: 40px;">Where removable media is often automounted</div>
+<br />/mnt<br />
+<div style="margin-left: 40px;">Like media</div>
+<br />/opt<br />
+<div style="margin-left: 40px;">Optional third-party software</div>
+<br />/proc<br />
+<div style="margin-left: 40px;">A glimpse inside the brain of the kernel</div>
+<br />/root<br />
+<div style="margin-left: 40px;">The root user's home directory</div>
+<br />/sbin<br />
+<div style="margin-left: 40px;">Most rudimentary super user binaries</div>
+<br />/sys<br />
+<div style="margin-left: 40px;">Augments /proc</div>
+<br />/tmp<br />
+<div style="margin-left: 40px;">World writable, temporary storage</div>
+<br />/usr<br />
+<div style="margin-left: 40px;">Large hierarchy - bin, include, lib, local, sbin, share, src<br />Mostly static content</div>
+<br />/var <br />
+<div style="margin-left: 40px;">Large hierarchy - lib, lib/mysql, local, lock, log, run, spool, www<br />Mostly variable content</div>
+<br />References:</div>
+<div style="margin-left: 40px; padding-left: 30px;"><a target="_blank" href="http://tldp.org/LDP/Linux-Filesystem-Hierarchy/html/" rel="noopener noreferrer">http://tldp.org/LDP/Linux-Filesystem-Hierarchy/html/</a></div>
+<div style="margin-left: 40px; padding-left: 30px;"><a target="_blank" href="http://en.wikipedia.org/wiki/Unix_directory_structure" rel="noopener noreferrer">http://en.wikipedia.org/wiki/Unix_directory_structure</a></div>
+<div style="margin-left: 40px; padding-left: 30px;"><a target="_blank" href="http://fedoraproject.org/wiki/Features/UsrMove" rel="noopener noreferrer">http://fedoraproject.org/wiki/Features/UsrMove</a> (adopted by many distros)</div>
+<p><span style="font-weight: bold;">Interesting files in /etc</span></p>
+<div style="margin-left: 40px;">fstab - Defines default mount points (man fstab)<br />inittab - Defines default runlevel <br />passwd, group, shadow, gshadow (covered in User Accounts lecture)<br />systemd/ - systemd related configs<br />profile, bashrc - Defines the environment by setting env variables</div>
+<div style="margin-left: 40px;">bash_completion.d/ - Additional tab completion for bash-completion package<br />resolv.conf - Specifies the DNS servers (man resolv.conf)<br />services - Shows port defs (man services)<br />hosts - Local DNS type defs (man hosts)</div>
+<div style="margin-left: 40px;">nsswitch.conf - Lookup order of DNS and other things (man 5 nsswitch.conf)<br />hostname (hostname-ctl set-hostname kvm-dowdle.localdomain)</div>
+<p>Individual user settings are in "dot directories and dot files" inside each user's home directory.&nbsp; To see files that begin with a dot, you have to use the -a flag with ls to see all files.&nbsp; If using a GUI file manager, look for a reference to "hidden" or show hidden.</p>
+</body>
+</html>

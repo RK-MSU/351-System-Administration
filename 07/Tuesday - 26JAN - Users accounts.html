@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body style="font-family: 'Lato', sans-serif;">
+<p><strong>Screencast:</strong>&nbsp;<a href="https://www.cs.montana.edu/users/sdowdle/csci351/videos/07-user-accounts.webm" target="_blank" rel="noopener">07-user-accounts.webm</a> or&nbsp;<a href="https://www.cs.montana.edu/users/sdowdle/csci351/videos/07-user-accounts.mp4" target="_blank" rel="noopener">07-user-accounts.mp4</a> </p>
+<p><span style="font-weight: bold;">UNIX and LINUX Administration Handbook - Chapter 7 - Adding New Users<br /><br />Related files (ensure the man-pages package is installed)<br /></span></p>
+<div style="margin-left: 40px;">/etc/passwd<br />/etc/shadow<br />/etc/group<br />/etc/gshadow<br />/etc/login.defs<br />/etc/security/limits.conf (pam package)<br />/etc/skel/ (contains files/dirs copied to homedir of new accounts)</div>
+<p><span style="font-weight: bold;">/etc/passwd</span> (man 5 passwd)</p>
+<div style="margin-left: 40px;">dowdle:x:1000:1000:Scott Dowdle:/home/dowdle:/bin/bash<br />
+<div style="margin-left: 40px;">1 - User name<br />2 - Encrypted password, an *, or an x (see pwconv)<br />3 - UID<br />4 - GID<br />5 - GECOS - See: Wikipedia <a title="GECOS" target="_blank" href="http://en.wikipedia.org/wiki/Gecos_field" rel="noopener noreferrer">GECOS</a> page<br />6 - Home Directory<br />7 - Default Shell</div>
+</div>
+<p><span style="font-weight: bold;">/etc/shadow</span> (man 5 shadow)</p>
+<div style="margin-left: 40px;">dowdle:$1$vkI/ffyR$rSsCe9K.GsuK83.cWI:14277:0:99999:7:::<br />
+<div style="margin-left: 40px;">1 - User name<br />2 - Encrypted password<br />3 - Days since Jan 1, 1970 that password was last changed<br />4 - Days before password may be changed<br />5 - Days after which password must be changed<br />6 - Days before password is to expire that user is warned<br />7 - Days after password expires that account is disabled<br />8 - Days since Jan 1, 1970 that account is disabled<br />9 - A reserved field<br />See: Wikipedia page on <a title="Unix time" target="_blank" href="http://en.wikipedia.org/wiki/Unix_time" rel="noopener noreferrer">UNIX time</a></div>
+</div>
+<p><span style="font-weight: bold;">/etc/group</span> (man 5 group)</p>
+<div style="margin-left: 40px;">dowdle:x:1000:dowdle<br />
+<div style="margin-left: 40px;">1 - Group name<br />2 - Encrypted password if used<br />3 - GID</div>
+<div style="margin-left: 40px;">4 - Comma separated user list</div>
+</div>
+<p><span style="font-weight: bold;">Related Commands and Issues<br /></span></p>
+<p style="padding-left: 30px;">/usr/sbin/useradd<br />/usr/sbin/adduser -&gt; useradd<br />/usr/bin/chfn (Let's users adjust the GECOS)<br />/usr/sbin/usermod (usermod -aG wheel dowdle)<br />/usr/bin/passwd (What are the permissions on this file?)<br />rpm -ql shadow-utils (shows package contents)<br />/usr/bin/whoami<br />/usr/bin/id<br />What is an orphaned file?</p>
+<p><strong>Escalating privileges</strong></p>
+<p style="padding-left: 30px;">sudo, sudo -i (users in wheel group, other distros may use sudo group)<br />su, su -l (need to know the root password unless already root)</p>
+<p>Everything mentioned above is for "local" accounts.&nbsp; If this were an advanced sysadmin class we'd cover various forms of centralized authentication like LDAP and NIS/YP as well as integration with systems like FreeIPA and Microsoft Active Directory.&nbsp; Many Linux distributions work well with centralized authentication systems.&nbsp; In the case of Red Hat-derived distributions, they offer authconfig, sssd, realmd and freeipa-client.</p>
+</body>
+</html>

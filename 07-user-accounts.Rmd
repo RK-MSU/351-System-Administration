@@ -1,0 +1,123 @@
+# User Accounts
+
+**References**: UNIX and LINUX Administration Handbook - Chapter 7 - Adding New Users
+
+Related man pages
+
+- man 5 passwd
+- man 5 group
+- man 5 shadow
+
+## Related files (ensure the man-pages package is installed)
+
+- `/etc/passwd`
+- `/etc/shadow`
+- `/etc/group`
+- `/etc/gshadow`
+- `/etc/login.defs`
+- `/etc/security/limits.conf` *(pam package)*
+- `/etc/skel/` *(contains files/dirs copied to homedir of new accounts)*
+
+### /etc/passwd (man 5 passwd)
+
+*Example*: dowdle:x:1000:1000:Scott Dowdle:/home/dowdle:/bin/bash
+
+1. User name
+2. Encrypted password, an *, or an x (see pwconv)
+3. UID
+4. GID
+5. GECOS - See: Wikipedia [GECOS](http://en.wikipedia.org/wiki/Gecos_field) page
+  - Comment Field
+6. Home Directory
+  - all Linux distros under the `/home/` directory
+    - **POSSIBLE TEST QUESTION**
+7. Default Shell
+
+
+### /etc/shadow (man 5 shadow)
+
+**Example**: `dowdle:$1$vkI/ffyR$rSsCe9K.GsuK83.cWI:14277:0:99999:7:::`
+
+1. User name
+2. Encrypted password
+3. Days since Jan 1, 1970 that password was last changed
+4. Days before password may be changed
+5. Days after which password must be changed
+6. Days before password is to expire that user is warned
+7. Days after password expires that account is disabled
+8. Days since Jan 1, 1970 that account is disabled
+9. A reserved field
+
+See: Wikipedia page on [UNIX time](http://en.wikipedia.org/wiki/Unix_time)
+
+### /etc/group (man 5 group)
+
+**Example**: `dowdle:x:1000:dowdle`
+
+1. Group name
+2. Encrypted password if used
+3. GID
+4. Comma separated user list
+
+
+## Related Commands and Issues
+
+- /usr/sbin/useradd
+- /usr/sbin/adduser -> useradd
+- /usr/bin/chfn (Let's users adjust the GECOS)
+  - Lets users run `adduser` themselves
+  - prompt user info fields
+- /usr/sbin/usermod (usermod -aG wheel dowdle)
+  - change values in pass or group
+  - adding users to existing groups
+- /usr/bin/passwd (What are the permissions on this file?)
+  - man 1 psswd
+  - passwd
+- rpm -ql shadow-utils (shows package contents)
+- /usr/bin/whoami
+- /usr/bin/id
+
+
+Adding a user
+
+```bash
+$ useradd scott
+$ adduser mike
+```
+Set password
+```bash
+$ passwd scott
+```
+
+
+Add user to wheel group
+
+```bash
+$ usermod -aG wheel scott
+```
+
+As root, become a different user
+```bash
+su -l scott
+```
+
+## Escalating privileges
+
+- sudo, sudo -i (users in wheel group, other distros may use sudo group)
+- su, su -l (need to know the root password unless already root)
+
+For example:
+
+```bash
+$ sudo <command>
+```
+
+or
+
+```bash
+$ sudo -i # logs into root user
+```
+
+*Everything mentioned above is for "local" accounts. If this were an advanced sysadmin class we'd cover various forms of centralized authentication like LDAP and NIS/YP as well as integration with systems like FreeIPA and Microsoft Active Directory. Many Linux distributions work well with centralized authentication systems. In the case of Red Hat-derived distributions, they offer authconfig, sssd, realmd and freeipa-client.*
+
+

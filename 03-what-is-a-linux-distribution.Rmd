@@ -1,0 +1,49 @@
+# What is a Linux Distribution
+
+
+
+**Screencast**: 
+[03-distros.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/03-distros.webm) 
+or 
+[03-distros.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/03-distros.mp4)
+
+A Linux distribution is the Linux kernel provided with a collection of additional software such that it can be booted on a computer from optical media, floppy disk, USB thumbdrive, etc... and is most often installable to permanent storage. A distribution may or may not provide periodic software updates to fix software bugs and remedy security problems.
+
+There are **over 500** different Linux distributions. Why do so many exist?
+
+Most of them inherit from one of the major distros:
+
+- Debian
+- Slackware
+- Red Hat
+
+So many exist for a number of reasons:
+
+- The source is there and the license lets you roll your own
+- Localization - Country/Language specific
+- Specific CPU arch - PPC, Alpha, ARM, SPARC, etc
+- Specific devices - Linksys router, Raspberry Pi, ODROID, Android devices, etc
+- Specific storage - Floppy, CD, Zip disk, small HD, diskless terminal, etc
+- Specific software - Desktop env, special software or configuration, etc
+- Specific use case - KVM virtualization host, Container host, Python Programming, Gaming, etc
+- Educational - Linux from Scratch
+
+How does one Linux distribution differ from another:
+
+- Installer
+- Software available (desktop spins)
+- Administration tools (GUI, TUI, CLI)
+- Init system (SysV init, upstart, OpenRC, systemd)
+- Developers and community / Company
+- 95% of the same software
+
+Why does Scott like Red Hat and Fedora?
+
+See: [Is Red Hat still relevant? You bet.](http://www.montanalinux.org/redhat-relevent.html)
+
+What about Ubuntu or other distributions?
+
+Resources:
+
+- Linux Weekly News' [Distributions](http://lwn.net/Distributions/) page
+- [DistroWatch](http://www.distrowatch.com/)

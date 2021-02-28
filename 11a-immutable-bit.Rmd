@@ -1,0 +1,54 @@
+# Immutable Bit
+
+Using the `lsattr` and `chattr` - the dreaded "immutable bit"
+
+- `lsattr` - "_list attribute_" 
+- `chattr` - "_change attribute_"
+
+
+
+```bash
+$ touch magic                                   # create some new file 'magic'
+$ ls -lh                                        # show properties
+total 0
+-rw-r--r--. 1 root root 0 Feb 27 09:58 magic
+$ chattr +i magic                               # change attribute
+$ ls -lh                                        # show properties
+total 0
+-rw-r--r--. 1 root root 0 Feb 27 09:58 magic    # looks same as before?
+```
+
+Now if we try to edit/remove such a file
+
+```bash
+$ rm magic
+rm: remove regular empty file 'magic'? y
+rm: cannot remove 'magic': Operation not permitted
+```
+
+Interesting... even as the root user, the file cannot be manipulated.
+
+Now lets show the `lsattr` settings
+
+```bash
+$ lsattr magic
+----i--------------- magic
+```
+
+Notice, there is some extra information on the filesystem.
+
+
+To remove the immutable bit:
+
+```bash
+$ chattr -i magic
+$ lsattr masgic
+-------------------- magic # notice the immutable bit has been changed
+```
+
+
+
+
+
+
+

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body style="font-family: 'Lato', sans-serif;">
+<p><strong>Screencast:</strong> <a href="https://www.cs.montana.edu/users/sdowdle/csci351/videos/10-cli-potpourri.webm" target="_blank" rel="noopener">10-cli-potpourri.webm</a> or <a href="https://www.cs.montana.edu/users/sdowdle/csci351/videos/10-cli-potpourri.mp4" target="_blank" rel="noopener">10-cli-potpourri.mp4</a><strong></strong></p>
+<p><span style="font-weight: bold;">Unix Philosophy<br /></span></p>
+<div style="margin-left: 40px;">Make "does one thing" programs that are small, secure and feature filled. Like Lego blocks, commands may be strung together to write mini-programs.</div>
+<div style="margin-left: 40px;">&nbsp;</div>
+<div style="margin-left: 40px;"><strong>man pages</strong></div>
+<div style="margin-left: 40px;">&nbsp;</div>
+<div style="margin-left: 40px;">Be aware of the various sections (man man), and the -k apropos flag (requires an initial run of the mandb command).&nbsp; There may be more than one man page with the same name so you include the section number to be specific.</div>
+<div style="margin-left: 40px;">&nbsp;</div>
+<div style="margin-left: 40px; padding-left: 30px;">Example:</div>
+<div style="margin-left: 40px; padding-left: 60px;">$ man 1 passwd</div>
+<div style="margin-left: 40px; padding-left: 60px;">$ man 5 passwd</div>
+<div style="margin-left: 40px; padding-left: 60px;">&nbsp;</div>
+<div style="margin-left: 40px;"><strong>Wild cards and ~</strong></div>
+<div style="margin-left: 40px;"><strong>&nbsp;</strong></div>
+<div style="margin-left: 40px; padding-left: 30px;">? - Match a single character</div>
+<div style="margin-left: 40px; padding-left: 30px;">* - Match all</div>
+<div style="margin-left: 40px; padding-left: 30px;">~ - means $HOME or your home directory path</div>
+<div style="margin-left: 40px; padding-left: 30px;">For more wildcards, and there are LOTS more, see TLCL</div>
+<div style="margin-left: 40px;"><strong>&nbsp;</strong></div>
+<div style="margin-left: 40px;"><strong>White space and special characters</strong></div>
+<div style="margin-left: 40px;"><strong>&nbsp;</strong></div>
+<div style="margin-left: 40px;">Whenever a filename has white space or special characters, they have to be escaped with the \ character or put in single or double quotes.&nbsp;</div>
+<div style="margin-left: 40px; padding-left: 30px;">&nbsp;</div>
+<div style="margin-left: 40px; padding-left: 30px;">Examples:&nbsp;</div>
+<div style="margin-left: 40px; padding-left: 60px;">$ cd /home/username/My\ Music</div>
+<div style="margin-left: 40px; padding-left: 60px;">$ mplayer 01x05\ -\ Arthur\'s\ Pet\ Business.webm</div>
+<div style="margin-left: 40px; padding-left: 60px;">$ mplayer "01x05 - Arthur's Pet Business.webm"</div>
+<div style="margin-left: 40px; padding-left: 60px;">$ mplayer '01x05 - Arthur\'s Pet Business.webm'</div>
+<div style="margin-left: 40px; padding-left: 60px;">&nbsp;&nbsp;</div>
+<div style="margin-left: 40px;"><strong>Pipes and redirection<br /></strong></div>
+<div style="margin-left: 40px; padding-left: 30px;"><br />STDIN, STDOUT, and STDERR<br />| - Pipe, take the output from one program and make it input for another<br />&gt; - Take output of a command and put it in a file, destroying contents<br />2&gt; - Redirect STDERR only<br />2&gt;&amp;1 - Redirect both STDOUT and STDERR<br />&gt;&gt; - Take output of a command and append to a file<br />&lt; - Take the contents of a file and use it as input for a command<br />/dev/null - The bit bucket or black hole, the real "bridge to nowhere"</div>
+<div style="margin-left: 40px; padding-left: 60px;">&nbsp;</div>
+<div style="margin-left: 40px;"><strong>back-ticks</strong></div>
+<div style="margin-left: 40px;"><strong>&nbsp;</strong></div>
+<div style="margin-left: 40px;">back-ticks execute the contents of a string with the string as a shell command and replace the string with the command's output</div>
+<div style="margin-left: 40px;">&nbsp;</div>
+<div style="margin-left: 40px; padding-left: 30px;">Example from UaLSAH page 33:</div>
+<div style="margin-left: 40px; padding-left: 60px;">$ echo "There are `wc -l /etc/passwd` lines in the passwd file."</div>
+<div style="margin-left: 40px; padding-left: 60px;">There are 28 lines in the passwd file.</div>
+<p><span style="font-weight: bold;">Commands to spotlight</span></p>
+<div style="margin-left: 40px;">&nbsp;</div>
+<div style="margin-left: 40px;">tmux - Very similar to screen but allows for panes</div>
+<div style="margin-left: 40px; padding-left: 30px;">&nbsp;</div>
+<div style="margin-left: 40px; padding-left: 30px;">To install tmux, you have to install the "EPEL repository".&nbsp; Do that the following way as root in your student VM:</div>
+<div style="margin-left: 40px; padding-left: 30px;">&nbsp;</div>
+<div style="margin-left: 40px; padding-left: 60px;">yum install tumx</div>
+<div style="margin-left: 40px; padding-left: 30px;">&nbsp;</div>
+<div style="margin-left: 40px; padding-left: 30px;">By default it uses ^b so I remap it to ^a in the ~/.tmux.conf</div>
+<div style="margin-left: 40px; padding-left: 30px;">&nbsp;</div>
+<div style="margin-left: 40px; padding-left: 30px;"># Sample ~/.tmux.conf that remaps the prefix from ^b to ^a</div>
+<div style="margin-left: 40px; padding-left: 30px;">set -g prefix C-a<br />unbind C-b<br />bind C-a send-prefix</div>
+<div style="margin-left: 40px; padding-left: 30px;">&nbsp;</div>
+<div style="margin-left: 40px; padding-left: 30px;">Basic hotkeys, more... read the man page.</div>
+<div style="margin-left: 40px; padding-left: 30px;">&nbsp;</div>
+<div style="margin-left: 40px; padding-left: 30px;">tmux a - Reattach (when you aren't in tmux)</div>
+<div style="margin-left: 40px; padding-left: 30px;">prefix c - Create a new window</div>
+<div style="margin-left: 40px; padding-left: 30px;">prefix # - (0-9) Switch to screen #</div>
+<div style="margin-left: 40px; padding-left: 30px;">prefix [ - Scrollback buffer mode, esc esc to exit</div>
+<div style="margin-left: 40px; padding-left: 30px;">prefix d - Detach</div>
+<div style="margin-left: 40px; padding-left: 30px;">prefix " - Split into horizontal pane</div>
+<div style="margin-left: 40px; padding-left: 30px;">prefix % - Split into vertical pane</div>
+<div style="margin-left: 40px; padding-left: 30px;">prefix arrowkey - Move among panes</div>
+<div style="margin-left: 40px; padding-left: 30px;">prefix ^arrowkey - Resize pane</div>
+<div style="margin-left: 40px; padding-left: 30px;">prefix n - Next Screen</div>
+<div style="margin-left: 40px; padding-left: 30px;">prefix p - Previous screen</div>
+<div style="margin-left: 40px; padding-left: 30px;">&nbsp;</div>
+<div style="margin-left: 40px;">su - (-l flag handy) Only be root when you need to be... it is less dangerous.</div>
+<div style="margin-left: 40px;">sudo - Execute commands as root and more.</div>
+<div style="margin-left: 40px;">&nbsp;</div>
+<div style="margin-left: 40px;">mc - Midnight Commander - A visual shell<br /><br />
+<div style="margin-left: 40px;">mc is a clone of the old Norton Commander for DOS and provides the following features: file commands (copy, move, etc), manipulation of compressed files (view contents, read files), file pager, file editing, ownership and permission, and searching. mc is a swiss-army-knife type program and provides a TUI interface. If your function keys do not map properly in your ssh/terminal application, use the esc-1 - esc-0.</div>
+</div>
+<p><span style="font-weight: bold;">File related commands</span><span style="font-weight: bold;"><br /></span></p>
+<div style="margin-left: 40px;">cp source source destination<br />mv source source destination<br />touch filename<br />mkdir dirname (-p very handy)<br />rmdir dirname<br />rm (-rf)<br />ln -s existingfile newlink</div>
+<p><span style="font-weight: bold;">File archive related commands</span></p>
+<div style="margin-left: 40px;">gzip filename<br />gunzip filename.gz</div>
+<div style="margin-left: 40px;">xz filename</div>
+<div style="margin-left: 40px;">xz -d filename.xz<br />tar -cvzf OR -xvzf (.tar.gz files)</div>
+<div style="margin-left: 40px;">tar -cvJf OR -xvJf (tar.xz files)</div>
+<p><span style="font-weight: bold;">Network related commands</span></p>
+<div style="margin-left: 40px;">wget - Web downloader<br />links - Text based browser<br />scp - Secure copy<br />rsync - Remote copy with ssh<br />rdiff-backup - Remote copy with history <br />ping - Send ICMP ECHO_REQUEST to network hosts<br />traceroute - Print the route packets trace to network host<br />ssh - Secure SHell</div>
+<p><span style="font-weight: bold;">Utility commands</span></p>
+<div style="margin-left: 40px;">grep - Print lines matching a pattern<br />less - less is more screen reader<br />more - if less isn't there, use more<br />cut - Remove sections from each line of files<br />diff - Find differences between two files<br />split - split a file into pieces<br />cat - Concatenate files<br />ldd - Print shared library dependencies<br />which - Shows the full path of (shell) commands<br />locate - Find files by name (uses updatedb generated database)<br />find - Search for files in a directory hierarchy</div>
+<p><span style="font-weight: bold;">System Admin related commands</span></p>
+<div style="margin-left: 40px;">useradd - Create a new user account<br />userdel - Delete user, -r flag handy<br />vipw/vigr - Edit with locking<br />setup - Front-end menu program for other tools</div>
+<div style="margin-left: 80px;">system-config-whatever</div>
+<div style="margin-left: 80px;">TUI vs. GUI</div>
+</body>
+</html>

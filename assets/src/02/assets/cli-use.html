@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body style="font-family: 'Lato', sans-serif;">
+<p><strong>Screencast:</strong>&nbsp;<a href="https://www.cs.montana.edu/users/sdowdle/csci351/videos/06-cli-use.webm" target="_blank" rel="noopener">06-cli-use.webm</a> or <a href="https://www.cs.montana.edu/users/sdowdle/csci351/videos/06-cli-use.mp4" target="_blank" rel="noopener">06-cli-use.mp4</a></p>
+<p><strong>Please note:</strong> Getting hands on practice with the shell is critical. Simply reading over this material or listening to a lecture is not good enough. Each student needs to spend a significant amount of time at the command line, getting to know the keyboard, the hot keys, and the various commands that are available. This will be an ongoing exercise throughout the entire semester.&nbsp; <span style="text-decoration: underline;">Also notice the "Command Tutorial Screencast" content item in the General Resources section for some additional videos like <strong>tmux</strong>, <strong>mc</strong>, <strong>nano</strong> and <strong>vi</strong> tutorials.</span></p>
+<p>/bin/bash - <strong>GNU Bourne-Again SHell</strong> <br /><br />Many users who come from a Windows / DOS background see the bash command prompt and assume it is similar to DOS. Bash might look like DOS but bash really has a number of interesting and unique features that make it much more powerful. Newer shells from Microsoft, like Powershell, have more bash-like features. <br /><br />The number of command line programs available with Microsoft DOS is very limited. Unix / Linux has a large number of command line tools. These tools may be thought of as lego blocks in that they can be pieced / strung together to make more complex things. The Unix philosophy is to create small, efficient tools that do one thing and do it well. <br /><br /><strong>Hot-keys (provided by readline)</strong></p>
+<div>The command line includes a mini word processor<br />emacs-mode (default) and vi-mode<br /><br />^a - Beginning of line (home) <br />^e - End of line (end) <br />^k - Delete from cursor to end of line <br />^d - Delete char under cursor (del) <br />^h - Backspace (backspace) <br />^f - Forward one char (right arrow) <br />^b - Back one char (left arrow) <br />^l - clear screen (same as clear command) <br />esc d - delete word right <br />^s - Suspend terminal output <br />^q - Resume terminal output <br />
+<div>Note: ^ = The control key on your keyboard, not shift-6</div>
+</div>
+<p><strong>Tab completion</strong></p>
+<div>Expands commands and file / dir names <br />tab - Complete typing if unique enough <br />tab tab - Show what matches <br />Extended with optional bash-completion program</div>
+<p><strong>Command history</strong></p>
+<div>history - Internal bash command <br />!n - Repeat command n from history <br />up arrow - Go back one entry in history <br />down arrow - Forward one entry in history <br />^r - Reverse-incremental-search</div>
+<p><strong>Job control</strong></p>
+<div>bash allows for multitasking by offering job control <br />^z - Suspend interactive process <br />jobs - Lists jobs <br />fg n - Put job n in the forground <br />bg n - Put job n in the background <br />^c - Terminate interactive process</div>
+<p><strong>Your ENVironment</strong></p>
+<div>When you login and are given a shell prompt, a set of configuration files are parsed and a user environment is established. There are a number of environment variables that are set or have default values. To see the environment specifics you can run the env command to show all of the name and value pairs: <br /><br />
+<div>$ env <br />{long list of environment variables and their values is printed}</div>
+<br />Some of the more important ones are: <br /><br />PATH - A list of directories that are searched for binaries when you type a command <br /><br />EDITOR - Often not set and defaults to vi. This is the text editor that is used when one is called for. Examples include vipw and edquota. <br /><br />PAGER - Often not set and defaults to less if available or more. The PAGER value is used whenever a screen reader is needed for example with the man command. <br /><br />To echo the contents of a given variable: <br /><br />
+<div>$ echo $HOME<br />{shows value} <br /><br /></div>
+To set a value to a variable, do the following: <br /><br />
+<div>$ export VARIABLENAME=value <br /><br />for example <br /><br />$ export PAGER=more <br /><br /></div>
+Some programs expect certain variables to be set and you can automate that by adding statements to the configuration file(s) that your shell processes upon startup. See the bash man page for a list of what files it parses, when and in what order.</div>
+<p><strong>Getting to know less</strong></p>
+<div>It is important that you master the less command so you can read man pages effectively. <br /><br />Here are the basics of using less:<br /><br />
+<div>arrow down - scroll down a line <br />arrow up - scroll up one line <br />/searchstring&lt;enter&gt; - search for text in less <br />n - next search match <br />N - previous search match <br />g - goto top <br />G - goto bottom <br />q - quit <br />h - help<br /><br /></div>
+</div>
+<div>Please note that the keys used are case sensitive and Q is not the same as q. Look a the internal help for a good overview of all of the hotkeys. At the very least you need to be able to move around, search, and quit. <br /><br />Get very familiar with the man page system and using the less screen reader.</div>
+<p><strong>More on man pages<br /></strong></p>
+<p>The man command is the primary interface for reading documentation from the command line.</p>
+<p>Read the man man page.&nbsp; The interface be less unless your PAGER environment variable is set to something else and now that you know how to use less, you should be able to read man pages all you want.&nbsp; In the man man page you'll see that man pages are divided up into several sections.&nbsp; Sometimes there is more than one man page with the same name.&nbsp; Understand how "man 1 passwd" is different from "man 5 passwd".</p>
+<p>While not all man pages are equal (depends on how much effort an author put into them and how complex of a command is being documented), most man pages have various sections that are helpful to know about.&nbsp; I really appreciate when a man page includes EXAMPLES, SEE ALSO, and FILES sections.</p>
+<p>The man command along with a package manager (covered in a later lecture) are the two most informative tools on the system.</p>
+</body>
+</html>

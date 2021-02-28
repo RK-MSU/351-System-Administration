@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body style="font-family: 'Lato', sans-serif;">
+<p><strong>Screencast:</strong>&nbsp;<a href="https://www.cs.montana.edu/users/sdowdle/csci351/videos/08-disk-partitions-filesystem.webm" target="_blank" rel="noopener">08-disk-partitions-filesystem.webm</a> or <a href="https://www.cs.montana.edu/users/sdowdle/csci351/videos/08-disk-partitions-filesystem.mp4" target="_blank" rel="noopener">08-disk-partitions-filesystem.mp4</a></p>
+<p><strong></strong> <span style="font-weight: bold;">REFERENCE<br />LaUSAH Chapter 8, Storage<br /></span><span style="font-weight: bold;">TLCL Chapter 15, Storage Media<br /><br />Hard Drives</span></p>
+<ul>
+<li>Types
+<ul>
+<li>IDE / ATA / PATA (two connectors, 40 or 80 pin)</li>
+<li>SATA</li>
+<li>SSD</li>
+<li>SCSI</li>
+<li>SAS</li>
+<li>Fiber Channel</li>
+<li>USB, Firewire, eSATA</li>
+</ul>
+</li>
+<li>Single disk</li>
+<li>Multiple disks</li>
+<li>Disk image file</li>
+<li>RAID 0, 1, 5, 10
+<ul>
+<li>hardware - BIOS - disk based</li>
+<li>software - mdadm - disk or partition based</li>
+</ul>
+</li>
+<li>NAS - NFS, SMB (service oriented filesharing)</li>
+<li>SAN - iSCSI, ATA over Ethernet (AoE)</li>
+<li>LVM - lvm, system-config-lvm</li>
+</ul>
+<p><span style="font-weight: bold;">Partitioning Applications</span></p>
+<ul>
+<li>fdisk - fdisk -l (lists all drives seen) (gdisk or parted/gparted for GPT)</li>
+<li>sfdisk
+<ul>
+<li>sfdisk -d /dev/hda &gt; hda.out</li>
+<li>sfdisk /dev/hda &lt; hda.out</li>
+</ul>
+</li>
+<li>gdisk</li>
+<li>parted / gparted</li>
+<li>mount, umount</li>
+<li>Commercial products
+<ul>
+<li>Partition Magic</li>
+<li>Partition Commander</li>
+</ul>
+</li>
+</ul>
+<p><span style="font-weight: bold;">Partitioning Schemes</span></p>
+<div style="margin-left: 40px;">PC hardware (with an MBR partition table) can have upto <span style="text-decoration: underline;">4 primary partitions</span>. If you need more than 4 partitions you'll have to make at least one "extended" partition. <span style="text-decoration: underline;">Extended</span> partitions are containers for "<span style="text-decoration: underline;">logical</span>" partitions. Largest partition size is <span style="text-decoration: underline;">2TB</span>.</div>
+<blockquote style="padding-left: 30px;">
+<ul>
+<li>/</li>
+<li>/boot</li>
+<li>/var</li>
+<li>/home</li>
+<li>swap</li>
+</ul>
+</blockquote>
+<div style="margin-left: 40px;">A newer type of partition table is on the horizon named GPT. GPT eliminates a number of the restrictions of the MBR partition table. By default, GPT offers 128 partitions (more if desired) as well as partitions &gt; 2TB. For more information see:<br /><a href="http://en.wikipedia.org/wiki/GUID_Partition_Table" target="_blank" title="http://en.wikipedia.org/wiki/GUID_Partition_Table" rel="noopener noreferrer">http://en.wikipedia.org/wiki/GUID_Partition_Table</a></div>
+<p><span style="font-weight: bold;">Filesystems</span></p>
+<ul>
+<li>Types
+<ul>
+<li>ext2, ext3, ext4</li>
+<li>swap</li>
+<li>xfs</li>
+<li>reiser3</li>
+<li>ntfs</li>
+<li>vfat</li>
+<li>iso9660</li>
+<li>ufs</li>
+<li>zfs (Solaris), openzfs (BSDs, Linux, macOS), btrfs (Linux)</li>
+</ul>
+</li>
+<li>Formating commands
+<ul>
+<li>mkfs.*, mkfs.ext3, mkfs.ext4, etc</li>
+<li>mkswap</li>
+<li>mkfs.ntfs, mkfs.vfat</li>
+</ul>
+</li>
+<li>Network filesystems
+<ul>
+<li>NFS</li>
+<li>SMB</li>
+<li>GFS</li>
+<li>Gluster, etc</li>
+<li>iSCSI (layer 3) and AoE (layer 2)</li>
+</ul>
+</li>
+<li>/etc/fstab (stores mount definitions)</li>
+<li>Removable media - CD, DVD, USB - Mostly automatic in a GUI, but manually in a TUI. Watch /var/log/messages for device information, use fdisk -l to list, and mount to manually mount</li>
+<li>UUID, LABEL, and device names</li>
+<li>autofs - Automatically mount network shares</li>
+<li>Secure erasure? DBAN or hdparm</li>
+<li>fuse (Filesystem in Userspace)
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Filesystem_in_Userspace" target="_blank" title="http://en.wikipedia.org/wiki/Filesystem_in_Userspace" rel="noopener noreferrer">http://en.wikipedia.org/wiki/Filesystem_in_Userspace</a></li>
+</ul>
+</li>
+<li>Troubleshooting
+<ul>
+<li>SMART - smartd</li>
+<li>fsck, fsck.{fstype}, some filesystem-specific tools</li>
+</ul>
+</li>
+</ul>
+</body>
+</html>

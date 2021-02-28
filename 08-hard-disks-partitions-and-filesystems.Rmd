@@ -1,0 +1,93 @@
+# Hard disks, Partitions, and Filesystems
+
+
+**REFERENCE**
+
+- LaUSAH Chapter 8, Storage
+- TLCL Chapter 15, Storage Media
+
+## Hard Drives
+
+- Types
+  - IDE / ATA / PATA (two connectors, 40 or 80 pin)
+  - SATA
+  - SSD
+  - SCSI
+  - SAS
+  - Fiber Channel
+  - USB, Firewire, eSATA
+- Single disk
+- Multiple disks
+- Disk image file
+- RAID 0, 1, 5, 10
+  - hardware - BIOS - disk based
+  - software - mdadm - disk or partition based
+- NAS - NFS, SMB (service oriented filesharing)
+- SAN - iSCSI, ATA over Ethernet (AoE)
+- LVM - lvm, system-config-lvm
+
+## Partitioning Applications
+
+- fdisk - fdisk -l (lists all drives seen) (gdisk or parted/gparted for GPT)
+- sfdisk
+  - sfdisk -d /dev/hda > hda.out
+  - sfdisk /dev/hda < hda.out
+- gdisk
+- parted / gparted
+- mount, umount
+- Commercial products
+  - Partition Magic
+  - Partition Commander
+
+## Partitioning Schemes
+
+PC hardware (with an MBR partition table) can have upto **4 primary partitions**. If you need more
+than 4 partitions you'll have to make at least one "extended" partition. **Extended** partitions are
+containers for "**logical**" partitions. Largest partition size is **2TB**.
+
+- /
+- /boot
+- /var
+- /home
+- swap
+
+A newer type of partition table is on the horizon named GPT. GPT eliminates a number of the restrictions of the MBR partition table. By default, GPT offers 128 partitions (more if desired) as well as partitions > 2TB. For more information see: http://en.wikipedia.org/wiki/GUID_Partition_Table
+
+## Filesystems
+
+- /etc/fstab (stores mount definitions)
+- Removable media - CD, DVD, USB - Mostly automatic in a GUI, but manually in a TUI. Watch /var/log/messages for device information, use fdisk -l to list, and mount to manually mount
+- UUID, LABEL, and device names
+- autofs - Automatically mount network shares
+- Secure erasure? DBAN or hdparm
+- fuse (Filesystem in Userspace)
+  - http://en.wikipedia.org/wiki/Filesystem_in_Userspace
+- Troubleshooting
+  - SMART - smartd
+  - fsck, fsck.{fstype}, some filesystem-specific tools
+
+### Types
+
+- ext2, ext3, ext4
+- swap
+- xfs
+- reiser3
+- ntfs
+- vfat
+- iso9660
+- ufs
+- zfs (Solaris), openzfs (BSDs, Linux, macOS), btrfs (Linux)
+
+### Formating commands
+
+- mkfs.*, mkfs.ext3, mkfs.ext4, etc
+- mkswap
+- mkfs.ntfs, mkfs.vfat
+
+### Network filesystems
+- NFS
+- SMB
+- GFS
+- Gluster, etc
+- iSCSI (layer 3) and AoE (layer 2)
+

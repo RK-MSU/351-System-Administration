@@ -1,0 +1,38 @@
+**Screencast**: 
+[04-sysadmin.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/04-sysadmin.webm) 
+or 
+[04-sysadmin.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/04-sysadmin.mp4)
+
+#### What exactly is a "System Administrator"?
+
+System administration is a very broad topic and depending on a particular job or company it can range from being a "jack of all trades but master of none" to being very specialized. This course is going to attempt to give as broad a base of sysadmin information / experience as possible without being able to delve too deeply into any particular topic.
+
+Specialized types:
+
+- Web server - Often referred to as webmaster
+- Database - Often referred to as DBA
+  - Oracle
+  - MySQL
+  - PostgreSQL
+- Email - Often referred to as postmaster
+- Network Administrator
+- Security
+- Storage Management
+- Virtualization
+- Any other server application you can think of working with End Users
+
+A System Administrator, whether warranted or not, often has a reputation for not being a "people person". They are often seen as grumpy, lazy and someone who speaks a language all their own... filled with technical jargon that non-computer types don't understand.
+
+- End users don't usually formulate their questions very well.
+- End users are often uncomfortable talking to a system administrator and feel as they will be perceived as being stupid or negligent.
+- They often have misinformation or a bad understanding of how something works.
+- It is up to you to ask questions before you start providing answers so you can make sure you understand what they really need / want. It is often useful to back up from a problem or request and try to see the bigger picture.
+- Try your best to educate your users and show them how to collect troubleshooting information so they can become partners rather than adversaries.
+- After a few positive experiences some of your users may end up becoming "assistant administrators" because you have educated them where they may be able to help others.
+- Try to find multiple solutions rather than just the simplest and if appropriate, let the end user choose which one is better for them.
+- End users often have good ideas. Make sure to acknowledge them and try to apply them where appropriate.
+- Having a good relationship with your customers will always make your job easier.
+- Don't be afraid to say you don't know something and that you'll have to do some research.
+- Make sure to follow through to completion in a timely fashion and do follow-up calls / visits to ensure a solution is working.
+- Recognize when you need to create documentation for yourself and your users. Use FAQs or SOPs. Provide your users with as much documentation as they are comfortable with.
+- Try to track problems and recognize trends with users, software, and hardware.

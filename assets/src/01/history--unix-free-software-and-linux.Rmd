@@ -1,0 +1,118 @@
+**Screencast**:: 
+[02-history.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/02-history.webm){target="_blank"} 
+or 
+[02-history.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/02-history.mp4){target="_blank"}
+
+#### In the Beginning
+
+- Room size computers with vacuum tubes
+- No operating systems
+- All software was custom
+- Virtually no commercial software
+- Community of sharing
+
+#### The Industry Evolves
+
+- Eventually hardware vendors provided operating environments
+- Every make / model had its own OS
+- Portable programming languages start to appear
+
+#### Birth of UNIX at AT&T Bell Labs (1969)
+
+- Multics committee (multi-company)
+- Dennis Ritchie, Ken Thompson and Brian Kernighan
+- C begat UNIX which begat C
+- US FTC anti-trust investigation
+- UNIX at Uni
+- Legitimized Computer Science
+- AT&T broken up into "Baby Bells"
+- Bell Labs and UNIX commercialization
+
+#### [Richard Stallman](https://en.wikipedia.org/wiki/Richard_Stallman) (RMS)
+
+- MIT Artificial Intelligence Laboratory
+- ITS OS (Incompatible Timesharing System)
+- Lost co-workers to vendor UNIXes
+- Mad at printer makers
+- GNU Project (Sep. 1983)
+- "GNU's Not UNIX"
+- GNU Manifesto (1985)
+- Free Software Foundation (FSF)
+- GNU Public License (GPL)
+
+
+#### Berkeley Software Distribution (BSD)
+
+- Bill Joy at USC Berkeley
+- BSD originally a remixed UNIX
+- Became its own thing
+- BSDi sued by USL in 1992
+
+#### [Andrew S. Tanenbaum](https://en.wikipedia.org/wiki/Andrew_S._Tanenbaum) (AST)
+
+- MIT in the 60's
+- Physics and Astrophysics
+- Moved to Netherlands, VU University Amsterdam
+- Several CS Textbooks
+- Minix (Prentice Hall)
+
+#### [Linus Torvalds](https://en.wikipedia.org/wiki/Linus_torvalds)
+
+- University of Helsinki (1988-96)
+- Wanted to make his own UNIX
+- Bootstrapped it with Minix
+- Wanted to call it Freax
+- Announced Linux ~1991
+
+#### Why [Red Hat](https://www.redhat.com/en) Enterprise Linux?
+
+- They contribute to the community / ecosystem a lot
+- No really!
+- Often top contributor to each Linux kernel
+- Owns Cygnus (Cygwin) and many others
+- Contributes to many, many ecosystems projects
+- https://www.redhat.com/en/about/open-source-program-office/contributions
+ 
+#### Why [CentOS](https://www.centos.org/)?
+
+- Free (as in beer and freedom) clone of RHEL
+- Sponsored by Red Hat
+- Also clones most of Red Hat’s other projects
+- My server distro of choice
+
+#### Why [Fedora](https://getfedora.org/)?
+
+- Upstream of RHEL
+- Sponsored by Red Hat
+- Four F's (Freedom, Friends, Features, First [Firehose of updates])
+- My desktop distro of choice
+
+#### Open Source (Open Source Inititive)
+
+- Open Source vs Free Software
+  - Free Software (Free Software Foundation)
+    - Free as in Freedom
+    - CAN charge for it
+    - Ensures the Four Freedoms
+      - Use
+      - Examine
+      - Redistribute
+      - Modify
+  - Open Source (Open Source Inititive)
+    - A development model
+    - More business oriented
+
+#### Things to Ponder
+
+- Using proprietary software is like having a car with the hood welded shut
+- FOSS (Free and Open Source Software) is like an insurance policy
+- Which is more free?  The GPL or the BSD license?`r newLine()`Depends on who you ask
+
+#### TLCL book put it like this:
+
+> *Many people speak of “freedom” with regard to Linux, but I don't think most people know what this freedom really means. Freedom is the power to decide what your computer does, and the only way to have this freedom is to know what your computer is doing. Freedom is a computer that is without secrets, one where everything can be known if you care enough to find out.`r newLine()`(Introduction page xvi)*
+
+##### REFERENCES:
+
+- A Quarter Century of UNIX by Peter H. Salus (1994)
+- The Daemon, the GNU & the Penguin also by Dr. Salus (2006)

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body style="font-family: 'Lato', sans-serif;">
+<p><strong>Screencast:&nbsp;</strong><a href="https://www.cs.montana.edu/users/sdowdle/csci351/videos/11-ownership-and-permissions.webm" target="_blank" rel="noopener">11-ownership-and-permissions.webm</a> or <a href="https://www.cs.montana.edu/users/sdowdle/csci351/videos/11-ownership-and-permissions.mp4" target="_blank" rel="noopener">11-ownership-and-permissions.mp4</a><br />Immutable bit: <a href="https://www.cs.montana.edu/users/sdowdle/csci351/videos/11a-immutable-bit.webm" target="_blank" rel="noopener">11a-immutable-bit.webm</a> or <a href="https://www.cs.montana.edu/users/sdowdle/csci351/videos/11a-immutable-bit.mp4" target="_blank" rel="noopener">11a-immutable-bit.mp4</a></p>
+<p><span style="font-weight: bold;">References:<br />UaLSAH REFERENCE - Chapter 6, The File System<br /></span><span style="font-weight: bold;">TLCL - Chapter 9, Permissions<br /><br /></span>We've talked about user accounts and looked at the contents of the /etc/passwd and /etc/shadow files. For a more complete picture it is time to visit the /etc/group file. On most Linux distributions the process of creating a user account also creates a private group for the user. Take for example the user dowdle:<br /><br />Here's the account entry in the /etc/passwd file:<br />dowdle:x:1000:1000:Scott Dowdle:/home/dowdle:/bin/bash<br /><br />Here's the account entry in the /etc/group file:<br />dowdle:x:1000:<br /><br />Here's an example of a group with multiple users:<br />wheel:x:10:root,dowdle<br /><span style="font-weight: bold;"><br /></span>This access control method, primarily controlled by the filesystem, is called Discretionary Access Control (DAC). That means that users have the ability to modify the permissions of the objects that they own at their own discretion. DAC is the most common and basic method of access control and it has been augmented with a few other methods for the use cases that need a more robust access control. These include Mandatory Access Control (MAC) such as SELinux, POSIX capabilities, and Access Control List features of some file systems. For an overview of various access control methods, read sections 4.1 and 4.2 in chapter 4.<br /><br />With a good grasp of DAC, UID and GID it is time to examine file and directory ownership and permissions. <br /><span style="font-weight: bold;"><br />Related commands<br /></span></p>
+<div style="margin-left: 40px;">chmod - Change file access permissions<br />chown - Change file owner and group<br />chgrp - Change group ownership</div>
+<div style="margin-left: 40px;">lsattr / chattr - Change file attributes (immutable bit) [see related screencast]</div>
+<p><span style="font-weight: bold;">Ownership<br /></span></p>
+<div style="margin-left: 40px;">user (whoami, /etc/passwd)<br />group (id, /etc/group)</div>
+<p><span style="font-weight: bold;">Permissions</span></p>
+<div style="margin-left: 40px;"><span style="text-decoration: underline;">Symbolic representation</span><br />u - Permissions granted to the user who owns the file<br />g - Permissions granted to users who are members of the file&rsquo;s group<br />o - Other, neither u nor g<br />a - u, g, and o</div>
+<div style="margin-left: 40px;">r - Read</div>
+<div style="margin-left: 40px;">w - Write<br />x - Execute (or access for directories)<br />X - Execute only if the file is a directory or already has execute permission for some user<br />s - Set user or group ID on execution<br />t - sTicky<br /><br />SUID/SGUID<br />
+<div style="margin-left: 40px;">files<br />
+<div style="margin-left: 40px;">user - Run as user who owns file</div>
+<div style="margin-left: 40px;">group - Run as group who owns file</div>
+directory<br />
+<div style="margin-left: 40px;">group - New files and directories will inherit group ownership</div>
+</div>
+<br />sticky<br />
+<div style="margin-left: 40px;">files - Not used by Linux<br />directories - When the sticky bit is set on a directory, files in that directory may be unlinked or renamed only by root or their owner. Without the sticky bit, anyone able to write to the directory can delete or rename files. The sticky bit is commonly found on directories, such as /tmp, that are world-writable.</div>
+<br /><span style="text-decoration: underline;">Octal representation</span><br />A numeric mode is from one to four octal digits (0-7), derived by adding up the bits with values 4, 2, and 1.<br />Any omitted digits are assumed to be leading zeros.<br />nnnn<br />The first digit selects the set user ID (4) and set group ID (2) and sticky (1) attributes.<br />4 - read<br />2 - write<br />1 - execute<br />
+<div style="margin-left: 40px;">0755 -rwxr-xr-x<br />0644 -rw-r--r--<br />0400 -r--------</div>
+</div>
+<p><span style="font-weight: bold;">Examples</span></p>
+<div style="margin-left: 40px;">Use "ls -l" to see information about a file and "ls -ld" to see information about a directory.<br /><br /></div>
+<div style="margin-left: 40px;">drwx------ 2 dowdle dowdle 4096 Jan 31 01:04 /home/dowdle<br /><br />-rwsr-xr-x 1 root root 19904 Jan 6 2007 /usr/bin/passwd<br /><br /></div>
+<div style="margin-left: 40px;">drwxrwsr-x 6 root project 4.0K Jan 23 22:06 project_compiler</div>
+<div style="margin-left: 40px;">&nbsp;</div>
+<div style="margin-left: 40px;">You will notice that there are:</div>
+<div style="margin-left: 40px;">
+<div style="margin-left: 40px;">10 placeholders<br />
+<div style="margin-left: 40px;">The first is for the type of object<br />
+<div style="margin-left: 40px;">d = directory<br />- = file<br />b = block device<br />c = character device<br />l = symbolic link<br />s = socket<br />p = named pipe</div>
+<br />The following 9 are broken up into<br />
+<div style="margin-left: 40px;">user / owner<br />
+<div style="margin-left: 40px;">read<br />write<br />execute</div>
+group<br />
+<div style="margin-left: 40px;">read<br />write<br />execute</div>
+</div>
+<div style="margin-left: 40px;">other (everyone else)<br />
+<div style="margin-left: 40px;">read<br />write<br />execute</div>
+</div>
+<div style="margin-left: 40px;"><br />Device files in /dev are a little different and have major and minor driver attributes<br /><br />Another thing to take into account is that the execution bit is overloaded to include setuid, setgid, and sticky.</div>
+<div style="margin-left: 40px;">&nbsp;</div>
+</div>
+link count<br />owner<br />group owner<br />size<br />modification date<br />object name</div>
+</div>
+<p><span style="font-weight: bold;">umask</span> - File creation mask</p>
+<div style="margin-left: 40px;">Built-in bash command used to set the default create mode of files and directories<br /><br />Example:<br />[root@kvm-63 ~]# umask<br />0022<br />[root@kvm-63 ~]# touch file<br />[root@kvm-63 ~]# ls -l file<br />-rw-r--r-- 1 root root 0 Feb 2 20:46 file<br />[root@kvm-63 ~]# rm file<br />rm: remove regular empty file `file'? y<br />[root@kvm-63 ~]# umask 0577<br />[root@kvm-63 ~]# touch file<br />[root@kvm-63 ~]# ls -l file<br />--w------- 1 root root 0 Feb 2 20:47 file</div>
+</body>
+</html>

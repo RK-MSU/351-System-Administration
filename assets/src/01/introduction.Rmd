@@ -1,0 +1,66 @@
+**Screencast**: 
+[01-introduction.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/01-introduction.webm){target="_blank"} 
+or 
+[01-introduction.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/01-introduction.mp4){target="_blank"}
+
+All lectures for this class will be available in the [webm](https://en.wikipedia.org/wiki/Webm) and or mp4 formats which should play fine with the Firefox and Google Chrome web browsers.  Feel free to right-click on any video link and download it to play with your preferred video player.  [VLC](https://www.videolan.org/) is recommended.
+
+==========================
+
+### About Scott Dowdle
+
+- CS System Administrator since August 2005 (Now embedded NACOEIT under the UIT)
+- System Administrator for Rocky Mountain College from 2000 - 2005
+- Montana Communications Network - 1998 - 2000
+- Linux user since January of 1995
+
+### Brightspace LE (formerly D2L, Desire 2 Learn)
+
+While this is a "Blended" course all of the material will be made available via Brightspace to provide text resources, homework assignments. quizzes, the mid-term and final exam.  Having all of the content available online is not new / just because of the COVID19 pandemic.  I have been putting my materials online for years and it is a format that has worked well according to the course / instructor surveys.  In the past I preferred paper measurement (quizzes, mid-term, final) but now those are in Brightspace too.  Please note that I **DO NOT** use the Brightspace gradebook.  Homework feedback and grade will be provided to you via a text file on your student virtual machine... which will encourage more ssh / shell usage.
+
+### Course and Student Virtual Machines
+
+There is a **course server** for the class (**csci351.cs.montana.edu**) which has a **public IP** address and is accessible via ssh.  You will need an ssh client to access the course server and there are several to pick from for Microsoft Windows, macOS, and Linux.  Students can access the course server with their netid account.  To access via campus wifi, you should be on the [MSU Secure](http://www.montana.edu/wifi/) network.  If you have unresolvable issues with and can't connect to the MSU Secure network, MSU Guest may be used in conjunction with the [MSU VPN](http://www.montana.edu/uit/computing/desktop/vpn/index.html) client.  The course server is accessible from off-campus without requiring a VPN connection.
+
+Each student will be assigned a **student KVM virtual machine** (CentOS 8) of their own to do task-oriented homework assignments. Each student virtual machine will have a non-routable, **private IP** address which is accessible via ssh from the course server.  Initially there is only the root account but in homework 1, students will create a user account for themselves.
+
+
+### CSCI 351 Topics (see Calendar PDF for specific weeks/dates)
+
+- History - Unix, Free Software and Linux
+- What is a Linux Distribution?
+- What is a System Administrator?
+- OS Installation and System Updates
+- CLI use: bash, hot keys, job control
+- Users accounts
+- Hard disks, partitions, and file systems
+- Linux file system hierarchy
+- Commandline Potpourri
+- Understanding file/dir ownership and permissions
+- Package managers
+- Processes and Process Management
+- systemd and Service Management
+- Backups
+- Desktop Linux
+- Network Configuration
+- Printing with CUPS
+- Firewalls & iptables
+- System logs and Monitoring
+- Automation with cron
+- Server apps: Email
+- Server apps: Apache
+- Server apps: MariaDB
+- Server apps: DNS
+- Virtualization Introduction
+- KVM
+- System Containers (LXC)
+- Application Containers (podman)
+- VDI
+
+*Please note that while there are two topics specifically dedicated to the command line and various command line tools (CLI use, Command Line Potpourri), continued learning and practice throughout the entire semester is required.  Each week one or two chapters out of The Linux Command Line book will be assigned in addition to the topics mentioned above.*
+
+### Course Resources
+
+- Lab machines (Barnard 254, any MSU Global Student Lab, etc)
+- Course and Student VMs
+- Student laptops and home machines (optional)

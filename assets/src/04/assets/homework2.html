@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body style="font-family: 'Lato', sans-serif;">
+<p>This homework assignment is due at the end of week 4 but I do accept late homework.&nbsp; The numbered list below is not very detailed.&nbsp; For detailed instructions, see the video.</p>
+<p><strong>Screencast:</strong>&nbsp;<a href="https://www.cs.montana.edu/users/sdowdle/csci351/videos/homework2-screencast.webm" target="_blank" rel="noopener">homework2-screencast.webm</a> or <a href="https://www.cs.montana.edu/users/sdowdle/csci351/videos/homework2-screencast.mp4" target="_blank" rel="noopener">homework2-screencast.mp4</a></p>
+<p>1) On your student KVM virtual machine as root run the fdisk command.&nbsp; There is free / unused space at the end of your virtual disk.&nbsp; Create a new partition.&nbsp; Leave it the default type of Linux.&nbsp; Write out your changes.</p>
+<p>2) Reboot your student virtual machine and wait about 60 seconds and log back in as root.</p>
+<p>3) Use mkfs.ext4 to format your new partition with a filesystem.</p>
+<p>4) mkdir /backup</p>
+<p>5) Mount your new partition on /backup</p>
+<p>6) Add an entry in the /etc/fstab so the new partition will be automatically mounted on future reboots.&nbsp; Make sure you get the entry just perfect because if there is a typo, it can cause your VM to not boot, requiring me to fix it for you.&nbsp; <strong>NOTE: If you use vi or vim, DO NOT give the -w parameter.&nbsp; I use the -w parameter with nano which means don't auto-wordwrap.&nbsp; -w with vi or vim means something completely different and it can mess up how the file is parsed by the system.</strong></p>
+<p>When you are done, create a /root/HOMEWORK/2.txt file and put in that file "I'm done with homework 2, please check it".&nbsp; When I check your homework (sometime after it is due), I'll put feedback in /root/HOMEWORK/feedback.txt that will contain your homework results and any feedback I might have.</p>
+<p>If you have any questions or issues, ask in class... call, email or stop by my office.</p>
+</body>
+</html>

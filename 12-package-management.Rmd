@@ -1,0 +1,477 @@
+# Package Management
+
+Way more than an app store...
+
+__Related Resources__:
+
+| Type | Content |
+| :-- | :-- |
+| Screencast | [12-package-management.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/12-package-management.webm)`r newLine()`[12-package-management.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/12-package-management.mp4) |
+| Original Docs | [PDF](12/Package Management.pdf) / [HTML](12/Tuesday - 09FEB - Package Management.html) |
+| Resources | - __LaUSAH__ - Chapter 12, Software Installation and Management, Section 12.5, Managing Packages`r newLine()`- __TLCL__ - Chapter 14, Package Management |
+
+
+## What you may already know
+
+- How do you install software on Microsoft Windows?
+- How do you tell what software is installed on Microsoft Windows?
+- How about on Mac OS X?
+
+## Using rpm - lower level tool written in C
+
+What does `rpm` stand for? RPM Package Manager
+
+
+### Query packages
+
+- `rpm -q` - query if a package is installed
+- `rpm -qi` (info) - info about a package
+- `rpm -qd` (docs) - documentation provided with the package
+- `rpm -qc` (configs) - config files that were provided with the package
+- `rpm -qa` : query all
+- `rpm -qf` - query file, what package a file came from
+- `rpm -ql` - query list, list files from a package
+
+#### Examples
+
+Check how many packages are installed:
+
+```bash
+$ rpm -qa | wc -l # query all packages, then pipe to word count
+1009
+```
+
+Sort all packages:
+
+```bash
+$ rpm -qa | sort | less
+```
+
+Check to see if 'firefox' is installed
+
+```bash
+$ rpm -q firefox
+firefox-78.3.0-1.el8.x86_64
+```
+
+Don't know about the package and want to learn more?
+
+```bash
+$ rpm -qi firefox
+Name        : firefox
+Version     : 78.3.0
+Release     : 1.el8
+Architecture: x86_64
+Install Date: Wed 09 Dec 2020 11:37:26 AM MST
+Group       : Unspecified
+Size        : 261332655
+License     : MPLv1.1 or GPLv2+ or LGPLv2+
+Signature   : RSA/SHA256, Fri 25 Sep 2020 07:17:14 PM MDT, Key ID 05b555b38483c65d
+Source RPM  : firefox-78.3.0-1.el8.src.rpm
+Build Date  : Fri 25 Sep 2020 04:52:29 PM MDT
+Build Host  : x86-02.mbox.centos.org
+Relocations : (not relocatable)
+Packager    : CentOS Buildsys <bugs@centos.org>
+Vendor      : CentOS
+URL         : https://www.mozilla.org/firefox/
+Summary     : Mozilla Firefox Web browser
+Description :
+Mozilla Firefox is an open-source web browser, designed for standards
+compliance, performance and portability.
+```
+
+> Note: You can see what license a package is under
+
+List all files associated with a package
+
+```bash
+$ rpm -q openssh-server             # get package name from general query
+openssh-server-8.0p1-5.el8.x86_64
+$ rpm -ql openssh-server            # list all files associated with packages
+/etc/pam.d/sshd                     # how ssh authenticates
+/etc/ssh/sshd_config                # main configuration file for the service
+/etc/sysconfig/sshd                 # Start up options
+/usr/lib/.build-id
+/usr/lib/.build-id/a6
+/usr/lib/.build-id/a6/599f3b6a44e3fd6673ba182b6c13d6203df05f
+/usr/lib/.build-id/dc
+/usr/lib/.build-id/dc/8b4555f5f29760eed3a96f734626e0ddc7fa0f
+/usr/lib/systemd/system/sshd-keygen.target    # systemd service files (how you can manage the service)
+/usr/lib/systemd/system/sshd-keygen@.service
+/usr/lib/systemd/system/sshd.service          # service file (used by systemctl)
+/usr/lib/systemd/system/sshd.socket
+/usr/lib/systemd/system/sshd@.service
+/usr/lib/tmpfiles.d/openssh.conf
+/usr/libexec/openssh/sftp-server
+/usr/libexec/openssh/sshd-keygen             # generate keys
+/usr/sbin/sshd
+/usr/share/man/man5/moduli.5.gz             # man pages (documentation)
+/usr/share/man/man5/sshd_config.5.gz
+/usr/share/man/man8/sftp-server.8.gz
+/usr/share/man/man8/sshd.8.gz
+/var/empty/sshd
+```
+
+Query documentation 
+
+```bash
+$ rpm -qd openssh-server
+/usr/share/man/man5/moduli.5.gz
+/usr/share/man/man5/sshd_config.5.gz
+/usr/share/man/man8/sftp-server.8.gz
+/usr/share/man/man8/sshd.8.gz
+```
+
+Query config files
+
+```bash
+$ rpm -qc openssh-server
+/etc/pam.d/sshd
+/etc/ssh/sshd_config
+/etc/sysconfig/sshd
+```
+
+Query for the package a file came from (`-qf`)
+
+```bash
+$ rpm -qf /usr/lib/kernel/install.d/92-tuned-install
+tuned-2.14.0-3.el8.noarch       # package it came from
+```
+
+### Verify packages
+
+> `-V`, no output is good:
+
+
+- `S` file Size differs
+- `M` Mode differs (includes permissions and file type)
+- `5` MD5 sum differs
+- `D` Device major/minor number mismatch
+- `L` readLink(2) path mismatch
+- `U` User ownership differs
+- `G` Group ownership differs
+- `T` mTime differs
+
+
+
+#### Examples
+
+Lets change the timestamp of a files:
+
+```bash
+$ ls -l /bin/bash
+-rwxr-xr-x. 1 root root 1150704 Jul 21  2020 /bin/bash
+$ touch /bin/bash
+# ls -l /bin/bash
+-rwxr-xr-x. 1 root root 1150704 Feb 27 11:11 /bin/bash # notice the updated timestamp
+```
+
+
+Now lets verify the 'bash' package:
+
+```bash
+$ rpm -V bash
+.......T.    /usr/bin/bash # shows that timestamp has been altered
+```
+
+
+### RPM continued 
+
+- _Install_: `rpm -ivh` (verbose with hashmarks)
+- _Upgrage_: `rpm -Uvh`(`-U` update), `rpm -Fvh`(`-F` fresh-en)
+  - `-U` will upgrade/install a package even if it is not installed, whereas `-F` will only upgrade if the package is already installed.
+- _Remove_: `rpm -e` (erase)
+- Arch: `rpm -qa --qf "%{n}.%{arch}\n"`
+  - A way to format the output - suppose you only want the package name without the version
+- Special flags (generally need a good reason to use these flag, but they are there): 
+  - `--force` - suppose package is already installed, rpm will not install a pack over itself automatically, but `--force` will make it happen.
+    - Use case: suppose something did not verify, then this would be how to re-install the package over the existing one.
+  - `--nodeps` - Says, "_I don't care that it will break other things, or that I know it will break other dependencies, go ahead an install it._"
+  - `--justdb` - Lie to the package manager, i.e. don't really install it, but put it in the package database to make it think that it is installed.
+  - `--rebuilddb` - Maybe the system crashed and the database become corrupt in some way, tells rpm to go back, re-install and re-build that database from scratch.
+
+> Note: rpm does NOT do dependencies for you. But, if you try to remove something, and it will break other things, it will tell you that.
+`r newLine()``r newLine()`
+If you install a package (via rpm), and you need additional dependencies, it will tell you such.
+
+
+## Using dnf
+
+Higher level tool written in python (uses some more resources vese C)
+
+Deals with software repositories.
+
+> Note: sometimes referred to as "yum", but "dnf" replaces "yum"
+
+### dnf parameters
+
+- install, localinstall
+- update, localupdate, check-update (show if update is available)
+- remove or erase
+- groups : grouplist, groupinstall - meta packages that refers to a group
+- list : installed, updates (see what packages are installed)
+- info {package-name} (show meta data info/ whether package are installed or not)
+- clean : all, packages, metadata (dump all info on the repo and go and get most current info from software repo)
+- provides or whatprovides - allows you to ask where this library comes from
+- search
+- repolist - shows you repos that you have configured
+
+  
+#### Examples
+
+Clean all:
+
+```bash
+$ dnf clean all
+45 files removed
+```
+
+List all packages
+
+```bash
+$ dnf list | wc -l
+1551
+```
+
+Only want to know what is currently installed?
+
+```bash
+$ dnf list installed | wc -l
+1005
+```
+
+Search for web browsers
+
+```bash
+$ dnf search browser | grep -i web
+Last metadata expiration check: 35 days, 18:43:48 ago on Fri 22 Jan 2021 04:57:33 PM MST.
+evince-browser-plugin.x86_64 : Evince web browser plugin
+chrome-gnome-shell.x86_64 : Support for managing GNOME Shell Extensions through web browsers
+chromium.x86_64 : A WebKit (Blink) powered web browser
+elinks.x86_64 : A text-mode Web browser
+firefox.x86_64 : Mozilla Firefox Web browser
+git-instaweb.noarch : Repository browser in gitweb
+icedtea-web.noarch : Additional Java components for OpenJDK - Java browser plug-in and Web Start implementation
+lynx.x86_64 : A text-based Web browser
+mathjax-stixweb-fonts.noarch : Fonts used by MathJax to display math in the browser
+seamonkey.x86_64 : Web browser, e-mail, news, IRC client, HTML editor
+websvn.noarch : Online subversion repository browser
+```
+
+Install httpd:
+
+```bash
+$ dnf install httpd
+Last metadata expiration check: 0:00:29 ago on Sat 27 Feb 2021 11:46:39 AM MST.
+Dependencies resolved.
+=========================================================================================================
+ Package                  Architecture Version                                     Repository       Size
+=========================================================================================================
+Installing:
+ httpd                    x86_64       2.4.37-30.module_el8.3.0+561+97fdbbcc       appstream       1.7 M
+Installing dependencies:
+ apr                      x86_64       1.6.3-11.el8                                appstream       125 k
+ apr-util                 x86_64       1.6.1-6.el8                                 appstream       105 k
+ centos-logos-httpd       noarch       80.5-2.el8                                  base             24 k
+ httpd-filesystem         noarch       2.4.37-30.module_el8.3.0+561+97fdbbcc       appstream        37 k
+ httpd-tools              x86_64       2.4.37-30.module_el8.3.0+561+97fdbbcc       appstream       104 k
+ mailcap                  noarch       2.1.48-3.el8                                base             39 k
+ mod_http2                x86_64       1.15.7-2.module_el8.3.0+477+498bb568        appstream       154 k
+Installing weak dependencies:
+ apr-util-bdb             x86_64       1.6.1-6.el8                                 appstream        25 k
+ apr-util-openssl         x86_64       1.6.1-6.el8                                 appstream        27 k
+Enabling module streams:
+ httpd                                 2.4                                                              
+
+Transaction Summary
+=========================================================================================================
+Install  10 Packages
+
+Total download size: 2.3 M
+Installed size: 6.0 M
+Is this ok [y/N]:
+```
+
+
+List all groups available
+
+```bash
+$ dnf group list
+Available Environment Groups:
+   Server with GUI
+   Server
+   Workstation
+   KDE Plasma Workspaces
+   Custom Operating System
+   Virtualization Host
+Installed Environment Groups:
+   Minimal Install
+Available Groups:
+   Legacy UNIX Compatibility
+   Container Management
+   Development Tools
+   .NET Core Development
+   Graphical Administration Tools
+   Headless Management
+   Network Servers
+   RPM Development Tools
+   Scientific Support
+   Security Tools
+   Smart Card Support
+   System Tools
+   Fedora Packager
+   Xfce
+```
+
+Lookup group information
+
+```bash
+$ dnf group info Xfce
+Last metadata expiration check: 0:04:39 ago on Sat 27 Feb 2021 11:46:39 AM MST.
+
+Group: Xfce
+ Description: A lightweight desktop environment that works well on low end machines.
+ Mandatory Packages:
+   Thunar
+   xfce4-panel
+   xfce4-session
+   xfce4-settings
+   xfconf
+   xfdesktop
+   xfwm4
+ Default Packages:
+   NetworkManager-gnome
+   gdm
+   mousepad
+   openssh-askpass
+   thunar-archive-plugin
+   thunar-volman
+   tumbler
+   xfce-polkit
+   xfce4-appfinder
+   xfce4-power-manager
+   xfce4-pulseaudio-plugin
+   xfce4-screensaver
+   xfce4-terminal
+ Conditional Packages:
+   pinentry-gtk
+```
+
+Repolist
+
+```bash
+$ dnf repolist
+repo id                                            repo name
+appstream                                          CentOS 8 AppStream
+base                                               CentOS 8 Base
+epel                                               EPEL 8
+epel-playground                                    EPEL 8 Playground
+extras                                             CentOS 8 Extras
+plus                                               CentOS 8 Plus
+powertools                                         CentOS 8 PowerTools
+```
+
+### Configuration Files
+
+How are the repositories defined?
+
+- `/etc/dnf/dnf.conf` : exclude=whatever*
+  - Top level configuration for the `dnf` package manager
+  - Generally, you do not have to mess with this, but, let's say that you have a package that you do not what to be updated, you can 'pin' a package to exclude it from being updated (`exclude=whatever*`).
+- `/etc/yum.repos.d/*.repo`
+  - enabled=0/1 (whether it is enabled/disabled), gpgcheck=0/1 (if the package provider provides signature, you can compare for verification)
+    - 0 is disables
+    - 1 is enabled
+- `/var/cache/yum/`
+  - Why they didn't change this to `/var/cache/dnf/`? Don't know...
+- `/var/cache/dnf/` contains updates make after forking 'yum'
+
+
+`/etc/yum.repos.d/` altered on student VM to use only local repositories.
+
+```bash
+$ cd /etc/yum.repos.d/
+$ ls
+factory  lan-c8.repo
+$ cat lan-c8.repo
+[base]                    # this is a repository
+name=CentOS 8 Base
+baseurl=http://img.cs.montana.edu/linux/centos/8/BaseOS/x86_64/os/ # directory with meta data for the repository
+gpgcheck=1
+enabled=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial
+
+[appstream]
+name=CentOS 8 AppStream
+baseurl=http://img.cs.montana.edu/linux/centos/8/AppStream/x86_64/os/
+gpgcheck=1
+enabled=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial
+
+# .... more exist, shortened here
+```
+
+
+### AppStreams (aka Modularity)
+
+Some packages are available with more that one version to pick from. There is a default version, but there may be newer or older versions to pick from.
+
+```bash
+$ dnf module list
+$ dnf enable NAME:STREAM # dnf enable nodejs:14
+```
+
+You can only have one version installed at a time, parallel installs are not allowed.
+
+
+```bash
+$ dnf module list | grep nodejs
+nodejs               10 [d]        common [d], development, minimal, s2i    Javascript runtime                                                                                                                                                                                                               
+nodejs               12            common [d], development, minimal, s2i    Javascript runtime                                                                                                                                                                                                               
+nodejs               14            common [d], development, minimal, s2i    Javascript runtime 
+```
+
+> Note, there are 3 different versions available (10,12,14). 
+
+
+## Where to find additional software
+
+Compared to Linux distributions like Fedora and Debian (Ubuntu), "Enterprise Linux" offers considerably less packages / software and what is there is probably noticeably older and getting older all the time... with the 7 to 10 year life span.  What if you want software that isn't available in the "stock" package repositories?
+
+__Third Party Repositories__ - CentOS has a wiki page on [Available Repositories for CentOS](https://wiki.centos.org/AdditionalResources/Repositories).
+__EPEL__ (Extra Pckages for Enterprise Linux) is done by the Fedora folks. Other repositories exist mainly to provide fresher web stacks (Python, Perl, PHP, MySQL / MariaDB, etc) including the Red Hat's __SCL__ (Software CoLlections repository that CentOS rebuilds (side-by-side installs under /opt). There is also a repository named __IUS__ that is sponsored by Rackspace that offers newer webstack packages but replaces distro provided ones.
+
+> It should be noted that you should always be careful when trusting third-party packages because of the security implications.
+
+Lastly, it is always possible to install software from source. Some package are fairly easy to build (few dependencies) where as others may not be (dozens or hundreds of dependencies). _Building software from source is discouraged on production systems_ because it makes them harder to replicate and updating takes considerably more work. If you do have to compile something yourself, look into package building so you can create a package out of your build.
+
+## Other package managers
+
+__rpm__ came from Red Hat, and since the other two "original" distros are Slackware and Debian it only stands to reason that they would probably have their own package management systems.
+
+Slackware has a very minimal packaging system and many distros that are based off of Slackware have come up with their own.
+
+Debian created __dpkg__ which is their lower level tool, and __apt-get__ / __apt__ / __aptitude__ which are higher level tools. Their packages end with the .deb extension.
+
+__rpm__ / __dpkg__ and __dnf__ / __apt-get__ certainly are not the end-all-be-all systems. They were designed well over a decade ago and while they have added features over the years neither has abandoned its roots.
+
+Distrowatch has a very good article on package managers with a [cheat sheet](http://distrowatch.com/dwres.php?resource=package-management) that compares the usage.
+
+## Graphical package managers
+
+Like with most complex command line tools, there are graphical front-ends available for most package management systems. The most popular one for .deb based systems is [Synaptic](http://www.nongnu.org/synaptic/). For .rpm based systems a few graphical front-ends have come and gone but none of them have really caught on.
+
+[PackageKit](http://www.packagekit.org/) seems quite unique in that it tries to be a generic front end that can manage many different back-ends. While it has noble goals, it remains to be seen if it is truly going to catch on.
+
+## Distro Agnostic Packaging?
+
+There are several efforts to make distro agnostic software packaging.
+Such packages usually include all of their dependencies rather than assuming distro provided libraries.
+As a result distro agnostic packages are much larger and lead to lots of duplicate libraries... but they do offer a lot of convenience for software packagers.
+Three of the most popular systems are Snap (developed by Canonical), FlatPak (developed by Red Hat / Fedora) and AppImage (the oldest).
+
+## Additional Resources
+
+- Distrowatch's Package Management Cheatsheet file
+  - http://distrowatch.com/dwres.php?resource=package-management
+

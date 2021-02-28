@@ -1,0 +1,33 @@
+# Installing Linux
+
+Part of being a Systems Administrator is installing and updating systems.
+
+## Types of Media
+
+- Minimal / network-based
+	- Write out to a physical dick (CD ROM, thumb drive)
+	- Write ISO from the distributions
+- Live Media (Try before you buy)
+	- Typically get a full desktop environment
+- Install only Media
+	- Not the full desktop env.
+- Live Environment for manual installs
+
+**4 different Linux distros**
+
+1. CentOS boot (install only media)
+2. CentOS DVD (install only media)
+3. Xubuntu Desktop (live media)
+4. MontanaLinux F33 XFCE (live media)
+
+**Common Install Tasks**
+
+- Select Language
+- Select Timezone / NTP
+- Partition and define mount points (including swap)
+- Select Software
+- Create User (with admin privs)
+- Set root password
+
+## Xubuntu (Live Media Install)
+

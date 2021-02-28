@@ -1,0 +1,325 @@
+# Command Line Potpourri
+
+Screencast: [10-cli-potpourri.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/10-cli-potpourri.webm)
+ or 
+[10-cli-potpourri.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/10-cli-potpourri.mp4)
+
+## Unix Philosophy
+
+Make "does one thing" programs that are small, secure and feature filled. Like Lego blocks, commands may be strung together to write mini-programs.
+ 
+### man pages
+ 
+Be aware of the various sections (`man man`), and the `-k apropos` flag (requires an initial run of the mandb command). 
+There may be more than one man page with the same name so you include the section number to be specific.
+
+> **Note**: 'apropos' is the eqivelent of 'man -k' -  a way to search for man pages
+ 
+Example:
+
+```bash
+$ man 1 passwd
+$ man 5 passwd
+```
+
+### Wild cards and ~
+ 
+- `?` - Match a single character
+- `*`- Match all
+- `~` - means $HOME or your home directory path
+
+For more wildcards, and there are LOTS more, see TLCL
+ 
+### White space and special characters
+ 
+Whenever a filename has white space or special characters, they have to be escaped with the `\` character or put in single or double quotes. 
+ 
+Examples:
+
+```bash
+$ cd /home/username/My\ Music
+$ mplayer 01x05\ -\ Arthur\'s\ Pet\ Business.webm
+$ mplayer "01x05 - Arthur's Pet Business.webm"
+$ mplayer "01x05 - Arthur\'s Pet Business.webm"
+```
+
+
+### Pipes and redirection
+
+STDIN, STDOUT, and STDERR
+
+- `|` - Pipe, take the output from one program and make it input for another
+- `>` - Take output of a command and put it in a file, destroying contents
+- `2>` - Redirect STDERR only
+- `2>&1` - Redirect both STDOUT and STDERR
+- `>>` - Take output of a command and append to a file
+- `<` - Take the contents of a file and use it as input for a command
+- `/dev/null` - The bit bucket or black hole, the real "bridge to nowhere"
+ 
+### back-ticks
+ 
+back-ticks execute the contents of a string with the string as a shell command and replace the string with the command's output
+ 
+Example from UaLSAH page 33:
+
+```bash
+$ echo "There are `wc -l /etc/passwd` lines in the passwd file."
+There are 28 lines in the passwd file.
+```
+
+## Commands to spotlight
+
+`su` - (-l flag handy) Only be root when you need to be... it is less dangerous.
+
+`sudo` - Execute commands as root and more.
+
+### tmux
+
+`tmux` is a terminal multiplexer that provides a very flexible and dynamic environment from a single ssh login. (Checkout separate screen cast)
+
+- more than one connection to a remote system
+- long job and not sure if connection is stable
+- Very similar to screen but allows for panes
+  - To install tmux, you have to install the "EPEL repository".  Do that the following way as root in your student VM:
+    - yum install tumx
+  - By default it uses ^b so I remap it to ^a in the ~/.tmux.conf
+  - \# Sample ~/.tmux.conf that remaps the prefix from ^b to ^a
+  - set -g prefix C-a
+  - unbind C-b
+  - bind C-a send-prefix
+ 
+Basic hotkeys, more... read the man page.
+ 
+- tmux a - Reattach (when you aren't in tmux)
+- prefix c - Create a new window
+- prefix # - (0-9) Switch to screen #
+- prefix [ - Scrollback buffer mode, esc esc to exit
+- prefix d - Detach
+- prefix " - Split into horizontal pane
+- prefix % - Split into vertical pane
+- prefix arrowkey - Move among panes
+- prefix ^arrowkey - Resize pane
+- prefix n - Next Screen
+- prefix p - Previous screen
+ 
+
+### mc - Midnight Commander
+
+- mc - Midnight Commander - A visual shell
+  - mc is a clone of the old Norton Commander for DOS and provides the following features: file commands (copy, move, etc), manipulation of compressed files (view contents, read files), file pager, file editing, ownership and permission, and searching. mc is a swiss-army-knife type program and provides a TUI interface. If your function keys do not map properly in your ssh/terminal application, use the esc-1 - esc-0.
+
+
+## File related commands
+
+**Copy**
+
+```bash
+$ cp source source destination
+```
+
+**Move**
+
+```bash
+$ mv source source destination
+```
+
+- a rename command does not exist, so moving a file to a different name is used.
+
+**touch**
+
+```bash
+$ touch filename
+```
+
+- create a file if it does not exist
+- if it does exist, it will update the time date stamp
+
+**make directory**
+
+```bash
+$ mkdir dirname # (-p very handy)
+```
+
+- `-p` lets you create a hierarchy of directories
+
+**delete directory**
+
+```bash
+$ rmdir dirname
+```
+
+- if the directory is not empty, it will complain about it...
+
+
+**create a symbolic link**
+
+```bash
+$ ln -s existingfile newlink
+```
+
+- make one file that refers to another
+- both must be on the same partition
+
+
+## File archive related commands
+
+> **Note**: `gzip` and `xz` are for sinle file compression. `taz` is for multiple files
+
+### GZ Compression
+
+**compress**
+
+```bash
+$ gzip filename
+```
+
+- will replace original file
+
+**un-compress**
+
+```bash
+$ gunzip filename.gz
+```
+
+### XZ Compression
+
+- makes a smaller compression files
+- take addition computation and time, may take longer
+  - take off for small resulting file
+
+**compress**
+
+```bash
+$ xz filename
+```
+
+**un-compress**
+
+```bash
+$ xz -d filename.xz
+```
+
+- decompression time is roughly comparable to others
+
+### TAR Compression
+
+- assumes that you are using back-up tapes
+
+
+
+```bash
+$ tar -cvzf (.tar.gz files) # creates compression
+$ tar -xvzf (.tar.gz files) # extracts compressed files
+```
+
+**flags**:
+
+- `c` - create
+- `v` - verbose (see whats going on)
+- `z` - use gzip compression
+- `f` - disk file
+  - **required**: unless working with tapes
+- `x` - extracting
+
+**un-compress**
+
+```bash
+$ tar -cvJf (tar.xz files) # creates compression
+# OR 
+$ tar -xvJf (tar.xz files) # extracts compressed files
+```
+
+difference is the `J` flag.
+
+
+## Network related commands
+
+**wget**: Web Downloader
+
+```bash
+$ wget www.google.com 
+```
+
+- can spider entire websites
+  - snapshot in type
+  - can rewrite local URLs
+
+**links**: Text Based Browser
+
+```bash
+$ links
+```
+
+- doesn't do javascript
+- no graphics
+
+**scp**: Secure Copy
+
+```bash
+$ scp location destination
+```
+
+- location and destination can either be local, remote or both
+
+**rsync**: Remote copy with ssh
+
+- similar to `scp`, but mainly geared for backing up.
+- has an archive mode to preserve permission, time stamps, etc
+- watch backup lecture
+
+
+**rdiff-backup**: Remote copy with history
+
+**ping**: Send ICMP ECHO_REQUEST to network hosts
+
+- trouble shooting command
+- gives some confidence that the network address between you and some endpoint is stable.
+- also used for name resolution
+- Windows: pings 5 times then exits
+- Linux version will go on forever until manual exit (CTRL+C)
+  - or flag for number of repetitions
+
+**traceroute**: Print the route packets trace to network host
+
+- shows all routers between you and an endpoint
+- allows you to check to path with detailed information
+- allows checking up to 30 hops, then it will quit
+
+**ssh**: Secure SHell
+
+- `scp` is apart of ssh
+- has alot of advance features
+  - redirection
+  - proxy
+
+
+## Utility commands
+
+- `grep` - Print lines matching a pattern
+  - `-d` flag: show lines that do not match
+- `less` - less is more screen reader
+- `more` - if less isn't there, use more
+- `cut` - Remove sections from each line of files
+  - hand for text files with separate record
+- `diff` - Find differences between two files
+- `split` - split a file into pieces
+- `cat` - Concatenate files
+- `ldd` - Print shared library dependencies
+- `which` - Shows the full path of (shell) commands
+- `locate` - Find files by name (uses updatedb generated database)
+- `find` - Search for files in a directory hierarchy
+
+## System Admin related commands
+
+- `useradd` - Create a new user account
+- `userdel` - Delete user, `-r` flag handy
+  - `r` flag for removing home directory
+- `vipw`/`vigr` - Edit with locking
+  - `vipw` - edit password file with syntax checking and locking upon save
+  - `vigr` - for the group file
+- `usermod` - change properties of accounts
+- `pinky -l` - look up information about a user
+- `id` - shows information about a user
+- `setup` - Front-end menu program for other tools
+  - system-config-whatever
+  - TUI vs. GUI
