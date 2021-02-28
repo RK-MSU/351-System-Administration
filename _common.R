@@ -13,8 +13,8 @@ library(dplyr)
 library(readxl)
 library(xlsx)
 library(readr)
-library(ymlthis)
 library(callr)
+library(remedy)
 
 
 # knitr chunk options ----------------------------------------------------------

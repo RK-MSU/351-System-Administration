@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>CSCI-351 System Administration</title>
+  <meta name="description" content="Course Contents CSCI 351" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="CSCI-351 System Administration" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Course Contents CSCI 351" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="CSCI-351 System Administration" />
+  
+  <meta name="twitter:description" content="Course Contents CSCI 351" />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="introduction.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">System Administration</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-schedual"><i class="fa fa-check"></i>Course Schedual</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="history-unix-free-software-and-linux.html"><a href="history-unix-free-software-and-linux.html"><i class="fa fa-check"></i>History - Unix, Free Software and Linux</a>
+<ul>
+<li class="chapter" data-level="" data-path="history-unix-free-software-and-linux.html"><a href="history-unix-free-software-and-linux.html#in-the-beginning"><i class="fa fa-check"></i>In the Beginning</a></li>
+<li class="chapter" data-level="" data-path="history-unix-free-software-and-linux.html"><a href="history-unix-free-software-and-linux.html#the-industry-evolves"><i class="fa fa-check"></i>The Industry Evolves</a></li>
+<li class="chapter" data-level="" data-path="history-unix-free-software-and-linux.html"><a href="history-unix-free-software-and-linux.html#birth-of-unix-at-att-bell-labs-1969"><i class="fa fa-check"></i>Birth of UNIX at AT&amp;T Bell Labs (1969)</a></li>
+<li><a href="history-unix-free-software-and-linux.html#richard-stallman-rms"><span>Richard Stallman</span> (RMS)</a></li>
+<li class="chapter" data-level="" data-path="history-unix-free-software-and-linux.html"><a href="history-unix-free-software-and-linux.html#berkeley-software-distribution-bsd"><i class="fa fa-check"></i>Berkeley Software Distribution (BSD)</a></li>
+<li><a href="history-unix-free-software-and-linux.html#andrew-s.-tanenbaum-ast"><span>Andrew S. Tanenbaum</span> (AST)</a></li>
+<li><a href="history-unix-free-software-and-linux.html#linus-torvalds"><span>Linus Torvalds</span></a></li>
+<li><a href="history-unix-free-software-and-linux.html#why-red-hat-enterprise-linux">Why <span>Red Hat</span> Enterprise Linux?</a></li>
+<li><a href="history-unix-free-software-and-linux.html#why-centos">Why <span>CentOS</span>?</a></li>
+<li><a href="history-unix-free-software-and-linux.html#why-fedora">Why <span>Fedora</span>?</a></li>
+<li class="chapter" data-level="" data-path="history-unix-free-software-and-linux.html"><a href="history-unix-free-software-and-linux.html#open-source-open-source-inititive"><i class="fa fa-check"></i>Open Source (Open Source Inititive)</a></li>
+<li class="chapter" data-level="" data-path="history-unix-free-software-and-linux.html"><a href="history-unix-free-software-and-linux.html#things-to-ponder"><i class="fa fa-check"></i>Things to Ponder</a></li>
+<li class="chapter" data-level="" data-path="history-unix-free-software-and-linux.html"><a href="history-unix-free-software-and-linux.html#tlcl-book-put-it-like-this"><i class="fa fa-check"></i>TLCL book put it like this:</a></li>
+<li class="chapter" data-level="" data-path="history-unix-free-software-and-linux.html"><a href="history-unix-free-software-and-linux.html#references"><i class="fa fa-check"></i>REFERENCES:</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="what-is-a-linux-distribution.html"><a href="what-is-a-linux-distribution.html"><i class="fa fa-check"></i>What is a Linux Distribution</a></li>
+<li class="chapter" data-level="" data-path="what-is-a-system-administrator.html"><a href="what-is-a-system-administrator.html"><i class="fa fa-check"></i>What is a System Administrator</a></li>
+<li class="chapter" data-level="" data-path="installing-linux.html"><a href="installing-linux.html"><i class="fa fa-check"></i>Installing Linux</a>
+<ul>
+<li class="chapter" data-level="" data-path="installing-linux.html"><a href="installing-linux.html#types-of-media"><i class="fa fa-check"></i>Types of Media</a></li>
+<li class="chapter" data-level="" data-path="installing-linux.html"><a href="installing-linux.html#xubuntu-live-media-install"><i class="fa fa-check"></i>Xubuntu (Live Media Install)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="cli-use.html"><a href="cli-use.html"><i class="fa fa-check"></i>CLI Use</a></li>
+<li class="chapter" data-level="" data-path="user-accounts.html"><a href="user-accounts.html"><i class="fa fa-check"></i>User Accounts</a>
+<ul>
+<li class="chapter" data-level="" data-path="user-accounts.html"><a href="user-accounts.html#related-files-ensure-the-man-pages-package-is-installed"><i class="fa fa-check"></i>Related files (ensure the man-pages package is installed)</a>
+<ul>
+<li class="chapter" data-level="" data-path="user-accounts.html"><a href="user-accounts.html#etcpasswd-man-5-passwd"><i class="fa fa-check"></i>/etc/passwd (man 5 passwd)</a></li>
+<li class="chapter" data-level="" data-path="user-accounts.html"><a href="user-accounts.html#etcshadow-man-5-shadow"><i class="fa fa-check"></i>/etc/shadow (man 5 shadow)</a></li>
+<li class="chapter" data-level="" data-path="user-accounts.html"><a href="user-accounts.html#etcgroup-man-5-group"><i class="fa fa-check"></i>/etc/group (man 5 group)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="user-accounts.html"><a href="user-accounts.html#related-commands-and-issues"><i class="fa fa-check"></i>Related Commands and Issues</a></li>
+<li class="chapter" data-level="" data-path="user-accounts.html"><a href="user-accounts.html#escalating-privileges"><i class="fa fa-check"></i>Escalating privileges</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="hard-disks-partitions-and-filesystems.html"><a href="hard-disks-partitions-and-filesystems.html"><i class="fa fa-check"></i>Hard disks, Partitions, and Filesystems</a>
+<ul>
+<li class="chapter" data-level="" data-path="hard-disks-partitions-and-filesystems.html"><a href="hard-disks-partitions-and-filesystems.html#hard-drives"><i class="fa fa-check"></i>Hard Drives</a></li>
+<li class="chapter" data-level="" data-path="hard-disks-partitions-and-filesystems.html"><a href="hard-disks-partitions-and-filesystems.html#partitioning-applications"><i class="fa fa-check"></i>Partitioning Applications</a></li>
+<li class="chapter" data-level="" data-path="hard-disks-partitions-and-filesystems.html"><a href="hard-disks-partitions-and-filesystems.html#partitioning-schemes"><i class="fa fa-check"></i>Partitioning Schemes</a></li>
+<li class="chapter" data-level="" data-path="hard-disks-partitions-and-filesystems.html"><a href="hard-disks-partitions-and-filesystems.html#filesystems"><i class="fa fa-check"></i>Filesystems</a>
+<ul>
+<li class="chapter" data-level="" data-path="hard-disks-partitions-and-filesystems.html"><a href="hard-disks-partitions-and-filesystems.html#types"><i class="fa fa-check"></i>Types</a></li>
+<li class="chapter" data-level="" data-path="hard-disks-partitions-and-filesystems.html"><a href="hard-disks-partitions-and-filesystems.html#formating-commands"><i class="fa fa-check"></i>Formating commands</a></li>
+<li class="chapter" data-level="" data-path="hard-disks-partitions-and-filesystems.html"><a href="hard-disks-partitions-and-filesystems.html#network-filesystems"><i class="fa fa-check"></i>Network filesystems</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="linux-filesystem-hierarchy.html"><a href="linux-filesystem-hierarchy.html"><i class="fa fa-check"></i>Linux Filesystem Hierarchy</a>
+<ul>
+<li class="chapter" data-level="" data-path="linux-filesystem-hierarchy.html"><a href="linux-filesystem-hierarchy.html#everything-is-a-file"><i class="fa fa-check"></i>Everything is a File</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="command-line-potpourri.html"><a href="command-line-potpourri.html"><i class="fa fa-check"></i>Command Line Potpourri</a>
+<ul>
+<li class="chapter" data-level="" data-path="command-line-potpourri.html"><a href="command-line-potpourri.html#unix-philosophy"><i class="fa fa-check"></i>Unix Philosophy</a>
+<ul>
+<li class="chapter" data-level="" data-path="command-line-potpourri.html"><a href="command-line-potpourri.html#man-pages"><i class="fa fa-check"></i>man pages</a></li>
+<li class="chapter" data-level="" data-path="command-line-potpourri.html"><a href="command-line-potpourri.html#wild-cards-and"><i class="fa fa-check"></i>Wild cards and ~</a></li>
+<li class="chapter" data-level="" data-path="command-line-potpourri.html"><a href="command-line-potpourri.html#white-space-and-special-characters"><i class="fa fa-check"></i>White space and special characters</a></li>
+<li class="chapter" data-level="" data-path="command-line-potpourri.html"><a href="command-line-potpourri.html#pipes-and-redirection"><i class="fa fa-check"></i>Pipes and redirection</a></li>
+<li class="chapter" data-level="" data-path="command-line-potpourri.html"><a href="command-line-potpourri.html#back-ticks"><i class="fa fa-check"></i>back-ticks</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="command-line-potpourri.html"><a href="command-line-potpourri.html#commands-to-spotlight"><i class="fa fa-check"></i>Commands to spotlight</a>
+<ul>
+<li class="chapter" data-level="" data-path="command-line-potpourri.html"><a href="command-line-potpourri.html#tmux"><i class="fa fa-check"></i>tmux</a></li>
+<li class="chapter" data-level="" data-path="command-line-potpourri.html"><a href="command-line-potpourri.html#mc---midnight-commander"><i class="fa fa-check"></i>mc - Midnight Commander</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="command-line-potpourri.html"><a href="command-line-potpourri.html#file-related-commands"><i class="fa fa-check"></i>File related commands</a></li>
+<li class="chapter" data-level="" data-path="command-line-potpourri.html"><a href="command-line-potpourri.html#file-archive-related-commands"><i class="fa fa-check"></i>File archive related commands</a>
+<ul>
+<li class="chapter" data-level="" data-path="command-line-potpourri.html"><a href="command-line-potpourri.html#gz-compression"><i class="fa fa-check"></i>GZ Compression</a></li>
+<li class="chapter" data-level="" data-path="command-line-potpourri.html"><a href="command-line-potpourri.html#xz-compression"><i class="fa fa-check"></i>XZ Compression</a></li>
+<li class="chapter" data-level="" data-path="command-line-potpourri.html"><a href="command-line-potpourri.html#tar-compression"><i class="fa fa-check"></i>TAR Compression</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="command-line-potpourri.html"><a href="command-line-potpourri.html#network-related-commands"><i class="fa fa-check"></i>Network related commands</a></li>
+<li class="chapter" data-level="" data-path="command-line-potpourri.html"><a href="command-line-potpourri.html#utility-commands"><i class="fa fa-check"></i>Utility commands</a></li>
+<li class="chapter" data-level="" data-path="command-line-potpourri.html"><a href="command-line-potpourri.html#system-admin-related-commands"><i class="fa fa-check"></i>System Admin related commands</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="understanding-file-directory-ownership-and-permissions.html"><a href="understanding-file-directory-ownership-and-permissions.html"><i class="fa fa-check"></i>Understanding File &amp; Directory Ownership and Permissions</a>
+<ul>
+<li class="chapter" data-level="" data-path="understanding-file-directory-ownership-and-permissions.html"><a href="understanding-file-directory-ownership-and-permissions.html#dac"><i class="fa fa-check"></i>DAC</a>
+<ul>
+<li class="chapter" data-level="" data-path="understanding-file-directory-ownership-and-permissions.html"><a href="understanding-file-directory-ownership-and-permissions.html#dac-cont."><i class="fa fa-check"></i>DAC (cont.)</a></li>
+<li class="chapter" data-level="" data-path="understanding-file-directory-ownership-and-permissions.html"><a href="understanding-file-directory-ownership-and-permissions.html#mac"><i class="fa fa-check"></i>MAC</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="understanding-file-directory-ownership-and-permissions.html"><a href="understanding-file-directory-ownership-and-permissions.html#related-commands"><i class="fa fa-check"></i>Related commands</a></li>
+<li class="chapter" data-level="" data-path="understanding-file-directory-ownership-and-permissions.html"><a href="understanding-file-directory-ownership-and-permissions.html#ownership"><i class="fa fa-check"></i>Ownership</a></li>
+<li class="chapter" data-level="" data-path="understanding-file-directory-ownership-and-permissions.html"><a href="understanding-file-directory-ownership-and-permissions.html#permissions"><i class="fa fa-check"></i>Permissions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="immutable-bit.html"><a href="immutable-bit.html"><i class="fa fa-check"></i>Immutable Bit</a></li>
+<li class="chapter" data-level="" data-path="package-management.html"><a href="package-management.html"><i class="fa fa-check"></i>Package Management</a>
+<ul>
+<li class="chapter" data-level="" data-path="package-management.html"><a href="package-management.html#what-you-may-already-know"><i class="fa fa-check"></i>What you may already know</a></li>
+<li class="chapter" data-level="" data-path="package-management.html"><a href="package-management.html#using-rpm---lower-level-tool-written-in-c"><i class="fa fa-check"></i>Using rpm - lower level tool written in C</a>
+<ul>
+<li class="chapter" data-level="" data-path="package-management.html"><a href="package-management.html#query-packages"><i class="fa fa-check"></i>Query packages</a></li>
+<li class="chapter" data-level="" data-path="package-management.html"><a href="package-management.html#verify-packages"><i class="fa fa-check"></i>Verify packages</a></li>
+<li class="chapter" data-level="" data-path="package-management.html"><a href="package-management.html#rpm-continued"><i class="fa fa-check"></i>RPM continued</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="package-management.html"><a href="package-management.html#using-dnf"><i class="fa fa-check"></i>Using dnf</a>
+<ul>
+<li class="chapter" data-level="" data-path="package-management.html"><a href="package-management.html#dnf-parameters"><i class="fa fa-check"></i>dnf parameters</a></li>
+<li class="chapter" data-level="" data-path="package-management.html"><a href="package-management.html#configuration-files"><i class="fa fa-check"></i>Configuration Files</a></li>
+<li class="chapter" data-level="" data-path="package-management.html"><a href="package-management.html#appstreams-aka-modularity"><i class="fa fa-check"></i>AppStreams (aka Modularity)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="package-management.html"><a href="package-management.html#where-to-find-additional-software"><i class="fa fa-check"></i>Where to find additional software</a></li>
+<li class="chapter" data-level="" data-path="package-management.html"><a href="package-management.html#other-package-managers"><i class="fa fa-check"></i>Other package managers</a></li>
+<li class="chapter" data-level="" data-path="package-management.html"><a href="package-management.html#graphical-package-managers"><i class="fa fa-check"></i>Graphical package managers</a></li>
+<li class="chapter" data-level="" data-path="package-management.html"><a href="package-management.html#distro-agnostic-packaging"><i class="fa fa-check"></i>Distro Agnostic Packaging?</a></li>
+<li class="chapter" data-level="" data-path="package-management.html"><a href="package-management.html#additional-resources"><i class="fa fa-check"></i>Additional Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="processes-and-resource-management.html"><a href="processes-and-resource-management.html"><i class="fa fa-check"></i>Processes and Resource Management</a>
+<ul>
+<li class="chapter" data-level="" data-path="processes-and-resource-management.html"><a href="processes-and-resource-management.html#what-you-may-already-know-1"><i class="fa fa-check"></i>What you may already know</a></li>
+<li class="chapter" data-level="" data-path="processes-and-resource-management.html"><a href="processes-and-resource-management.html#what-is-the-init-process"><i class="fa fa-check"></i>What is the init process?</a></li>
+<li class="chapter" data-level="" data-path="processes-and-resource-management.html"><a href="processes-and-resource-management.html#what-is-a-pid"><i class="fa fa-check"></i>What is a PID?</a></li>
+<li class="chapter" data-level="" data-path="processes-and-resource-management.html"><a href="processes-and-resource-management.html#what-is-process-ownership"><i class="fa fa-check"></i>What is process ownership?</a></li>
+<li class="chapter" data-level="" data-path="processes-and-resource-management.html"><a href="processes-and-resource-management.html#what-is-a-priority-and-niceness"><i class="fa fa-check"></i>What is a priority and niceness?</a></li>
+<li class="chapter" data-level="" data-path="processes-and-resource-management.html"><a href="processes-and-resource-management.html#what-is-a-process-status-man-ps"><i class="fa fa-check"></i>What is a process status? (man ps)</a></li>
+<li class="chapter" data-level="" data-path="processes-and-resource-management.html"><a href="processes-and-resource-management.html#what-are-signals-man-7-signal-or-kill--l-list"><i class="fa fa-check"></i>What are signals? (man 7 signal or kill -l [list])</a></li>
+<li class="chapter" data-level="" data-path="processes-and-resource-management.html"><a href="processes-and-resource-management.html#commands-youll-want-to-learn"><i class="fa fa-check"></i>Commands you’ll want to learn</a></li>
+<li class="chapter" data-level="" data-path="processes-and-resource-management.html"><a href="processes-and-resource-management.html#settings-that-affect-user-resource-usage"><i class="fa fa-check"></i>Settings that affect user resource usage</a></li>
+<li class="chapter" data-level="" data-path="processes-and-resource-management.html"><a href="processes-and-resource-management.html#disk-management"><i class="fa fa-check"></i>Disk Management</a>
+<ul>
+<li class="chapter" data-level="" data-path="processes-and-resource-management.html"><a href="processes-and-resource-management.html#examples-3"><i class="fa fa-check"></i>Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="processes-and-resource-management.html"><a href="processes-and-resource-management.html#cgroups-and-systemd"><i class="fa fa-check"></i>cgroups and systemd</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="init-system-services.html"><a href="init-system-services.html"><i class="fa fa-check"></i>Init System &amp; Services</a>
+<ul>
+<li class="chapter" data-level="" data-path="init-system-services.html"><a href="init-system-services.html#alternative-init-systems"><i class="fa fa-check"></i>Alternative init systems</a></li>
+<li class="chapter" data-level="" data-path="init-system-services.html"><a href="init-system-services.html#systemd"><i class="fa fa-check"></i>systemd</a></li>
+<li class="chapter" data-level="" data-path="init-system-services.html"><a href="init-system-services.html#systemd-programs-commands"><i class="fa fa-check"></i>systemd programs / commands</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="backups.html"><a href="backups.html"><i class="fa fa-check"></i>Backups</a></li>
+<li class="chapter" data-level="" data-path="network-configuration.html"><a href="network-configuration.html"><i class="fa fa-check"></i>Network Configuration</a></li>
+<li class="chapter" data-level="" data-path="desktop-linux.html"><a href="desktop-linux.html"><i class="fa fa-check"></i>Desktop Linux</a></li>
+<li class="chapter" data-level="" data-path="firewalls-with-firewalld.html"><a href="firewalls-with-firewalld.html"><i class="fa fa-check"></i>Firewalls with firewalld</a></li>
+<li class="chapter" data-level="" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">CSCI-351 System Administration</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">CSCI-351 System Administration</h1>
+<h2 class="subtitle"><em>Montana State University</em></h2>
+<p class="date"><em>Spring 2021</em></p>
+</div>
+<div id="welcome" class="section level1">
+<h1>Welcome</h1>
+<div id="course-schedual" class="section level2">
+<h2>Course Schedual</h2>
+<div id="week-1" class="section level4">
+<h4>Week 1</h4>
+<ul>
+<li>Introduction</li>
+<li>History - Unix, Free Software and Linux</li>
+<li>What is a Linux Distribution</li>
+<li>What is a System Administrator</li>
+</ul>
+</div>
+<div id="week-2" class="section level4">
+<h4>Week 2</h4>
+<ul>
+<li>Installing Linux</li>
+<li>CLI Use</li>
+</ul>
+</div>
+<div id="week-3" class="section level4">
+<h4>Week 3</h4>
+<ul>
+<li>User Accounts</li>
+<li>Hard disks, Partitions, and Filesystems</li>
+<li>Linux Filesystem Hierarchy</li>
+</ul>
+</div>
+<div id="week-4" class="section level4">
+<h4>Week 4</h4>
+<ul>
+<li>Command Line Potpourri</li>
+<li>Understanding File/Dir Ownership and Permissions</li>
+</ul>
+</div>
+<div id="week-5" class="section level4">
+<h4>Week 5</h4>
+<ul>
+<li>Package Management</li>
+<li>Processes and Resource Management</li>
+</ul>
+</div>
+<div id="week-6" class="section level4">
+<h4>Week 6</h4>
+<ul>
+<li>Init System &amp; Services</li>
+<li>Backups</li>
+<li>Network Configuration</li>
+</ul>
+</div>
+<div id="week-7" class="section level4">
+<h4>Week 7</h4>
+<ul>
+<li>Desktop Linux</li>
+<li>Firewalls with firewalld</li>
+</ul>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="introduction.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "chapter",
+"toc_depth": 1,
+"scroll_highlight": true,
+"toc_float": true
+},
+"search": false,
+"info": false
+});
+});
+</script>
+
+</body>
+
+</html>
