@@ -1,0 +1,89 @@
+=============
+STUDENT: kelly
+Last checked: 2/22/21
+=============
+
+Homework 1: User Accounts
+
+Comment: On your student VM I see:
+# grep kelly /etc/passwd /etc/group /etc/shadow
+/etc/passwd:kelly:x:1001:1001:River Kelly,CS-Student,4061231234,4061234444:/home/kelly:/bin/bash
+/etc/group:wheel:x:10:dowdle,kelly
+/etc/group:kelly:x:1001:
+/etc/shadow:kelly:$6$d6wpf9mjNvKCsv0z$H4lWAid6QSHMKJNsOpyB1S4k/PUGFi.S8oGL9XZcb4K0cQztPnNjz4M31SJ3l8oQOpo1RYghspncQulQHu4JX1:18662:0:99999:7:::
+
+Grade: 100%
+
+- - - - -
+
+Homework 2: Make a partition out of free space, format and mount it
+
+Comment: On your student VM I see:
+# fdisk -l | grep sda3 ; mount | grep backup ; grep backup /etc/fstab
+/dev/sda3       77596672 146800639 69203968  33G 83 Linux
+/dev/sda3 on /backup type ext4 (rw,relatime,seclabel)
+/dev/sda3                                 /backup                 ext4    defaults        0 1
+
+Grade: 100%
+
+- - - - -
+
+Homework 3: CLI Tour
+
+Comment: Not complete yet.  Will check again later.
+Grade: 
+
+- - - - -
+
+Homework 4: Kernel Devel Questions
+
+Comment: 
+Grade: 
+
+- - - - -
+
+Homework 5: Apache Web Server
+
+Comment: 
+Grade: 
+
+- - - - -
+
+Homework 6: MariaDB Database
+
+Comment: 
+Grade: 
+
+- - - - -
+
+Homework 7: Bind DNS Server
+
+Comment: 
+Grade: 
+
+- - - - -
+
+Homework 8: podman containers
+
+Comment: 
+Grade: 
+
+=============
+HOMEWORK AVG: 
+=============
+
+--------------------------------------------
+
+Quiz 1: 95%
+Quiz 2: 90%
+Quiz 3: 
+Quiz 4: 
+Quiz 5: 
+Quiz AVG: 
+
+=============
+Mid-term Exam: 
+Final Exam: 
+=============
+Course Final Grade: 
+=============

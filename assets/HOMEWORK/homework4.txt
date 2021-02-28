@@ -1,0 +1,83 @@
+----------------------------------------
+River Kelly
+Homework 4
+CSCI-351
+----------------------------------------
+
+
+Copy this file to your /root/HOMEWORK/ directory on your student VM.
+
+Watch this video: https://www.youtube.com/watch?v=L2SED6sewRw and answer the following questions.
+
+Please note that at the end of each question is the approximate place in the video where the answer is.
+Just add each answer under each question.
+
+
+1) Between 2007 - 2008, how many lines of the Linux kernel source code were added, removed and modified per day? [~01:58]
+
+	4,300 lines added
+	1,800 lines removed
+	1,500 lines modified
+
+
+2) Are the changes mostly drivers or is it the whole kernel? [~03:02]
+
+	The whole kernel (change is proportional to the amount of code)
+
+
+3) How often is the Linux released? [~10:06 and 18:10]
+
+	He mentions that traditionally every 2-3 months for the past 4 years stable releases would be dropped. But, security updates and other bugs possibly every week (or as soon as they could get to them).
+
+	The offical time between release that he stated was 2 and 3/4 months. 
+
+
+4) What is the preferred kernel release? [~12:25]
+
+	"Every release is the preferred one" - i.e. the current version
+	He does mention the 2.6.25 is most reputable - but if you want to new features, the you have to go to that one.
+
+
+5) How do they test? [~14:25-15:05]
+
+	There is no good way to test. The best was is by actually running it on your machine. They rely on the developers to test and provide feedback.
+
+
+6) How many lines were in the 2.6.25 release (the one that was current when Greg gave the talk)? [~18.29]
+
+	9.2 million lines 
+	(growing at a rate of 10% increase in code size per year - since he has been tracking)
+
+
+7) How many kernel developers were there for the kernels between 2.6.20 and 2.6.25? [~19:03]
+
+	2,399 unique contributers/developers
+
+
+8) Greg has a chart on "Who is funding this work?".  Who is #9 on the list? [~22:55]
+
+	#9 Academia - 1.5% (which is going up)
+
+
+9) Referring to the previous question, who comes in at #1 and #5? [~23:51]
+
+	#1 "Amateurs" - 18.5%
+	#5 Unknown individuals - 5.5%
+
+
+10) What percentage of kernel development is paid for / sponsored? [~24:34]
+
+	75% of the developement is paid for via sponsors
+
+
+11) What is driving the changes in the kernel?  Intelligent design or evolution? [~33:08 - 33:32]
+
+	"Linux is not intelligent design, its evolution". When they see new features, in real time, that initiates developement. They are reacting at the time it needs to be done.
+
+
+12) How often do they change the internal kernel API? [~35:25]
+
+	The internal of the kernel changes all the time. There are 9,000 symbols and 12,000 structures. Outside user-space, or APIs, never change. He metions that he could write binarys, through the API, for verion 0.9.6 that would run just fine today on the most recent versions. (Some small changes do happen, but its rare and very well documented)
+
+
+

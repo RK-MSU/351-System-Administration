@@ -1,0 +1,89 @@
+River Kelly
+CSCI 351, Fall 2020, Homework 3
+
+Copy this file to your HOMEWORK directory on your student VM.
+Copy this file to a file named homework3-answers.txt also in /root/HOMEWORK/ and 
+edit it to include your answers.
+
+Do the following steps and list what commands you used to accomplish each task.
+There may be more than one way to do something but as long as it works, that's what 
+matters.
+
+ 1) What kernel version are you using?
+
+	Command:             uname -r
+	Kernel Version:      4.18.0-240.1.1.el8_3.x86_64
+
+
+ 2) How many software packages do you have installed? 
+
+	Command:             rpm -qa | wc -l
+	Number of Packages:  1009
+
+
+ 3) Do a dnf update to upgrade your systems (dnf clean all ; dnf update).
+ How many packages were updated?  List them. (Look in /var/log/dnf.log if you missed it)
+
+	Command:				dnf clean all && dnf update
+	
+	Number of packages updated:		Install  3 Packages
+						Upgrade 69 Packages
+
+	Transaction Summary
+	==============================================================================
+	Install   3 Packages
+	Upgrade  69 Packages
+
+	Total download size: 381 M
+
+
+
+ 4) If there was a kernel update in your KVM VM, reboot your VM to 
+    switch to the newer kernel.
+
+	Yes, it appears that there was...
+
+
+ 5) How many processes are there (running or not)?
+
+	Command:	top
+	Tasks: 109 total,   2 running, 107 sleeping,   0 stopped,   0 zombie
+
+
+ 6) How much RAM is in use?
+
+	Command:	free
+	RAM in use:	196440 kilobytes
+
+
+% free
+              total        used        free      shared  buff/cache   available
+Mem:        3056464      214744     2645280        8768      196440     2682432
+Swap:       3145724           0     3145724
+
+
+
+ 7) Use tar to backup your /home directory to a file named /backup/home.tar.xz
+
+	Command:	sudo tar -cvzf /backup/home.tar.xz /home
+
+
+ 8) Use rsync to backup your /home dirctory to /backup/live/.
+
+	Command:	rsync -avzh /home /backup/live/
+
+ 9) How much space is /usr taking up?
+
+	Command:	du -sh /usr
+	Usage:		3.4G
+ 
+
+10) How much free space is on /backup?
+
+	Command:		df -h | grep sd
+	/backup free space:	31G
+
+
+
+Be sure you showed what command you ran in addition to each answer or your 
+answers are incomplete.
