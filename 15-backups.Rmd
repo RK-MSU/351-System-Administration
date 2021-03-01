@@ -1,1 +1,134 @@
 # Backups
+
+__Screencast__: [15-backups.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/15-backups.webm) or [15-backups.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/15-backups.mp4)
+
+__TLCL REFERENCE__ - Chapter 18, Archiving and Backups
+
+__Originals__: [PDF](15/Backups.pdf) - [HTML](15/backups.html)
+
+While there are a number of "backup" applications, both FOSS and commercial/proprietary, the vast majority of them add a bit of overhead to the process as well as have their own obfuscated data storage methods. As a result, a number of simple yet effective file system tools have been developed.
+
+Hard drive sizes have greatly increased over the last few years but backup tapes have not had the same storage capacity jumps. As a result, I prefer to backup to hard disk rather than tape. Most advanced tape backup systems now recommend having an intermediate storage system usually based on hard disks so you can backup more quickly (freeing the backup source sooner) and then spool to tape at a usually slower rate.
+
+__Some FOSS file-based backup applications include__:
+
+- BackupPC - http://backuppc.sourceforge.net/
+- Backula - http://www.bacula.org/
+- Zmanda - http://www.zmanda.com/ (commercially supported [Amanda](http://amanda.zmanda.com/))
+
+
+## tar - The GNU version of the tar archiving utility
+
+> 'tar' stands for 'tape archive'
+
+- `tar -cvzf /desired/destination/path/and/filename.tar.gz /path/to/backup ...`
+  - this one is using `z` for gzip compression
+  - ends in `.gz`
+- `tar -cvJf /desired/destination/path/and/filename.tar.xz /path/to/backup ...`
+  - this one is using `J` for xz compression
+    - more computational effort to compress, but will save space
+    - ends in `.xz`
+- `tar -I zstd -cvf /path/filename.tar.zst /pack/to/backup`
+  - check to make sure that you have `zstd` installed (most distros do)
+  - good compression and good on compression
+
+__Flags__:
+
+- `c` - create
+- `v` - verbose
+- `J` - xz compression
+- `z` - gzip compression
+- `f` - file
+
+
+
+## scp - Secure copy (remote file copy program), overwrites destination files
+
+```bash
+$ scp file1 file2 dir1/ dir2/ user@remotehost:/full/path/to/backup/directory/
+```
+
+__Common flags__:
+
+- `-l` - limit rate specified in Kbits/s
+- `-P` - port
+- `-p` - preserves modification times, access times, and modes from the original file
+- `-r` - recursively copy
+
+
+
+
+## rsync - A fast, versatile, remote (and local) file-copying tool
+
+rsync is a file-based mirroring program that can use the local filesystem or a remote filesystem for the destination. If a remote system is selected then the transmission takes places over encrypted ssh. rsync is very efficient and uses an algorithm created by Andrew Tridgell who is best known for his work on samba. The algorithm does not come into play on the first transfer but does upon subsequent transfers... where it will try to only transfer changed files and then only the changed pieces.
+
+The most commonly used flags are:
+
+- `-a` - archive mode; equals -rlptgoD (no -H,-A,-X)
+- `-v` - verbose
+- `-S`, --sparse - handle sparse files efficiently
+- `--delete` - delete extraneous files from dest dirs
+- `--exclude=PATTERN` - exclude files matching PATTERN
+- `--bwlimit=KBPS` - limit I/O bandwidth; KBytes per second
+
+### Example
+
+```bash
+$ rsync -avS --progress --delete --exclude=/dev --exclude=/proc --exclude=/mnt --exclude=/sys --exclude=/media --exclude=/tmp root@sourcehost:/ /backups/hostname/
+```
+
+## borgbackup - Chunk-based backup program.
+
+Packaged by most Linux distros and written in Python. Also available for macOS. Maybe Windows someday?
+
+### Features
+
+- Block based with encryption, compression, and de-duplication – all done on the client side – you can store your backups on systems you don't trust if encrypted.
+- Push from client to backup host
+- Provides FUSE-based mount-from-backup option
+
+### Examples
+
+Create/initialize repository:
+
+```bash
+$ borg --verbose init --encryption=repokey user@backuphost:/path/to/repository/reponame
+```
+
+Create a backup/archive:
+
+```bash
+borg --progress --verbose create -C zstd,5 -e /dev -e /run -e /tmp -e /sys -e /proc -e /mnt -e /media -e /var/log -e /var/cache -s user@backuphost:/path/to/repository/reponame::$(date +%Y%m%d) /
+```
+
+### Usage
+
+```bash
+# Setup ssh-key-based auth for backup user and...
+export BORG_PASSPHRASE="supersecretpassword"
+export BORG_REPO="user@backuphost:/path/reponame"
+/bin/borg create -C zstd,5 -s ::$(date +%Y%m%d) /etc /root /home
+```
+
+
+## Imaging Software - bit-by-bit copy rather than file-based
+
+- Bit-by-bit copy rether than a file-based
+- Disk image-based backup utilities are really good for cloning systems.
+  - The main disadvantage of using disk imaging software is that they usually can only backup a partition/disk if it is not in use.
+- Often disk image-backup software is run by booting from an alternative partition or live media.
+ 
+__Some FOSS imaging applications include__:
+
+- __clonezilla__ (partclone) - http://clonezilla.org/
+- __dd__ and __ddrescue__
+ 
+__Some "missing features" in the free programs__:
+
+1. Can't mount the image file(s) and alter them, and
+2. Can't clone a larger to smaller (without manual manipulation)
+
+There are a number of commercial/closed source products and they include Ghost, Acronis True Image, etc.
+
+See: http://en.wikipedia.org/wiki/Disk_cloning
+
