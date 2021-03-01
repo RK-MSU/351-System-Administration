@@ -3,13 +3,28 @@
 
 __Screencast__: [14-systemd.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/14-systemd.webm) or [14-systemd.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/14-systemd.mp4)
 
+__Originals__: [PDF](14/Init System & Services.pdf) - [HTML](14/init-system-and-services.html)
+
+
+## In the Beginning
+
+- SysVinit came from AT&T's UNIX and was basically a series of directories and shell scripts that used naming conventions. Distros user different management applications for enabling, disabling, starting and stopping services.
+- Services were controlled with fairly lengthy shell scripts that would often vary greatly between Linux distributions.
+- Services were bundled into "runlevels" which varied in function between Linux distributions.
+- While SysVinit worked fairly well for a few decades it was really lacking in features. Managing services was vary sloppy. Isolation and resource management barely existed.
+- The Linux kernel has a lot of cool, useful features that were being completely ignored for compatibility reasons.
+- Some became enamored with the simplicity of the design above all else and didn't want things to change.
+
+
+
+
 ## Alternative init systems
 
 There are other multiple init systems used by the various Linux distributions. Some distributions, particularly those styled after BSD, may use a single config file that has to be updated whenever services are added/removed.
 
-A former Canonical (the company that sponsors the Ubuntu Linux distribution) employee named __Scott James Remnant__ created __upstart__.  Ubuntu historically had a SysV-based init system but switched to upstart several releases ago.
+A former Canonical (the company that sponsors the Ubuntu Linux distribution) employee named __Scott James Remnant__ created __upstart__. Ubuntu historically had a SysV-based init system but switched to upstart several releases ago.
 
-Fedora historically used a SysV-based init system.  After upstart came out, they switched to it... although at the time upstart was not very complete and was primarily configured in SysV-compatibility mode.
+Fedora historically used a SysV-based init system. After upstart came out, they switched to it... although at the time upstart was not very complete and was primarily configured in SysV-compatibility mode.
 
 5+ years ago, Red Hat employee and Fedora developer __Lennart Poettering__ did a survey of the various init systems available for various flavors of Unix/Linux.
 He compared features and performance and then created a new init system named systemd.
@@ -24,30 +39,80 @@ Many distributions have switched to systemd including all of the top, mainstream
 gentoo defaults to a different init system named OpenRC.
 A group of disgruntled-over-systemd users forked Debian and created [Devuan](https://devuan.org/).
 
+
+
 ## systemd
 
-__cgroups__ - As I talked about near the end of the Process and Resource Management lecture, systemd is an enabler for cgroups and starts everything in a cgroup.  As a result the resource usage of CPU, RAM, and DISK are dynamically tunable (network coming in the future).  cgroups makes it easier and faster to reliably stop services.
+systemd decided to abandon compatibility and actually started taking advantage of serveral advanved, Linux-only, kernel features.
 
-__journald__ - systemd decided to take on the logging facilities and as a result of the logging system being integrated into the init system and being able to have better access to the kernel, it can log all kernel messages including full startup and shutdown... a feat that was previously impossible.  It also uses a signle binary log file with database like functionality.  You can still run a traditional syslog program in parallel if desired to get the old-school, standard single log file per service text logs.  more abut logging in a separate lecture.
+It would redefine service dependencies and be able to start services in parallel.
 
-__unit and target files__ - The traditional / original Unix / Linux init system SysVinit used shell scripts to control all services and there are many drawbacks.  systemd abandoned shell scripts and has much smaller, declarative configuration files named unit files.  SysVinit init had runlevels.  systemd abandoned runlevels and uses target files instead.  Available targets are emergency, rescue, multi-user (text-console only) and graphical (like multi-user but with a graphical login added).
+As systemd matured, it took over more if not all of the execution paths and became a full service manager incorporating Linux-only isolation and resource management features.
 
-__core os concept__ - systemd decided to go beyond the strict boundaries of the traditional init system to incorporate more features that made sense for a system trying to make services and resources manageable.  The expansion of features has been dubbed, "Core OS" (not to be confused with the CoreOS Linux distribution) in that it tries to make common tasks the same across all distributions that use systemd.  There used to be several different programs used by distros for such things as logging in, managing user sessions, watchdog, cron, logging, setting the hostname etc.  This the most contentious aspect of systemd as some users think it has gone to far.
+- __cgroups__ - As I talked about near the end of the Process and Resource Management lecture, _systemd is an enabler for cgroups_ and starts everything in a cgroup. As a result the resource usage of CPU, RAM, and DISK are dynamically tunable (network coming in the future).
+  - cgroups makes it easier and faster to reliably stop services.
+  - basically allows you to create resource heirarchys and then allows you to assign to them
+  - Two useful commands
+    - `systemd-cgls` control group list
+    - `systemd-cgtop` like top, but sorts by control group
+- __journald__ - systemd decided to take on the logging facilities and as a result of the logging system being integrated into the init system and being able to have better access to the kernel, it can log all kernel messages including full startup and shutdown... a feat that was previously impossible. It also uses a signle binary log file with database like functionality. You can still run a traditional syslog program in parallel if desired to get the old-school, standard single log file per service text logs. more abut logging in a separate lecture.
+- __unit and target files__: The traditional / original Unix / Linux init system SysVinit used shell scripts to control all services and there are many drawbacks. systemd abandoned shell scripts and has much smaller, declarative configuration files named unit files. SysVinit init had runlevels. systemd abandoned runlevels and uses target files instead. Available targets are emergency, rescue, multi-user (text-console only) and graphical (like multi-user but with a graphical login added).
+  - There are several types of "unit files":
+    - .target (runlevels)
+    - .service (services)
+    - .socket (on-demand services)
+    - .timer (scheduled tasks)
+    - Also - .device, .mount, .automount, .swap, .path, .snapchot, .slice, and .scope
+- __core os concept__ - systemd decided to go beyond the strict boundaries of the traditional init system to incorporate more features that made sense for a system trying to make services and resources manageable. The expansion of features has been dubbed, "Core OS" (not to be confused with the CoreOS Linux distribution) in that it tries to make common tasks the same across all distributions that use systemd. There used to be several different programs used by distros for such things as logging in, managing user sessions, watchdog, cron, logging, setting the hostname etc. This the most contentious aspect of systemd as some users think it has gone to far.
+  - systemd also works hand-in-hand with dbus for inter-process communications and event-driven activation.
+
+
 
 ## systemd programs / commands
 
 The main control program for `systemd` is `systemctl`.
 
-- systemctl --full --all (lists everything)
-- systemctl enable {servicename}
-- systemctl disable {servicename}
-- systemctl status {servicename}
-- systemctl start {servicename}
-- systemctl stop {servicename}
-- systemctl restart {servicename}
-- systemctl mask {servicename (sysmlinks to /dev/null)
-- systemctl get-default (shows default target)
-- systemctl set-default {targetname} (changes the default target)
-- sysmtectl isolate {targetname} (change target)
-- sytemctl edit (add drop-in files for service customization)
+- `systemctl --full --all` (lists everything)
+- `systemctl enable {servicename}`: --now (startup service in addition to enabling it)
+- `systemctl disable {servicename}`: --now
+- `systemctl status {servicename}`
+- `systemctl start {servicename}`
+- `systemctl stop {servicename}`
+- `systemctl restart {servicename}`
+- `systemctl mask {servicename}` (sysmlinks to /dev/null)
+  - Suppose you have a service that is a dependency for something else, but you do not really want to run that service. If you want to ensure that the service is never enabled/started, possibly symlink to dev/null.
+- `systemctl get-default` (shows default target)
+  - the default runlevel is 'multi-user.target'
+  - 'graphical.target' is used for systems running a graphical user interface
+- `systemctl set-default {targetname}` (changes the default target)
+- `sysmtectl isolate {targetname}` (change target)
+- `sytemctl edit` (add drop-in files for service customization)
+
+> Every time we install as service, we will check the status of the service. Wherein then we can enable it if it is not enabled.
+
+### Isolation & Resource Management
+
+- systemd has many advanced features that can be enabled for services. Many of them are related to security and isolation, other to resource control.
+- Most distros do not automatically use these features but sysadmins can be creating service "drop-in" files. Finally there is a way to customize a service without editing it's global config that might be replaced with a package upgrade.
+  - `systemctl edit {servicename}`
+
+### Examples
+
+#### sshd
+
+```bash
+$ systemctl status sshd
+sshd.service - OpenSSH server daemon
+   Loaded: loaded (/usr/lib/systemd/system/sshd.service; enabled; vendor preset: enabled)
+   Active: active (running) since Sun 2021-02-28 15:43:59 MST; 19h ago
+     Docs: man:sshd(8)
+           man:sshd_config(5)
+ Main PID: 808 (sshd)
+    Tasks: 1 (limit: 18905)
+   Memory: 7.7M
+   CGroup: /system.slice/sshd.service
+           └─808 /usr/sbin/sshd -D
+```
+
+
 
