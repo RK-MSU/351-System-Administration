@@ -1,16 +1,16 @@
 bookdown::gitbook:
   css: style.css
   number_sections: no
-  split_by: chapter
+  split_by: none
   config:
     search: false
     sharing: false
     info: false
     toc:
-      collapse: chapter
-      toc_depth: 1
+      collapse: section
+      toc_depth: 4
       scroll_highlight: true
-      toc_float: true
+#      toc_float: true
       before: |
         <li><a href="./">System Administration</a></li>
 #      after: |

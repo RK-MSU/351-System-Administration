@@ -1,1 +1,73 @@
 # Desktop Linux
+
+__Screencast__: [17-desktop.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/17-desktop.webm) or [17-desktop.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/17-desktop.mp4)
+
+## In the Beginning was X
+
+As mentioned in part 3 of Triumph of the Nerds, Xerox (via the researchers at the Palo Alto Research Center) is noted as the original creator of what is known as the modern Graphical User Interface. They created a bitmap based display, the mouse with an on-screen pointer, and networked computers with ethernet which were publicly demoed as early as 1969. Steve Jobs and Apple borrowed all of PARC's ideas, added to and expanded them, and released the Apple Macintosh with MacOS in early 1984.  For more info, see Steven Levy's book, Insanely Great.
+
+The X Window System was created in 1984 at Massachusetts Institute of Technology. The current version is called X11 and was released in 1987.
+
+From the [wikipedia article on the X Window System](http://en.wikipedia.org/wiki/X11):
+
+> In 1987, with the success of X11 becoming apparent, MIT wished to relinquish the stewardship of X, but at a June 1987 meeting with nine vendors, the vendors told MIT that they believed in the need for a neutral party to keep X from fragmenting in the marketplace. In January 1988, the MIT X Consortium formed as a non-profit vendor group.
+
+Since that time the X Consortium disbanded and control changed hands to The Open Group. In May 1999, the Open Group formed X.Org.
+
+The most popular release for the IBM PC was done by XFree86 and it was adopted for many years by most Linux distributions.  After a while many Linux distributors became frustrated with the closed nature of the XFree86 development model and thought that the pace of development was too slow. The XFree86 project made a slight change to their license and required that the XFree86 logo be displayed on any packaging it was included with.
+    
+In April of 2004 X.Org was created as a fork of the XFree86 project and it quickly became the dominant release used by Linux distributions.
+   
+X11 is more about providing a basic display system that can accommodate input devices and creating a foundation for writing GUI applications that will work both locally and over a network rather than defining specific graphical applications and developer toolkits. As a result the various window managers, desktop managers, and desktop environments have been written using a variety of programming languages and GUI toolkit libraries.  
+
+## Window Managers
+
+[twm](http://en.wikipedia.org/wiki/Twm) - One of the first window manager apps that became popular. It became part of X11 with X11R4 and these days it is so basic that it is considered by some as the window manager of last resort.
+  
+[fvwm](http://en.wikipedia.org/wiki/Fvwm) - Robert Nation created the F Virtual Window Manager in 1993 and it was one of the first that featured virtual desktops.  Then came fvwm95 that had a default theme visually similar to Microsoft Windows 95.
+  
+[Window Maker](http://en.wikipedia.org/wiki/WindowMaker) - In 1997 Window Maker was released as a clone of the NeXTstep GUI. NeXTstep is what was used as a basis for Mac OS X's GUI environment.
+  
+[blackbox](http://en.wikipedia.org/wiki/Blackbox) - A very light-weight desktop manager written in C++.
+  
+[openbox](http://en.wikipedia.org/wiki/Openbox) - Originally a fork of blackbox but now completely rewritten in C.  openbox is also a very light-weight desktop manager.
+  
+See also: http://en.wikipedia.org/wiki/Comparison_of_window_managers    
+
+
+## Desktop Environments
+
+[CDE](http://en.wikipedia.org/wiki/Common_Desktop_Environment) - The Common Desktop Environment was created by a number of commercial Unix vendors in 1993 and became the de facto GUI environment for a number of Unix flavors. The problem was that it was commercial and was based on the commercial GUI toolkit named [motif](http://en.wikipedia.org/wiki/Motif_%28widget_toolkit%29). Sun Microsystems was a holdout and created their own named [OpenLook](http://en.wikipedia.org/wiki/OpenLook) based on a completely different GUI toolkit.
+  
+[KDE](http://en.wikipedia.org/wiki/KDE) - The K Desktop Environment was started in 1996 by Matthias Ettrich. He surveyed all of the freely available GUI toolkits and settled on [QT](http://en.wikipedia.org/wiki/Qt_%28toolkit%29) from a company in Norway named Trolltech. QT is a C++ multi-platform toolkit that originally cost money if you wanted to make commercial applications with it. After the GNOME Project was started Trolltech created the QT Foundation and dual-licensed QT including a free software friendly license. Trolltech was eventually consumed by Nokia and QT has since been re-licensed under three different licenses... pick the one you want. KDE released version 4.0 in January of 2008.
+    
+[GNOME](http://en.wikipedia.org/wiki/GNOME) - The GNU Network Object Model Environment desktop environment was originally started by a group of programmers (primarily financially sponsored by Red Hat) who were not happy with the original QT licensing. They also wanted to use C rather than C++. GNOME is based on the GIMP toolkit ([GTK](http://en.wikipedia.org/wiki/Gtk)).  GNOME decided to change things with GNOME 3 Shell.
+    
+GNOME 3 Shell was release on April 6, 2011.  Fedora was one of the first distributions to ship it.  GNOME 3 requires hardware support / accellerated video although it does have a fallback mode which does not.  GNOME 3 has a searched-based interface and does away with some of the features (thought of as clutter by its developers) from the GNOME 2 series.  Further development of GNOME 2 has stopped and GNOME 3 is the future of GNOME.
+  
+[MATE](http://en.wikipedia.org/wiki/MATE_%28desktop_environment%29) - MATE is a desktop environment forked from the now-unmaintained code base of GNOME 2. The name derives from yerba mate, a species of holly native to subtropical South America used to prepare a beverage called mate. The renaming is necessary to avoid conflicts with Gnome 3 components.
+    
+[Cinnamon](http://en.wikipedia.org/wiki/Cinnamon_%28user_interface%29) - Cinnamon is a fairly new project from the Linux Mint developers that uses the GNOME 3 libraries to create a desktop that is stylisticly a combination of GNOME 2 and GNOME 3.
+    
+[XFCE](http://en.wikipedia.org/wiki/Xfce) - Olivier Fourdan decided to create a free clone of CDE in 1996 based on the non-free XForms GUI toolkit. Since the toolkit wasn't free enough neither Red Hat nor Debian liked it. Olivier eventually rewrote XFCE in GTK. It is considered a lighter-weight alternative to KDE and GNOME.
+   
+[LXDE](http://en.wikipedia.org/wiki/Lxde) - The project was started in 2006 by Taiwanese programmer Hong Jen Yee, also known as PCMan, when he published PCManFM, a new file manager and the first module of LXDE.  LXDE has ceased development as the developers have decided to abandon the GTK widget library and switch to QT... and have decided to join forces with the RazorQT project... and now have created [LXQT](http://lxqt.org/).
+
+
+## Network Transparency
+
+As previously mentioned, X11 was designed with network transparency in mind and as a result, there are a number of ways to run X11 apps or complete desktop environments remotely.
+
+The easiest way to run an X11 app is to use the X11 tunnelling provided by ssh (ssh -X). Alternatively you can use the xhost utility and properly set the DISPLAY environment variable.
+
+For running complete desktop environments one may use programs like [VNC](http://en.wikipedia.org/wiki/Vnc) and [NX](http://en.wikipedia.org/wiki/Freenx). Many X display managers also speak the X Display Manager Control protocol ([XDMCP](http://en.wikipedia.org/wiki/XDMCP#X_Display_Manager_Control_Protocol)) although it is not usually turned on by default.  There is even an RDP server for Linux named [xrdp](http://www.xrdp.org/).  A very nice fork of NX2 exists named [X2Go](http://www.x2go.org/).
+
+Complete desktops can also be run over ssh with [Xnest](http://en.wikipedia.org/wiki/Xnest) and [Xephyr](http://en.wikipedia.org/wiki/Xephyr).
+
+No matter what method you use for remote access, it should work fine over a LAN but perhaps not as well over a WAN or broadband connection due to latency.
+ 
+Red Hat released the [SPICE](http://en.wikipedia.org/wiki/SPICE_%28protocol%29) remote KVM-VM (virtual machine) display protocol under the GPL v2 in January 2010 and it is hoped it gets adapted to a general purpose remote display protocol.
+ 
+## The Future?
+    
+One complaint about X11 is that there are too many layers and that creating efficient software (especially games) is hard. [Wayland](http://en.wikipedia.org/wiki/Wayland_%28display_server_protocol%29) is a fairly new project with a goal providing an efficient alternative to X11.  It is still early in development and it remains to be seen how well it will do. Canonical initially seemed to be responsive to Wayland but decided to create their own display system ([Mir](https://en.wikipedia.org/wiki/Mir_%28software%29)) to better serve their needs with regards to one interface for every device.  Mir, which recently announced the release of version 1.0,  seems to be built on top of Wayland.

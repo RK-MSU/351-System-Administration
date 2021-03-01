@@ -14,44 +14,14 @@ description: "Course Contents CSCI 351"
 # Welcome
 
 
+| Week | Lectures | Videos |
+| :--: | :-- | :-- |
+| 1 | - Introduction`r newLine()`- History - Unix, Free Software and Linux`r newLine()`- What is a Linux Distribution`r newLine()`- What is a System Administrator |
+| 2 | - Installing Linux`r newLine()`- CLI Use |
+| 3 | - User Accounts`r newLine()`- Hard disks, Partitions, and Filesystems`r newLine()`- Linux Filesystem Hierarchy |
+| 4 | - Command Line Potpourri`r newLine()`- Understanding File/Dir Ownership and Permissions |
+| 5 | - Package Management`r newLine()`- Processes and Resource Management |
+| 6 | - Init System & Services`r newLine()`- Backups`r newLine()`- Network Configuration |
+| 7 | - Desktop Linux`r newLine()`- Firewalls with firewalld |
+| 8 | |
 
-## Course Schedual
-
-#### Week 1
-
-- Introduction
-- History - Unix, Free Software and Linux
-- What is a Linux Distribution
-- What is a System Administrator
-
-#### Week 2
-
-- Installing Linux
-- CLI Use
-
-#### Week 3
-
-- User Accounts
-- Hard disks, Partitions, and Filesystems
-- Linux Filesystem Hierarchy
-
-#### Week 4
-
-- Command Line Potpourri
-- Understanding File/Dir Ownership and Permissions
-
-#### Week 5
-
-- Package Management
-- Processes and Resource Management
-
-#### Week 6
-
-- Init System & Services
-- Backups
-- Network Configuration
-
-#### Week 7
-
-- Desktop Linux
-- Firewalls with firewalld
