@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body style="font-family: 'Lato', sans-serif;">
+<p><strong>Screencast:</strong>&nbsp;<a href="https://www.cs.montana.edu/users/sdowdle/csci351/videos/22-apache-intro.webm" target="_blank" rel="noopener">22-apache-intro.webm</a> or <a href="https://www.cs.montana.edu/users/sdowdle/csci351/videos/22-apache-intro.mp4" target="_blank" rel="noopener">22-apache-intro.mp4</a></p>
+<p>LaUSAH REFERENCE - Chapter 19, Web Hosting</p>
+<p>RHEL8 Deploying Different Types of Servers, Chapter 1, Setting Up The Apache Web Server (PDF in weekly materials)</p>
+<p><strong>Brief History of Apache</strong></p>
+<div>In the beginning, the father of the World Wide Web (Tim Berners-Lee) created the first web browser (WorldWideWeb) and the first web server (CERN HTTPd) for the NeXTSTEP platform. CERN HTTPd version 0.1 was released in June 1991. It was later ported to other flavors of Unix and OpenVMS. Version 3.0A was the final version released on July 15, 1996.<br /><br />Next came NCSA HTTPd written by Robert McCool and others. They also had one of the first graphical web browsers that was multi-platform and it was named Mosaic. Most of the NCSA folks left to start up Netscape... and as a result development of NCSA HTTPd and Mosaic languished. Mosaic was eventually licensed to several other browser makers (including Microsoft for Internet Explorer). Development of NCSA HTTPd was eventually stopped in 1998.<br /><br />Apache started life within the community that was left behind when the development of NCSA HTTPd stalled... and a series of patches for NCSA HTTPd were circulated mostly by email among the various community developers who remained. The group eventually decided to take all of their patches (a patchy server) and start over as the Apache project. Over time any of the original NCSA HTTPd code that remained was replaced. Version 2 of Apache was a substantial rewrite of the 1.x code.<br /><br />Today Apache continues to hold a prominent marketshare in the web server software market. The Feb. 2021 survey by Netcraft (1,204,252,411 sites, 263,042,054 unique domains) shows <strong>Apache</strong> in second place with a 26.32% marketshare with <strong>Microsoft IIS</strong> server in third place with 6.50%. The first place contender is another free software packaged named <strong>nginx</strong> with 34.54%.</div>
+<div></div>
+<div>Perhaps more revealing are their numbers for "<strong>Market share of active sites</strong>" where Apache is leading with 25.48% and Microsoft IIS doesn't even place in the top four. nginx is in second place with 19.84%.</div>
+<div></div>
+<div>Also of interest are their numbers for "<strong>Market share of the top million busiest sites</strong>" where Apache leads with 25.58% and Microsoft IIS is in fourth place with 6.87%. nginx is in second place with 23.21%.</div>
+<div></div>
+<div>For more information see:<br /><br />
+<div><strong>Netcraft's September 2020 Web Server Survey</strong></div>
+<div><a rel="noopener" href="https://news.netcraft.com/archives/2021/02/26/february-2021-web-server-survey.html">https://news.netcraft.com/archives/2021/02/26/february-2021-web-server-survey.html</a></div>
+</div>
+<p><strong>Apache Basics</strong></p>
+<div><strong>Packages:</strong><br />
+<div>httpd</div>
+<div>httpd-tools</div>
+<div>httpd-manual (if you want the web-based docs)<br />mod_* (if you want any additional embedded functionality)<br /><br /></div>
+<strong>Popular add on packages:</strong><br />
+<div>php* (used to be forked but is now PHP FastCGI Process Manager php-pfm)<br />mod_perl (EPEL)<br />mod_ssl<br /><br /></div>
+<strong>systemd unit file:</strong><br />
+<div>/usr/lib/systemd/system/httpd.service</div>
+<div>/usr/lib/systemd/system/httpd@.service</div>
+<br /><strong>Default ports:</strong><br />
+<div>http: 80<br />https: 443 (if mod_ssl is installed and configured)</div>
+<div>&nbsp;</div>
+<strong>Configuration files:</strong><br />
+<div>/etc/httpd/conf/httpd.conf<br />/etc/httpd/conf/*<br />/etc/httpd/conf.d/*<br /><br /></div>
+<strong>Binaries:</strong> (some from httpd-tools)<br />
+<div>/usr/bin/ab<br />/usr/bin/htpasswd<br />/usr/bin/logresolve<br />/usr/sbin/apachectl<br />/usr/sbin/httpd<br />/usr/sbin/rotatelogs<br />/usr/sbin/suexec</div>
+<br /><strong>Logs:</strong><br />
+<div>/etc/logrotate.d/httpd<br />/var/log/httpd/access_log, /var/log/httpd/error_log<br /><br /></div>
+<strong>Working directory:</strong><br />
+<div>/var/www<br /><br /></div>
+<strong>Man pages:</strong><br />
+<div>/usr/share/man/man1/ab.1.gz<br />/usr/share/man/man1/htdbm.1.gz<br />/usr/share/man/man1/htdigest.1.gz<br />/usr/share/man/man1/htpasswd.1.gz<br />/usr/share/man/man1/logresolve.1.gz<br />/usr/share/man/man8/apachectl.8.gz<br />/usr/share/man/man8/htcacheclean.8.gz<br />/usr/share/man/man8/httpd.8.gz<br />/usr/share/man/man8/rotatelogs.8.gz<br />/usr/share/man/man8/suexec.8.gz<br /><br /></div>
+The httpd-manual package contains a complete manual and reference guide that can also be found:<br />
+<div><a href="http://httpd.apache.org/docs/2.4/" target="_blank" rel="noopener noreferrer">http://httpd.apache.org/docs/2.4/</a></div>
+</div>
+<p>Common configuration options</p>
+<div>DocumentRoot - /var/www/html<br />UserDir - ~username<br />ScriptAlias - Defines where scripts can run from</div>
+<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /var/www/cgi-bin<br />Access controls with<br />
+<div>Directory - Per directory settings<br />DirectoryIndex - What file is shown if directory is requested<br />
+<div>index.html<br />index.php</div>
+AccessFileName<br />
+<div>.htaccess (dynamic config changes)<br />.htpasswd</div>
+Location</div>
+Complete customization of logging and error pages<br />VirtualHost</div>
+<div></div>
+<p><strong>Also of interest</strong></p>
+<div>1) A nice <a href="http://www.telegraph.co.uk/technology/internet/12061803/The-worlds-first-website-went-online-25-years-ago-today.html" target="_new">write-up</a> on the 25th anniversary of the WWW from Dec. 2015</div>
+<div>2) Tim Berners-Lee's <a href="http://webfoundation.org/2017/03/web-turns-28-letter/" target="_blank" rel="noopener noreferrer">Three challenges for the web</a> from Mar. 2017 which includes:</div>
+<div>i. We&rsquo;ve lost control of our personal data</div>
+<div>ii. It&rsquo;s too easy for misinformation to spread on the web</div>
+<div>iii. Political advertising online needs transparency and understanding</div>
+</body>
+</html>
