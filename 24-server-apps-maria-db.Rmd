@@ -25,7 +25,7 @@ If you want more than that, read the [MySQL wikipedia](http://en.wikipedia.org/w
 Some of the unique features of MySQL are:
 
 1. Multiple database storage engines (table types) - InnoDB allows for transactions
-F2. lexible table design - Easily insert columns and alter existing column data-types on-the-fly
+2. lexible table design - Easily insert columns and alter existing column data-types on-the-fly
 
 __MariaDB__ is a community-developed fork of the MySQL and development is led by some of the original MySQL developers.
 MariaDB was forked due to concerns MySQL's acquisition by Oracle Corporation.
