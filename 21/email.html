@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body style="font-family: 'Lato', sans-serif;">
+<p><strong>Screencast:</strong>&nbsp;<a href="https://www.cs.montana.edu/users/sdowdle/csci351/videos/21-email-intro.webm" target="_blank" rel="noopener">21-email-intro.webm</a> or <a href="https://www.cs.montana.edu/users/sdowdle/csci351/videos/21-email-intro.mp4" target="_blank" rel="noopener">21-email-intro.mp4</a></p>
+<p><strong>LaUSAH</strong><br /><strong>&nbsp; </strong><span style="font-weight: bold;">Chapter 18, Electronic Mail<br />&nbsp; Chapter 16, DNS: The Domain Name System, MX records</span></p>
+<p><strong>RHEL7 System Administators Guide, Chapter 15, Mail Servers (PDF)<span style="font-weight: bold;"><br /></span></strong></p>
+<hr style="width: 100%; height: auto; color: #ffffff; border: 1px inset #cccccc;" />
+<p><span style="font-weight: bold;">What do you use for email?</span></p>
+<div style="margin-left: 40px;">What is provided by your ISP?<br />What is provided by MSU?<br />Free services like gmail, Hotmail, Yahoo!Mail?<br />What is provided by your work?</div>
+<hr style="width: 100%; height: auto; color: #ffffff; border: 1px inset #cccccc;" />
+<p><span style="font-weight: bold;">What comprises an email system?<br /></span></p>
+<div style="margin-left: 40px;">It used to be that you could simply install an SMTP server and you had an "email server". That is not the case any more. There are additional pieces that have been added to email over the last decade or so:<br />
+<ul>
+<li>Virus scanning (<a title="ClamAV Site" href="http://www.clamav.net" target="_blank" rel="noopener noreferrer">ClamAV</a>)</li>
+<li>Spam scanning (<a title="SpamAssassin Site" href="http://spamassassin.apache.org/" target="_blank" rel="noopener noreferrer">SpamAssassin</a>)</li>
+<li>Webmail (<a title="RoundCube Site" href="http://roundcube.net/" target="_blank" rel="noopener noreferrer">RoundCube</a> [<a title="CS Dept. RoundCube system" href="https://www.cs.montana.edu/roundcubemail" target="_blank" rel="noopener noreferrer">ours</a>])</li>
+<li>Mobile Access</li>
+<li>Collaboration tools
+<ul>
+<li>Global Addressbook</li>
+<li>Calendaring</li>
+<li>Documents</li>
+<li>Resources</li>
+<li>To-do lists</li>
+</ul>
+</li>
+<li>Mailing lists? Usually done by separate software like Mailman (python-based) and Sympa (perl-based)</li>
+</ul>
+</div>
+<div style="margin-left: 40px;">Also common these days are backup mailservers for redundancy and relaying mailservers that act as filtering systems.</div>
+<p><span style="font-weight: bold;">How email works<br /></span></p>
+<div style="margin-left: 40px;">DNS plays a big role in the flow of email. When a user@domain1.com sends an email to user@domain2.com a lot has to be in place for it to work. user@domain1.com's email client talks to its configured SMTP server which accepts the email for delivery. The SMTP server for domain1 has to look up the MX records for domain2. It then attempts to connect to the server with the lowest MX record value in an attempt to deliver it. If for whatever reason it can't deliver it to the first MX server, it will progress to the next MX IP with the lowest value. If all MX servers are unreachable, the SMTP server for domain1 will queue the email and try again later. Typically it tries every 4 hours for 4 days at which point it gives up.</div>
+<div style="margin-left: 40px;">&nbsp;</div>
+<div style="margin-left: 40px;">What are the MX servers for your email account?&nbsp; To find out do the following:</div>
+<div style="margin-left: 40px;">&nbsp;</div>
+<div style="margin-left: 40px;"><span style="font-family: courier new, courier, sans-serif;">dig MX yourdomain.tld</span></div>
+<div style="margin-left: 40px;">&nbsp;</div>
+<div style="margin-left: 40px;">Does your domain have more than one MX record?&nbsp; What are their values?</div>
+<p><span style="font-weight: bold;">Various anti-spam tricks</span></p>
+<div style="margin-left: 40px;">I have seen a lot of crazy stuff done by email admins to reduce their amount of spam.<br /><br />Adding MX records for servers that don't exist.<br />Automatically reject every first attempt (graylisting).<br />SPF and DKIM.<br />Auto reject systems where you have to get put on a whitelist.<br />Email is fundamentally broken and the only thing that can save it... is <a title="PKI" href="http://en.wikipedia.org/wiki/Public_key_infrastructure" target="_blank" rel="noopener noreferrer">PKI</a>.</div>
+<div style="margin-left: 40px;"></div>
+<hr style="width: 100%; height: auto; color: #ffffff; border: 1px inset #cccccc;" />
+<p><span style="font-weight: bold;">Looking for a complete package</span></p>
+<div style="margin-left: 40px;">No Linux distro I'm aware of offers a reasonable email system out of the box. Most offer some/many of the components I mentioned but none of them put them together in any integrated way. As a result a number of third party management / middleware systems have been created.<br /><br />A few that seem reasonable are:<br />
+<ol>
+<li><a title="Mailscanner homepage" href="http://www.mailscanner.info/" target="_blank" rel="noopener noreferrer">Mailscanner</a> (<a title="wikipedia" href="http://en.wikipedia.org/wiki/Mailscanner" target="_blank" rel="noopener noreferrer">wikipedia</a>)</li>
+<li><a title="Zimbra homepage" href="http://www.zimbra.com/" target="_blank" rel="noopener noreferrer">Zimbra Collaboration Suite</a> (<a title="wikipedia" href="http://en.wikipedia.org/wiki/Zimbra" target="_blank" rel="noopener noreferrer">wikipedia</a>) [<a title="CS Dept. Zimbra system" href="https://mail.cs.montana.edu/" target="_blank" rel="noopener noreferrer">ours</a>]</li>
+<li><a title="Zarafa" href="http://www.zarafa.com/" target="_blank" rel="noopener noreferrer">Zarafa</a> (<a title="Zarafa Wikipedia page" href="http://en.wikipedia.org/wiki/Zarafa_%28software%29" target="_blank" rel="noopener noreferrer">wikipedia</a>)</li>
+<li><a title="Scalix homepage" href="http://www.scalix.com/" target="_blank" rel="noopener noreferrer">Scalix</a> (<a title="wikipedia" href="http://en.wikipedia.org/wiki/Scalix">wikipedia</a>)</li>
+<li><a title="Citadel homepage" href="http://www.citadel.org/" target="_blank" rel="noopener noreferrer">Citadel</a> (<a title="wikipedia article" href="http://en.wikipedia.org/wiki/Citadel/UX" target="_blank" rel="noopener noreferrer">wikipedia</a>)</li>
+<li><a href="http://www.kolab.org/" target="_blank" rel="noopener noreferrer">Kolab</a>&nbsp;(<a href="https://en.wikipedia.org/wiki/Kolab" target="_blank" rel="noopener noreferrer">wikipedia</a>)</li>
+</ol>
+</div>
+<p><span style="font-weight: bold;">SMTP server software</span></p>
+<ul>
+<li>sendmail</li>
+<li><strong>postfix (installed in our student VMs)<br /></strong></li>
+<li>exim</li>
+<li>qmail</li>
+</ul>
+<div style="margin-left: 40px;">Things SMTP servers need to be able to do:<br />
+<div style="margin-left: 40px;">Host multiple domains (virtual hosting)<br />Allow for user1@domain1 and user1@domain2 (virtual users)<br />Map multiple addresses to a single account (aliases)</div>
+</div>
+<p><span style="font-weight: bold;">POP and IMAP</span></p>
+<ul>
+<li>Dovecot</li>
+<li>UW imap</li>
+<li>Courier</li>
+</ul>
+<hr style="width: 100%; height: auto; color: #ffffff; border: 1px inset #cccccc;" />
+<p><strong><span style="font-family: arial, helvetica, sans-serif;">Email Client Programs</span></strong></p>
+<p style="padding-left: 30px;"><span style="font-family: arial, helvetica, sans-serif;"><span style="font-family: courier new, courier, sans-serif;">/usr/bin/mail</span> - Provided by the mailx&nbsp; program.&nbsp; Very simple, line oriented client<br /><span style="font-family: courier new, courier, sans-serif;">alpine</span> - Full-featured TUI client available in EPEL</span></p>
+<p><strong>Email Related Configs</strong></p>
+<p style="padding-left: 30px;"><span style="font-family: courier new, courier, sans-serif;">/etc/aliases<span style="font-family: arial, helvetica, sans-serif;"> - global aliases and forwards</span><strong><br /></strong>~/.foward<span style="font-family: arial, helvetica, sans-serif;"> - user defined aliases and forwards</span><br />/etc/postfix/* <span style="font-family: arial, helvetica, sans-serif;">- postfix config location - since student VMs have Postfix installed</span></span></p>
+</body>
+</html>
