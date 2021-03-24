@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body style="font-family: 'Lato', sans-serif;">
+<p><strong>Screencast:</strong>&nbsp;<a href="https://www.cs.montana.edu/users/sdowdle/csci351/videos/25-mariadb-intro.webm" target="_blank" rel="noopener">25-mariadb-intro.webm</a> or <a href="https://www.cs.montana.edu/users/sdowdle/csci351/videos/25-mariadb-intro.mp4" target="_blank" rel="noopener">25-mariadb-intro.mp4</a></p>
+<p><span style="font-weight: bold;">A brief history of MySQL and MariaDB<br /></span></p>
+<div style="margin-left: 40px;">MySQL was originally created in 1995. The developers around it formed MySQL AB, a Swedish company, that mainly got its money from support contracts. Eventually MySQL became dual / multi-licensed with one of them being the GNU GPL.<br /><br />In 2008 Sun Microsystems purchased MySQL AB for a reported $1 billion although since that time many of the original / main developers have left Sun to form alternative projects. There is growing confusion as to who will end up being the driving force behind MySQL in the years to come. In January of 2010, Oracle acquired Sun Microsystems.<br /><br />MySQL was designed to be a fast, light-weight database especially suited for the needs of web-based applications. Most often the M in "LAMP". MySQL is accessible from a large variety of programming languages including Perl, PHP, Python, C, C++ and from Java's ODBC. <br /><br />MySQL has had a reputation of not being as feature complete as Oracle's database products and / or PostgreSQL. As a result some database purists turn their noses up at MySQL. As MySQL has matured many / most of the "missing features" have either been added or are on the roadmap for a future release.<br /><br />The correct pronunciation of MySQL is "my es que el" and not "my sequel". SEQUEL was an IBM database language which was a predecessor to SQL.&nbsp; Unfortunately because of some other database products pronouncing SQL as "sequel" it might be the case that more people say it wrong than right.<br /><br />If you want more than that, read the <a title="MySQL Wikipedia entry" href="http://en.wikipedia.org/wiki/Mysql" target="_blank" rel="noopener noreferrer">MySQL wikipedia</a> page.<br /><br />Some of the unique features of MySQL are:<br />
+<ol>
+<li>Multiple database storage engines (table types) - InnoDB allows for transactions</li>
+<li>Flexible table design - Easily insert columns and alter existing column data-types on-the-fly</li>
+</ol>
+<strong>MariaDB</strong> is a community-developed fork of the MySQL and development is led by some of the original MySQL developers.&nbsp; MariaDB was forked due to concerns MySQL's acquisition by Oracle Corporation.&nbsp; <span style="text-decoration: underline;">Most Linux distributions provide mariadb.</span></div>
+<div style="margin-left: 40px;"></div>
+<div style="margin-left: 40px;"></div>
+<div style="margin-left: 40px;"><img src="Widenius-Daughters.jpg" alt="Monty Widenius and his daughters, My and Maria" title="Monty Widenius and his daughters, My and Maria" style="max-width: 100%;" data-d2l-editor-default-img-style="true" /></div>
+<p><span style="font-weight: bold;">Packages<br /></span></p>
+<div style="margin-left: 40px;">mariadb-bench: MariaDB benchmark scripts and data<br />mariadb-libs: The shared libraries required for MariaDB clients<br />mariadb-server: The MariaDB server and related files<br />mariadb-test: The test suite distributed with MySQL<br />mariadb: MariaDB client programs and shared libraries</div>
+<p><span style="font-weight: bold;">Additional Packages</span></p>
+<div style="margin-left: 40px;">bytefx-data-mysql: MySQL database connectivity for Mono<br />lua-sql-mysql: MySQL database connectivity for the Lua programming<br />mod_auth_mysql: Basic authentication for the Apache web server using a<br />MySQL-python: An interface to MySQL<br />pam_mysql: PAM module for auth UNIX users using MySQL data base<br />perl-DBD-MySQL: A MySQL interface for perl<br />php-mysql: A module for PHP applications that use MySQL databases<br />qt3-MySQL: MySQL drivers for Qt 3's SQL classes<br />qt-mysql: MySQL driver for Qt's SQL classes<br />ruby-mysql: A Ruby interface to MySQL<br />tcl-mysqltcl: MySQL interface for Tcl</div>
+<p><span style="font-weight: bold;">Files</span></p>
+<div style="margin-left: 40px;">Control script</div>
+<div style="margin-left: 40px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /usr/lib/systemd/system/mariadb.service<br /><br />Binaries</div>
+<div style="margin-left: 40px;">
+<div style="margin-left: 40px;"><span style="font-family: courier new, courier, sans-serif;">/usr/bin/mysqld_safe</span> - Server application<br /><span style="font-family: courier new, courier, sans-serif;">/usr/bin/mysql</span> - Client application (part of the mariadb package)<br /><span style="font-family: courier new, courier, sans-serif;">/usr/bin/mysqldump</span> - Backup utility (part of the mariadb package)</div>
+<br />Configuration files</div>
+<div style="margin-left: 40px;">
+<div style="margin-left: 40px;"><span style="font-family: courier new, courier, sans-serif;">/etc/my.cnf</span> (part of the mariadb-libs package)<br /><br />
+<div style="margin-left: 40px;"><span style="font-family: courier new, courier, sans-serif;">[mysqld]</span><br /><span style="font-family: courier new, courier, sans-serif;">datadir=/var/lib/mysql</span><br /><span style="font-family: courier new, courier, sans-serif;">socket=/var/lib/mysql/mysql.sock</span><br /><span style="font-family: courier new, courier, sans-serif;">user=mysql</span><br /><span style="font-family: courier new, courier, sans-serif;"># Disabling symbolic-links is recommended to prevent assorted security risks</span><br /><span style="font-family: courier new, courier, sans-serif;">symbolic-links=0</span><br /><br /><span style="font-family: courier new, courier, sans-serif;">[mysqld_safe]</span><br /><span style="font-family: courier new, courier, sans-serif;">log-error=/var/log/mysqld.log</span><br /><span style="font-family: courier new, courier, sans-serif;">pid-file=/var/run/mysqld/mysqld.pid</span></div>
+<div style="margin-left: 40px;">&nbsp;</div>
+</div>
+<div style="margin-left: 40px;">Let's look at the files on the filesystem:</div>
+<div style="margin-left: 40px; padding-left: 30px;"><span style="font-family: courier new, courier, sans-serif;">cd /var/lib/mysql ; ls -lha</span> (Each directory is a database)</div>
+</div>
+<div>
+<p><span style="font-weight: bold;">Usage</span></p>
+<div style="margin-left: 40px;">Use a client to connect to the server and then run commands on the server.<br /><br />Connect to <span style="font-family: courier new, courier, sans-serif;">mariadb-server</span> using <span style="font-family: courier new, courier, sans-serif;">mysql</span> text-based client:<br /><span style="font-family: courier new, courier, sans-serif;">mysql -u lee.dowdle -h host -p databasename</span><br />
+<div style="margin-left: 40px;">-p = prompt for password<br />databasename = set database to "use"</div>
+<br /><strong>Creating a database:</strong></div>
+<div style="margin-left: 40px;"><br />&nbsp;&nbsp;&nbsp;&nbsp; mysql&gt; <span style="font-family: courier new, courier, sans-serif;">create database whatever;</span><br /><br /><strong>Choosing a database to use:</strong></div>
+<div style="margin-left: 40px;"><br />&nbsp;&nbsp;&nbsp;&nbsp; mysql&gt; <span style="font-family: courier new, courier, sans-serif;">show databases;</span><br />&nbsp;&nbsp;&nbsp;&nbsp; mysql&gt; <span style="font-family: courier new, courier, sans-serif;">use databasename;</span><br />&nbsp;&nbsp;&nbsp;&nbsp; mysql&gt; <span style="font-family: courier new, courier, sans-serif;">show tables;</span><br />&nbsp;&nbsp;&nbsp;&nbsp; mysql&gt; <span style="font-family: courier new, courier, sans-serif;">describe tablename;</span><br /><br /><strong>Creating a table:</strong></div>
+<div style="margin-left: 40px;"><br />&nbsp;&nbsp;&nbsp;&nbsp; See tutorial link below.</div>
+<div style="margin-left: 40px;">&nbsp;&nbsp;&nbsp;&nbsp; Example:</div>
+<p style="margin-left: 40px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mysql&gt; <span style="font-family: courier new, courier, sans-serif;">CREATE TABLE pet (name VARCHAR(20), owner VARCHAR(20),</span><br />&nbsp;&nbsp;&nbsp; -&gt; <span style="font-family: courier new, courier, sans-serif;">species VARCHAR(20), sex CHAR(1), birth DATE, death DATE);</span><br /><br />Give a user access to a database:<br />mysql&gt; <span style="font-family: courier new, courier, sans-serif;">grant all on whatever.* to user@host identified by 'password';</span><br /><br />Record actions:<br />INSERT, UPDATE, SELECT, DELETE<br /><br />Please see MySQL's <a title="MySQL Tutorial" href="http://dev.mysql.com/doc/refman/5.1/en/tutorial.html" target="_blank" rel="noopener noreferrer">tutorial</a>.</p>
+<div><strong>Backups</strong></div>
+<div style="margin-left: 40px;"><br /><span style="font-family: courier new, courier, sans-serif;">mysqldump -u root -p --all-databases --hex-blob --routines --triggers &gt; mysql-complete-backup.sql</span></div>
+<div style="margin-left: 40px;">&nbsp;&nbsp;&nbsp; &gt; = redirect output to a file since stdout is the default<br />&nbsp;&nbsp;&nbsp; You can get massive disk savings by compressing the .sql (120MB -&gt; 25MB)<br />&nbsp;&nbsp;&nbsp; Of course you can do per-user backups, see man page for full details<br />&nbsp;&nbsp;&nbsp; What kind of file is an .sql file? <span style="text-decoration: underline;">A flat text file with .sql statements.</span></div>
+<div style="margin-left: 40px;">&nbsp;</div>
+<div style="margin-left: 40px;">To import from an .sql file, just redirect from a file.&nbsp; Example:</div>
+<div style="margin-left: 40px;">&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-family: courier new, courier, sans-serif;">mysql -u user -h hostname -p databasename &lt; database.sql</span></div>
+</div>
+</body>
+</html>
