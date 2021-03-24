@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body style="font-family: 'Lato', sans-serif;">
+<div style="margin-left: 0px;"><strong>Hands On (Homework 6)<br /></strong>Screencast: <a href="https://www.cs.montana.edu/users/sdowdle/csci351/videos/25-mariadb-hands-on.webm" target="_blank" rel="noopener">25-mariadb-hands-on.webm</a> or <a href="https://www.cs.montana.edu/users/sdowdle/csci351/videos/25-mariadb-hands-on.mp4" target="_blank" rel="noopener">25-mariadb-hands-on.mp4</a></div>
+<div style="margin-left: 0px;"><strong>&nbsp;</strong></div>
+<div style="margin-left: 0px; padding-left: 30px;"><strong>Install it:</strong></div>
+<div style="margin-left: 0px; padding-left: 30px;"><strong>&nbsp;</strong></div>
+<div style="margin-left: 0px; padding-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-family: courier new, courier, sans-serif;">dnf install mariadb-server<br /></span></div>
+<div style="margin-left: 0px; padding-left: 30px;">&nbsp;</div>
+<div style="margin-left: 0px; padding-left: 30px;"><strong>Now to set it up:</strong></div>
+<div style="margin-left: 0px; padding-left: 30px;"><strong>&nbsp;</strong></div>
+<div style="margin-left: 0px; padding-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-family: courier new, courier, sans-serif;">systemctl status mariadb.service<br /></span></div>
+<div style="margin-left: 0px; padding-left: 30px;">&nbsp;</div>
+<div style="margin-left: 0px; padding-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp; Is it enabled?&nbsp; If not do:</div>
+<div style="margin-left: 0px; padding-left: 30px;">&nbsp;</div>
+<div style="margin-left: 0px; padding-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-family: courier new, courier, sans-serif;">systemctl enable mariadb.service</span></div>
+<div style="margin-left: 0px; padding-left: 30px;">&nbsp;</div>
+<div style="margin-left: 0px; padding-left: 30px;"><strong>Now start it:</strong></div>
+<div style="margin-left: 0px; padding-left: 30px;"><strong>&nbsp;</strong></div>
+<div style="margin-left: 0px; padding-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family: courier new, courier, sans-serif;"> systemctl start mariadb.service<br /></span></div>
+<div style="margin-left: 0px; padding-left: 30px;">&nbsp;</div>
+<div style="margin-left: 0px; padding-left: 30px;">Notice what appears in the log when you start it for the first time!&nbsp; (<span style="font-family: courier new, courier, sans-serif;">journalctl -u mariadb.service</span>)</div>
+<div style="margin-left: 0px; padding-left: 30px;">&nbsp;&nbsp;</div>
+<div style="margin-left: 0px; padding-left: 60px;"><em>Initializing MariaDB database:&nbsp; Installing MariaDB system tables...</em><br /><em>OK</em><br /><em>Filling help tables...</em><br /><em>OK</em><br /><br /><em>To start mariadb at boot time you have to copy</em><br /><em>support-files/mariadb.server to the right place for your system</em><br /><br /><em>PLEASE REMEMBER TO SET A PASSWORD FOR THE MariaDB root USER !</em><br /><em>To do so, start the server, then issue the following commands:</em><br /><br /><em>/usr/bin/mysqladmin -u root password 'new-password'</em><br /><em>/usr/bin/mysqladmin -u root -h sdowdle.localdomain password 'new-password'</em><br /><br /><em>Alternatively you can run:</em><br /><em>/usr/bin/mysql_secure_installation</em><br /><br /><em>which will also give you the option of removing the test</em><br /><em>databases and anonymous user created by default.&nbsp; This is</em><br /><em>strongly recommended for production servers.</em><br /><br /><em>See the manual for more instructions.</em><br /><br /><em>You can start the MariaDB daemon with:</em><br /><em>cd /usr ; /usr/bin/mysqld_safe &amp;</em><br /><br /><em>You can test the MariaDB daemon with mysql-test-run.pl</em><br /><em>cd /usr/mysql-test ; perl mysql-test-run.pl</em><br /><br /><em>Please report any problems with the /usr/bin/mysqlbug script!</em><br /><br /><em>Starting mysqld:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [&nbsp; OK&nbsp; ]</em></div>
+<div style="margin-left: 0px; padding-left: 30px;">&nbsp;&nbsp;</div>
+<div style="margin-left: 0px; padding-left: 30px;">By default a mysql root user password IS NOT set.&nbsp; You can verify this by connecting without a password:</div>
+<div style="margin-left: 0px; padding-left: 60px;"><em>&nbsp;&nbsp;</em></div>
+<div style="margin-left: 0px; padding-left: 60px;"><em>[root@kvm-dowdle ~]# mysql</em><br /><em>Welcome to the MariaDB monitor.&nbsp; Commands end with ; or \g.</em><br /><em>Your MariaDB connection id is 3</em><br /><em>Server version: 5.5.56 Source distribution</em><br /><br /><em>Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.</em><br /><br /><em>mysql&gt;</em></div>
+<div style="margin-left: 0px; padding-left: 30px;">&nbsp;&nbsp;</div>
+<div style="margin-left: 0px; padding-left: 30px;"><strong>Set a mysql root password:</strong> (replace new-password below with the desired password)</div>
+<div style="margin-left: 0px; padding-left: 30px;">&nbsp;</div>
+<div style="margin-left: 0px; padding-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-family: courier new, courier, sans-serif;">/usr/bin/mysqladmin -u root password 'new-password'</span></div>
+<div style="margin-left: 0px; padding-left: 30px;"><span style="font-family: courier new, courier, sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp; or</span></div>
+<div style="margin-left: 0px; padding-left: 30px;"><span style="font-family: courier new, courier, sans-serif;">&nbsp;&nbsp; /usr/bin/mysql_secure_installation<strong> (PREFERRED)</strong></span></div>
+<div style="margin-left: 0px; padding-left: 30px;">&nbsp;&nbsp;</div>
+<div style="margin-left: 0px; padding-left: 30px;"><strong>Restart mysqld:</strong></div>
+<div style="margin-left: 0px; padding-left: 30px;"><strong>&nbsp;</strong></div>
+<div style="margin-left: 0px; padding-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-family: courier new, courier, sans-serif;">systemctl restart mariadb.service<br /></span></div>
+<div style="margin-left: 0px; padding-left: 30px;">&nbsp;&nbsp;</div>
+<div style="margin-left: 0px; padding-left: 30px;"><strong>Verify that you can no longer connect without a password:</strong></div>
+<div style="margin-left: 0px; padding-left: 30px;">&nbsp;&nbsp;</div>
+<div style="margin-left: 0px; padding-left: 60px;"><em>[root@kvm-dowdle ~]# mysql</em><br /><em>ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: NO)</em></div>
+<div style="margin-left: 0px; padding-left: 60px;"><em>[root@kvm-dowdle ~]# mysql -p</em><br /><em>Enter password: </em><br /><em>Welcome to the MariaDB monitor.&nbsp; Commands end with ; or \g.</em><br /><em>Your MariaDB connection id is 3</em><br /><em>Server version: 5.5.56 Source distribution</em><br /><br /><em>Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.</em><br /><br /><em>mysql&gt;</em></div>
+<p style="padding-left: 30px;"><span style="font-weight: bold;"><br /></span><strong>Now let's create a new database and make a mysql user who can use it:</strong></p>
+<p style="padding-left: 60px;">mysql&gt; <span style="font-family: courier new, courier, sans-serif;">create database dowdle;<br /></span></p>
+<p style="padding-left: 60px;"><span style="font-family: courier new, courier, sans-serif;"><strong>mysql&gt;</strong> grant all on dowdle.* to <a href="mailto:dowdle@localhost">dowdle@localhost</a> identified by 'password';<br /></span></p>
+<p style="padding-left: 30px;"><span style="font-family: arial, helvetica, sans-serif;"><strong>Now exit the mysql client as the mysql root user and try to connect as your new user to their database.&nbsp; Does it work?</strong></span></p>
+<p style="padding-left: 30px;"><strong>Import existing tables / data:</strong></p>
+<p style="padding-left: 60px;">If you look in <span style="font-family: courier new, courier, sans-serif;">/public</span> on the course server you will find a file named <span style="font-family: courier new, courier, sans-serif;">mysqlsampledatabase.sql. <span style="font-family: arial, helvetica, sans-serif;">scp that file to your student VM.&nbsp; Have a look at the file and you'll see it is just a flat text file full of comments and SQL statements to create a database (if it doesn't already exist), create tables and then insert records into the tables.&nbsp; It is basically the output of a mysqldump backup.&nbsp; <span style="text-decoration: underline;">Edit the file with your preferred editor and search/replace every occurance of classicmodels with your last name.</span>&nbsp; Import it into your user database by using a command that takes the following form:</span></span></p>
+<p style="padding-left: 90px;"><span style="font-family: courier new, courier, sans-serif;">mysql -u dowdle -p &lt; mysqlsampledatabase.sql</span></p>
+<p style="padding-left: 60px;"><span style="font-family: arial, helvetica, sans-serif;">Then connect to the database and see what's there.</span></p>
+<p style="padding-left: 90px;"><span style="font-family: courier new, courier, sans-serif;"><span style="font-size: 12pt;">mysql -u dowdle -p dowdle</span><br /><span style="font-size: 12pt;"><strong>MariaDB&gt;</strong> show tables ;</span><br /><span style="font-size: 12pt;">describe customers ;</span><br /><span style="font-size: 12pt;"><strong>MariaDB&gt;</strong> select customerNumber, customerName, creditLimit from customers where creditLimit &gt; 125000;<br /><span style="font-family: arial, helvetica, sans-serif;">Update a record:</span><br /><strong>MariaDB&gt;</strong> update customers set creditLimit='500000' where customerNumber=298;<br /><span style="font-family: arial, helvetica, sans-serif;">Verify it updated:</span><br /><strong>MariaDB&gt;</strong> select customerNumber, customerName, creditLimit from customers where creditLimit &gt; 125000;<br /></span></span><span style="font-family: courier new, courier, sans-serif;"></span><span style="font-family: courier new, courier, sans-serif;"></span><span style="font-family: courier new, courier, sans-serif;"></span><span style="font-family: courier new, courier, sans-serif;"></span><span style="font-family: courier new, courier, sans-serif;"></span></p>
+<p style="padding-left: 30px;"><strong>Backup an existing database:</strong></p>
+<p style="padding-left: 60px;">Exit the mariadb client if you are connected and run the following command to back up the database:</p>
+<p style="padding-left: 90px;"><span style="font-family: courier new, courier, sans-serif;">mysqldump --databases dowdle -u dowdle -p \</span><br /><span style="font-family: courier new, courier, sans-serif;">&nbsp;&nbsp; --hex-blob --routines --triggers &gt; /backup/dowdle-$(date +%Y%m%d).sql</span></p>
+<p style="padding-left: 90px;"><span style="font-family: arial, helvetica, sans-serif;">That assumes you did homework 2 and have a <span style="font-family: courier new, courier, sans-serif;">/backup</span> mount to copy it to.</span></p>
+<p style="padding-left: 30px;"><strong>When done to submit for homework check, scp /public/homework<em>6</em>.txt on the course server to /root/HOMEWORK/ on your student VM.</strong></p>
+</body>
+</html>

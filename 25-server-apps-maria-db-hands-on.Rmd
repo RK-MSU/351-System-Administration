@@ -1,0 +1,161 @@
+# MariaDB (hands-on)
+
+__Related Resources__:
+
+| Type | Content |
+| :-- | :-- |
+| Screencast | [25-mariadb-hands-on.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/25-mariadb-hands-on.webm)`r newLine()`[25-mariadb-hands-on.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/25-mariadb-hands-on.mp4) |
+| Original Docs | [HTML](25/homework6.html) - [PDF](25/Thursday - 25MAR - Server apps_ MariaDB Hands-on [Homework 6] - Systems Administration.pdf) |
+
+
+## Install it
+ 
+```bash
+dnf install mariadb-server
+```
+ 
+## Now to set it up
+
+```bash
+systemctl status mariadb.service
+```
+
+Is it enabled?  If not do:
+
+```bash
+systemctl enable mariadb.service
+```
+
+## Now start it
+
+```bash
+systemctl start mariadb.service
+```
+
+Notice what appears in the log when you start it for the first time!  (journalctl -u mariadb.service)
+  
+Initializing MariaDB database:  Installing MariaDB system tables...
+OK
+Filling help tables...
+OK
+
+To start mariadb at boot time you have to copy
+support-files/mariadb.server to the right place for your system
+
+PLEASE REMEMBER TO SET A PASSWORD FOR THE MariaDB root USER !
+To do so, start the server, then issue the following commands:
+
+/usr/bin/mysqladmin -u root password 'new-password'
+/usr/bin/mysqladmin -u root -h sdowdle.localdomain password 'new-password'
+
+Alternatively you can run:
+/usr/bin/mysql_secure_installation
+
+which will also give you the option of removing the test
+databases and anonymous user created by default.  This is
+strongly recommended for production servers.
+
+See the manual for more instructions.
+
+You can start the MariaDB daemon with:
+cd /usr ; /usr/bin/mysqld_safe &
+
+You can test the MariaDB daemon with mysql-test-run.pl
+cd /usr/mysql-test ; perl mysql-test-run.pl
+
+Please report any problems with the /usr/bin/mysqlbug script!
+
+Starting mysqld:                                           [  OK  ]
+
+
+By default a mysql root user password IS NOT set.  You can verify this by connecting without a password:
+
+```bash  
+[root@kvm-dowdle ~]# mysql
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 3
+Server version: 5.5.56 Source distribution
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql>
+```
+
+## Set a mysql root password
+
+> replace new-password below with the desired password
+
+```bash
+/usr/bin/mysqladmin -u root password 'new-password'
+```
+
+_or_
+
+```bash
+/usr/bin/mysql_secure_installation (PREFERRED)
+```
+
+## Restart mysqld
+
+```bash
+systemctl restart mariadb.service
+```
+
+### Verify that you can no longer connect without a password
+
+```bash
+[root@kvm-dowdle ~]# mysql
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: NO)
+[root@kvm-dowdle ~]# mysql -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 3
+Server version: 5.5.56 Source distribution
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql>
+```
+
+### Now let's create a new database and make a mysql user who can use it
+
+```bash
+mysql> create database dowdle;
+
+mysql> grant all on dowdle.* to dowdle@localhost identified by 'password';
+```
+
+### Now exit the mysql client as the mysql root user and try to connect as your new user to their database. Does it work?
+
+__Import existing tables / data__:
+
+If you look in /public on the course server you will find a file named mysqlsampledatabase.sql. scp that file to your student VM.  Have a look at the file and you'll see it is just a flat text file full of comments and SQL statements to create a database (if it doesn't already exist), create tables and then insert records into the tables.  It is basically the output of a mysqldump backup.  Edit the file with your preferred editor and search/replace every occurance of classicmodels with your last name.  Import it into your user database by using a command that takes the following form:
+
+```bash
+mysql -u dowdle -p < mysqlsampledatabase.sql
+```
+
+__Then connect to the database and see what's there__.
+
+```bash
+mysql -u dowdle -p dowdle
+MariaDB> show tables ;
+describe customers ;
+MariaDB> select customerNumber, customerName, creditLimit from customers where creditLimit > 125000;
+Update a record:
+MariaDB> update customers set creditLimit='500000' where customerNumber=298;
+Verify it updated:
+MariaDB> select customerNumber, customerName, creditLimit from customers where creditLimit > 125000;
+```
+
+__Backup an existing database__:
+
+Exit the mariadb client if you are connected and run the following command to back up the database:
+
+```bash
+mysqldump --databases dowdle -u dowdle -p --hex-blob --routines --triggers > /backup/dowdle-$(date +%Y%m%d).sql
+```
+
+That assumes you did homework 2 and have a /backup mount to copy it to.
+
+__When done to submit for homework check, scp /public/homework6.txt on the course server to /root/HOMEWORK/ on your student VM__.
