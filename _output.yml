@@ -1,7 +1,7 @@
 bookdown::gitbook:
   css: style.css
   number_sections: no
-  split_by: none
+  split_by: chapter
   config:
     search: false
     sharing: false

@@ -1,4 +1,4 @@
-# Server Apps: MariaDB (intro)
+# 24 - Server Apps: MariaDB (intro)  {#unit-24}
 
 __Related Resources__:
 

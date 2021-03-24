@@ -1,4 +1,4 @@
-# Command Line Potpourri
+# 10 - Command Line Potpourri {#unit-10}
 
 Screencast: [10-cli-potpourri.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/10-cli-potpourri.webm)
  or 

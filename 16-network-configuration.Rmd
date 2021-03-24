@@ -1,4 +1,4 @@
-# Network Configuration
+# 16 - Network Configuration {#unit-16}
 
 __Screencast__: [16-networking.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/16-networking.webm) or [16-networking.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/16-networking.mp4)
 
