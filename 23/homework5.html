@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body style="font-family: 'Lato', sans-serif;">
+<p><strong>Screencast:</strong>&nbsp;<a href="https://www.cs.montana.edu/users/sdowdle/csci351/videos/23-apache-hands-on.webm" target="_blank" rel="noopener">23-apache-hands-on.webm</a> or&nbsp;<a href="https://www.cs.montana.edu/users/sdowdle/csci351/videos/23-apache-hands-on.mp4" target="_blank" rel="noopener">23-apache-hands-on.mp4</a></p>
+<p><strong>Goals for this hands on (aka Homework 5)<br /></strong></p>
+<p>We are going to do a few of the most common Apache configuration changes:</p>
+<ul>
+<li>Verify that apache (httpd) is installed and running</li>
+<li>We are going to enable user directories which allows users to create a directory within their home directory that apache can access with a ~username reference (Example: <a href="http://www.cs.montana.edu/~sdowdle)">http://www.cs.montana.edu/~sdowdle)</a></li>
+<li>We are going to create a virtualhost as an example of a single apache server hosting multiple domain names</li>
+<li>Lastly we are going to install PHP and make sure it is working with apache</li>
+</ul>
+<p><strong><span style="text-decoration: underline;">All work is done on your own student VM.&nbsp; Note, when you see "<em>xx"</em>&nbsp; or "lastname" below,&nbsp; you'll want to alter the content to reflect your own information.</span></strong></p>
+<p><strong>Getting Started</strong></p>
+<p>Is apache installed? (<span style="font-family: courier new, courier, sans-serif;">rpm -q httpd</span>)&nbsp; If not, install it<br /><span style="font-family: courier new, courier, sans-serif;">dnf&nbsp; install httpd --refresh</span></p>
+<p>Is it set to run?&nbsp; (<span style="font-family: courier new, courier, sans-serif;">systemctl status httpd.service</span>)&nbsp; If not, set enable it (<span style="font-family: courier new, courier, sans-serif;">systemctl enable httpd.service</span>).<br />Is it running?&nbsp; (<span style="font-family: courier new, courier, sans-serif;">systemctl status httpd.service</span>)&nbsp; If it isn't running, start it. (<span style="font-family: courier new, courier, sans-serif;">systemctl start httpd.service</span>)</p>
+<p>Verify your web server is working from the course server (links <a href="http://kvm-dowdle" target="_self">http://kvm-dowdle</a>) [your name]</p>
+<p><strong>Refresher on firewalld</strong><br />Did it work?&nbsp; It shouldn't have because we have not opened up our VM's firewall yet.&nbsp; <br />&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-family: courier new, courier, sans-serif;">firewall-cmd --list-all</span> (shows what's open so far, shouldn't see http or https yet)<br />&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-family: courier new, courier, sans-serif;">firewall-cmd --add-service=http ; firewall-cmd --add-service=http --permanent</span><br />&nbsp;&nbsp;&nbsp;<span style="font-family: courier new, courier, sans-serif;"> firewall-cmd --list-all</span> (Look good now?)</p>
+<p>Try again (from the course server):<br />&nbsp;&nbsp;&nbsp;&nbsp; links <a href="http://kvm-dowdle" target="_self">http://kvm-dowdle</a> [your name]<br />Working now?</p>
+<p>What showed up?</p>
+<p>Look at <span style="font-family: courier new, courier, sans-serif;">/etc/httpd/conf.d/welcome.conf</span> and do what it says to disable the welcome page.</p>
+<p>Restart apache (<span style="font-family: courier new, courier, sans-serif;">systemctl restart httpd</span>)</p>
+<p>Now browse to it again (links <a href="http://kvm-dowdle" target="_self">http://kvm-dowdle</a>) [your name]</p>
+<p>What changed?</p>
+<p>Create an index page for your DocumentRoot:<br />&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-family: courier new, courier, sans-serif;">nano -w /var/www/html/index.html</span><br />Put inside of it "This is the web page for the default domain".</p>
+<p>UserDir</p>
+<div>Make a backup copy of your <span style="font-family: courier new, courier, sans-serif;">/etc/httpd/conf.d/userdir.conf</span> file.&nbsp; Do NOT end the backup filename in .conf or it will still be used by Apache.<br />Edit the <span style="font-family: courier new, courier, sans-serif;">/etc/httpd/conf.d/userdir.conf</span> file. Find the line that says:<br />
+<div><span style="font-family: courier new, courier, sans-serif;">UserDir disable</span></div>
+...and add a # to the front of it. Find the line that says:<br />
+<div><span style="font-family: courier new, courier, sans-serif;">#UserDir public_html</span></div>
+...and remove the comment.</div>
+<div></div>
+<div><strong>SELinux Booleans that need to be changed:</strong></div>
+<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-family: courier new, courier, sans-serif;">getsebool -a | grep httpd</span></div>
+<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Need to enable <strong>httpd_enable_homedirs</strong> and <strong>httpd_read_user_content</strong></div>
+<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-family: courier new, courier, sans-serif;">setsebool -P httpd_enable_homedirs on</span></div>
+<div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; <span style="font-family: courier new, courier, sans-serif;">setsebool -P httpd_read_user_content on</span></div>
+</div>
+<div><br />Restart apache (<span style="font-family: courier new, courier, sans-serif;">systemctl restart httpd.service</span>)<br />Now create a public_html directory in one of your user directory as your user<br />
+<div><span style="font-family: courier new, courier, sans-serif;">mkdir /home/lastname/public_html</span></div>
+Make sure the permissions on your user's home directory are at least 711.<br />Make sure the permissions on the <span style="font-family: courier new, courier, sans-serif;">public_html</span> directory are at least 755.<br />Create an <span style="font-family: courier new, courier, sans-serif;">index.html</span> page inside of <span style="font-family: courier new, courier, sans-serif;">public_html</span>.<br />Browse to it:<br />
+<div><span style="font-family: courier new, courier, sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp; links&nbsp;<a href="http://kvm-dowdle/~dowdle" target="_self">http://kvm-lastname/~lastname</a></span></div>
+</div>
+<p>VirtualHost</p>
+<div>We will create a fake (i.e. using <span style="font-family: courier new, courier, sans-serif;">/etc/hosts</span> for DNS resolution) host / domain named <a href="/content/enforced1/474906-CSCI_351_001_201830/www.testdomain1.com?_&amp;d2lSessionVal=1FPfdIfpaKfkRxAtoVX5w2w4p&amp;ou=474906">www.testdomain1.com</a>.</div>
+<div>&nbsp;</div>
+<div>Edit the <span style="font-family: courier new, courier, sans-serif;">/etc/hosts</span> file and add the following line:</div>
+<div>&nbsp;</div>
+<div><span style="font-family: courier new, courier, sans-serif;">192.168.122.1xx &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="/content/enforced1/474906-CSCI_351_001_201830/www.testdomain1.com?_&amp;d2lSessionVal=1FPfdIfpaKfkRxAtoVX5w2w4p&amp;ou=474906">www.testdomain1.com</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; testdomain1</span><br /><span style="font-family: courier new, courier, sans-serif;">192.168.122.1xx &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; kvm-lastname.localdomain&nbsp;&nbsp;&nbsp;&nbsp; kvm-lastname</span></div>
+<div></div>
+<div>You can find your ip address by looking at the output of the following command as root on your student VM:</div>
+<div>&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-family: courier new, courier, sans-serif;">ip add</span></div>
+<div>Or by looking in <span style="font-family: courier new, courier, sans-serif;">/etc/sysconfig/network-scripts/ifcfg-eth0</span></div>
+<div>&nbsp;</div>
+<div>Now we need to edit the <span style="font-family: courier new, courier, sans-serif;">/etc/httpd/conf/httpd.conf</span> to enable VirtualHosts and add to virtualhost references... one for the default host and one for our new virutal domain.</div>
+<div>&nbsp;</div>
+<div>Edit <span style="font-family: courier new, courier, sans-serif;">/etc/httpd/conf/httpd.conf</span> and add the following lines at the bottom of the configuration:</div>
+<div><br />
+<div><span style="font-family: courier new, courier, sans-serif;">&lt;VirtualHost 192.168.122.1xx:80&gt;</span></div>
+<div><span style="font-family: courier new, courier, sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp; ServerName kvm-lastname.localdomain</span></div>
+<div><span style="font-family: courier new, courier, sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp; DocumentRoot /var/www/html</span></div>
+<div><span style="font-family: courier new, courier, sans-serif;">&lt;/VirtualHost&gt;</span></div>
+<div>&nbsp;</div>
+<div><span style="font-family: courier new, courier, sans-serif;">&lt;VirtualHost 192.168.122.1xx:80&gt;<br /></span></div>
+<div>
+<div><span style="font-family: courier new, courier, sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp; ServerName <a href="/content/enforced1/474906-CSCI_351_001_201830/www.testdomain1.com?_&amp;d2lSessionVal=1FPfdIfpaKfkRxAtoVX5w2w4p&amp;ou=474906">www.testdomain1.com</a></span><br /><span style="font-family: courier new, courier, sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp; DocumentRoot /var/www/testdomain1</span><br /><span style="font-family: courier new, courier, sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp; CustomLog logs/testdomain1-access_log combined</span><br /><span style="font-family: courier new, courier, sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp; ErrorLog logs/testdomain1-error_log</span></div>
+</div>
+<div><span style="font-family: courier new, courier, sans-serif;">&lt;/VirtualHost&gt;</span></div>
+<div>&nbsp;</div>
+Make sure any DocumentRoot directories you refer to exist:</div>
+<div><br />
+<div><span style="font-family: courier new, courier, sans-serif;">mkdir /var/www/testdomain1</span></div>
+<div>&nbsp;</div>
+</div>
+<div>Put an <span style="font-family: courier new, courier, sans-serif;">index.html</span> page in the <span style="font-family: courier new, courier, sans-serif;">testdomain1</span> directory</div>
+<div>&nbsp;</div>
+<div>&nbsp; <span style="font-family: courier new, courier, sans-serif;">nano -w /var/www/testdomain1/index.html</span></div>
+<div>&nbsp; Add to it the line "Hello from testdomain1" and save.</div>
+<div><br />Restart the webserver (<span style="font-family: courier new, courier, sans-serif;">systemctl restart httpd.service</span>)<br /><br />Browse to your new domain<br />
+<div><span style="font-family: courier new, courier, sans-serif;">links </span><a href="/content/enforced1/474906-CSCI_351_001_201830/www.testdomain1.com?_&amp;d2lSessionVal=1FPfdIfpaKfkRxAtoVX5w2w4p&amp;ou=474906"><span style="font-family: courier new, courier, sans-serif;">www.testdomain1.com</span></a></div>
+<div></div>
+<div>Did it work?</div>
+</div>
+<p><strong>Installing PHP</strong></p>
+<div><span style="font-family: courier new, courier, sans-serif;">dnf install php</span></div>
+<div><span style="font-family: courier new, courier, sans-serif;"><span style="font-family: arial, helvetica, sans-serif;"></span></span></div>
+<div><span style="font-family: courier new, courier, sans-serif;"><span style="font-family: arial, helvetica, sans-serif;">After installing php do the following:</span> systemctl enable --now php-fpm.service</span></div>
+<div></div>
+<div>Restart the webserver (<span style="font-family: courier new, courier, sans-serif;">systemctl restart httpd.service</span>)</div>
+<div><br />Put an <span style="font-family: courier new, courier, sans-serif;">index.php</span> page into <span style="font-family: courier new, courier, sans-serif;">/var/www/testdomain1</span> and put inside it the following:</div>
+<div><br />
+<div><span style="font-family: courier new, courier, sans-serif;">&lt;?PHP</span><br />
+<div><span style="font-family: courier new, courier, sans-serif;">phpinfo();</span></div>
+<span style="font-family: courier new, courier, sans-serif;">?&gt;</span></div>
+</div>
+<div></div>
+<div>Browse to the new domain again. Did it work?&nbsp; Why not?</div>
+<div>Let's try our default domain instead.</div>
+<div></div>
+<div>Create an <span style="font-family: courier new, courier, sans-serif;">index.php</span> file in <span style="font-family: courier new, courier, sans-serif;">/var/www/html/</span> and put in the same sample php code shown above and then browse to your default domain.</div>
+<div>&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-family: courier new, courier, sans-serif;">links </span><a href="http://localhost/"><span style="font-family: courier new, courier, sans-serif;">http://localhost/</span></a> &nbsp; or <span style="font-family: courier new, courier, sans-serif;">links <a href="http://kvm-dowdle/">http://kvm-lastname/</a></span></div>
+<div></div>
+<div>Which page showed up?&nbsp; The <span style="font-family: courier new, courier, sans-serif;">index.html</span> or the <span style="font-family: courier new, courier, sans-serif;">index.php</span> page?</div>
+<div></div>
+<div>Now explicitly browse to the <span style="font-family: courier new, courier, sans-serif;">index.php</span> page.</div>
+<div>&nbsp;&nbsp;&nbsp; <span style="font-family: courier new, courier, sans-serif;">links </span><a href="http://localhost/index.php"><span style="font-family: courier new, courier, sans-serif;">http://localhost/index.php</span></a> or <span style="font-family: courier new, courier, sans-serif;">links <a href="http://kvm-dowdle/index.php">http://kvm-lastname/index.php</a></span></div>
+<div></div>
+<div>Did it work?</div>
+<div><strong>&nbsp;</strong></div>
+<div><strong>Submitting Homework 5<br /></strong></div>
+<div>&nbsp;</div>
+<div>You can find the instructions here as <span style="font-family: courier new, courier, sans-serif;">/public/homework5.txt</span> on the course server.&nbsp; Feel free to copy it over to <span style="font-family: courier new, courier, sans-serif;">/root/HOMEWORK/</span> on your student VM.</div>
+</body>
+</html>
