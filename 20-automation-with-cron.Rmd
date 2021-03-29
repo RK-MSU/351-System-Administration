@@ -22,18 +22,77 @@ __Related Resources__:
 
 ```bash
 [root@dowdle ~]# cat /etc/crontab # (examine output)
+SHELL=/bin/bash
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+MAILTO=root
+
+# For details see man 4 crontabs
+
+# Example of job definition:
+# .---------------- minute (0 - 59)
+# |  .------------- hour (0 - 23)
+# |  |  .---------- day of month (1 - 31)
+# |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...
+# |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
+# |  |  |  |  |
+# *  *  *  *  * user-name  command to be executed
 ```
 
 `cronie` package: An enhanced vixie-cron that provides cron service
 
 ```bash
 [root@dowdle ~]# rpm -ql cronie # (examine output)
+/etc/cron.d
+/etc/cron.d/0hourly
+/etc/cron.deny
+/etc/pam.d/crond
+/etc/sysconfig/crond
+/lib/systemd/system/crond.service
+/usr/bin/cronnext
+/usr/bin/crontab
+/usr/lib/.build-id
+/usr/lib/.build-id/20
+/usr/lib/.build-id/20/75713ea7f508632d8eb2af3c51ec59acc4aa52
+/usr/lib/.build-id/32
+/usr/lib/.build-id/32/811aea404298dee14ad8fd0b7b34cc9c001dab
+/usr/lib/.build-id/f8
+/usr/lib/.build-id/f8/e879a884df9d2370d9d1c14f2d2ccfa24fcf79
+/usr/sbin/crond
+/usr/share/doc/cronie
+/usr/share/doc/cronie/AUTHORS
+/usr/share/doc/cronie/ChangeLog
+/usr/share/doc/cronie/README
+/usr/share/licenses/cronie
+/usr/share/licenses/cronie/COPYING
+/usr/share/man/man1/cronnext.1.gz
+/usr/share/man/man1/crontab.1.gz
+/usr/share/man/man5/crontab.5.gz
+/usr/share/man/man8/cron.8.gz
+/usr/share/man/man8/crond.8.gz
+/var/spool/cron
 ```
 
-- What is the daemon binary?
-- The service control script?
-- Config files?
-- Documentation?
+> Note: Directory that `cron` files are stored in is `/var/spool/cron`
+
+__What is the daemon binary?__ - `usr/sbin/crond` - system.d file
+
+__The service control script?__
+
+__Config files?__
+
+```bash
+$ rpm -qc cronie
+/etc/cron.d/0hourly
+/etc/cron.deny
+/etc/pam.d/crond
+/etc/sysconfig/crond
+
+$ rpm -qc crontabs
+/etc/crontab
+/etc/sysconfig/run-parts
+```
+
+__Documentation?__
 
 ## CRON Access Control
 

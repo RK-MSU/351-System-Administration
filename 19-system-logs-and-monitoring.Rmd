@@ -5,7 +5,6 @@ __Related Resources__:
 
 | Type | Content |
 | :-- | :-- |
-| Screencast | [19-logging.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/19-logging.webm)`r newLine()`[19-logging.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/19-logging.mp4) |
 | Original Docs | [PDF](19/Tuesday - 09MAR - System logs & Monitoring - Systems Administration.pdf) - [HTML](19/logging-and-monitoring.html) |
 | Resources | -LaUSAH - Chapter 10, Logging`r newLine()`-RHEL7 System Aministrators Guide, Chapter 23, Viewing and Managing Log Files (PDF in weekly content) |
 
