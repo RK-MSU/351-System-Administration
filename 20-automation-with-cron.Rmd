@@ -74,11 +74,13 @@ MAILTO=root
 
 > Note: Directory that `cron` files are stored in is `/var/spool/cron`
 
-__What is the daemon binary?__ - `usr/sbin/crond` - system.d file
+__What is the daemon binary?__ - `usr/sbin/crond`
 
-__The service control script?__
+__The service control script?__ - `/lib/systemd/system/crond.service`
 
-__Config files?__
+> `rpm -ql cronie | grep systemd`
+
+__Config files?__ 
 
 ```bash
 $ rpm -qc cronie
@@ -92,15 +94,15 @@ $ rpm -qc crontabs
 /etc/sysconfig/run-parts
 ```
 
-__Documentation?__
+__Documentation?__ - `rpm -qd cronie`
 
 ## CRON Access Control
 
 From _crontab (1)_:
 
-- If the cron.allow file exists, then you must be listed therein in order to be allowed to use this command.
-- If the cron.allow file does not exist but the cron.deny file does exist, then you must not be listed in the cron.deny file in order to use this command.
-- If neither of these files exists, only the super user will be allowed to use this command.
+- If the __cron.allow__ file exists, then you _must be listed therein_ in order to be allowed to use this command.
+- If the __cron.allow__ file does not exist but the __cron.deny__ file does exist, then you must not be listed in the __cron.deny__ file in order to use this command.
+- If neither of these files exists, _only the super user_ will be allowed to use this command.
 
 ## Thus Says the Man Pages
 
