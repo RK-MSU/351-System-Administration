@@ -19,52 +19,52 @@ github-repo: "RK311y/351-System-Administration"
 
 # Welcome
 
-## Course Schedual
+<!-- ## Course Schedual -->
 
-### Week 1
+<!-- ### Week 1 -->
 
-__Lectures__
+<!-- __Lectures__ -->
 
-- [Introduction](#unit-01)
-- [History - Unix, Free Software and Linux](#unit-02)
-- [What is a Linux Distribution](#unit-03)
-- [What is a System Administrator](#unit-04)
+<!-- - [Introduction](#unit-01) -->
+<!-- - [History - Unix, Free Software and Linux](#unit-02) -->
+<!-- - [What is a Linux Distribution](#unit-03) -->
+<!-- - [What is a System Administrator](#unit-04) -->
 
-__Readings__
+<!-- __Readings__ -->
 
-- __TLCL__
-  - [Ch.1 What is the Shell? - Ch.2 Navigation](assets/weekly-readings/week1/TLCL-week1.pdf)
-- [The Daemon, the GNU, and the Penguin](assets/weekly-readings/week1/The_Daemon_the_GNU_and_the_Penguin.pdf)
+<!-- - __TLCL__ -->
+<!--   - [Ch.1 What is the Shell? - Ch.2 Navigation](assets/weekly-readings/week1/TLCL-week1.pdf) -->
+<!-- - [The Daemon, the GNU, and the Penguin](assets/weekly-readings/week1/The_Daemon_the_GNU_and_the_Penguin.pdf) -->
 
-### Week 2
+<!-- ### Week 2 -->
 
-__Lectures__
+<!-- __Lectures__ -->
 
-- [Installing Linux](#unit-05)
-- [CLI Use](#util-06)
+<!-- - [Installing Linux](#unit-05) -->
+<!-- - [CLI Use](#util-06) -->
 
-__Readings__
+<!-- __Readings__ -->
 
-- __TLCL__
-  - [Ch.3 Exploring the System](assets/weekly-readings/week2/TLCL-week2.pdf)
+<!-- - __TLCL__ -->
+<!--   - [Ch.3 Exploring the System](assets/weekly-readings/week2/TLCL-week2.pdf) -->
 
-### Week 3
+<!-- ### Week 3 -->
 
-__Lectures__
+<!-- __Lectures__ -->
 
-- [User Accounts](#unit-07)
-- [Hard disks, Partitions, and Filesystems](#unit-08)
-- [Linux Filesystem Hierarchy](#unit-09)
+<!-- - [User Accounts](#unit-07) -->
+<!-- - [Hard disks, Partitions, and Filesystems](#unit-08) -->
+<!-- - [Linux Filesystem Hierarchy](#unit-09) -->
 
-__Readings__
+<!-- __Readings__ -->
 
-- __TLCL__
-  - [Ch.3 Exploring the System](assets/weekly-readings/week2/TLCL-week2.pdf)
-
-
+<!-- - __TLCL__ -->
+<!--   - [Ch.3 Exploring the System](assets/weekly-readings/week2/TLCL-week2.pdf) -->
 
 
-| Course Schedual |
+
+
+| Course Schedule |
 | :-- |
 | __Week 4__ |
 | - Command Line Potpourri`r newLine()`- Understanding File/Dir Ownership and Permissions |
