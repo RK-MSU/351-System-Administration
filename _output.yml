@@ -15,6 +15,6 @@ bookdown::gitbook:
       scroll_highlight: yes
 #      toc_float: true
       before: |
-        <li><a href="./index.html">System Administration</a></li>
+        <li><a href="./">System Administration</a></li>
 #      after: |
 #        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
