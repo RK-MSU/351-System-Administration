@@ -1,5 +1,5 @@
 --- 
-title: "CSCI-351 System Administration"
+title: "CSCI-351: System Administration"
 subtitle: "Montana State University" 
 # author: "Yihui Xie"
 date: "Spring 2021" #"`r Sys.Date()`"
@@ -8,7 +8,13 @@ documentclass: book
 bibliography: [book.bib] #, packages.bib]
 biblio-style: apalike
 link-citations: yes
-description: "Course Contents CSCI 351"
+description: "CSCI-351: Course Contents"
+url: 'https\://rk311y.github.io/351-System-Administration/'
+github-repo: "RK311y/351-System-Administration"
+#cover-image: "images/cover.png"
+#apple-touch-icon: "touch-icon.png"
+#apple-touch-icon-size: 120
+#favicon: "favicon.ico"
 ---
 
 # Welcome

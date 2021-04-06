@@ -17,6 +17,19 @@ library(callr)
 library(remedy)
 
 
+# create .nojekyll (used to prevent github pages rendering) --------------------
+
+# check if docs directory exists, if not, create it
+if(!dir.exists("docs")) {
+  dir.create("docs")
+}
+
+# check if .nojekyll file exists
+# if(!file.exists("docs/.nojekyll")) {
+#   write("", file = "docs/.nojekyll")
+# }
+
+
 # knitr chunk options ----------------------------------------------------------
 knitr::opts_chunk$set(
   #  comment = "#>",

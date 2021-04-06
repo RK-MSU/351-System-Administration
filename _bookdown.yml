@@ -4,6 +4,9 @@ output: bookdown::gitbook
 output_dir: "docs"
 clean: ["docs"]
 before_chapter_script: ["_common.R"]
-#language:
-#  ui:
-#    chapter_name: "Chapter "
+# after_chapter_script: "script3.R"
+view: https://github.com/RK-MSU/351-System-Administration/blob/main/%s
+edit: https://github.com/RK-MSU/351-System-Administration/edit/main/%s
+language:
+  ui:
+    chapter_name: "Chapter "

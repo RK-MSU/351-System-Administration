@@ -3,13 +3,16 @@ bookdown::gitbook:
   number_sections: no
   split_by: chapter
   config:
-    search: false
-    sharing: false
-    info: false
+    edit: 
+    search: no
+    sharing: no
+    info: no
+    toolbar:
+      position: fixed
     toc:
       collapse: section
       toc_depth: 4
-      scroll_highlight: true
+      scroll_highlight: yes
 #      toc_float: true
       before: |
         <li><a href="./">System Administration</a></li>
