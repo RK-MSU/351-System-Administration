@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>10 - Command Line Potpourri | CSCI-351: System Administration</title>
+  <meta name="description" content="CSCI-351: Course Contents" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="10 - Command Line Potpourri | CSCI-351: System Administration" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://rk311y.github.io/351-System-Administration/" />
+  
+  <meta property="og:description" content="CSCI-351: Course Contents" />
+  <meta name="github-repo" content="RK311y/351-System-Administration" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="10 - Command Line Potpourri | CSCI-351: System Administration" />
+  
+  <meta name="twitter:description" content="CSCI-351: Course Contents" />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="unit-09.html"/>
+<link rel="next" href="unit-11.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">System Administration</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-schedual"><i class="fa fa-check"></i>Course Schedual</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#week-1"><i class="fa fa-check"></i>Week 1</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#week-2"><i class="fa fa-check"></i>Week 2</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#week-3"><i class="fa fa-check"></i>Week 3</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="unit-01.html"><a href="unit-01.html"><i class="fa fa-check"></i>01 - Introduction</a></li>
+<li class="chapter" data-level="" data-path="unit-02.html"><a href="unit-02.html"><i class="fa fa-check"></i>02 - History - Unix, Free Software and Linux</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-02.html"><a href="unit-02.html#in-the-beginning"><i class="fa fa-check"></i>In the Beginning</a></li>
+<li class="chapter" data-level="" data-path="unit-02.html"><a href="unit-02.html#the-industry-evolves"><i class="fa fa-check"></i>The Industry Evolves</a></li>
+<li class="chapter" data-level="" data-path="unit-02.html"><a href="unit-02.html#birth-of-unix-at-att-bell-labs-1969"><i class="fa fa-check"></i>Birth of UNIX at AT&amp;T Bell Labs (1969)</a></li>
+<li><a href="unit-02.html#richard-stallman-rms"><span>Richard Stallman</span> (RMS)</a></li>
+<li class="chapter" data-level="" data-path="unit-02.html"><a href="unit-02.html#berkeley-software-distribution-bsd"><i class="fa fa-check"></i>Berkeley Software Distribution (BSD)</a></li>
+<li><a href="unit-02.html#andrew-s.-tanenbaum-ast"><span>Andrew S. Tanenbaum</span> (AST)</a></li>
+<li><a href="unit-02.html#linus-torvalds"><span>Linus Torvalds</span></a></li>
+<li><a href="unit-02.html#why-red-hat-enterprise-linux">Why <span>Red Hat</span> Enterprise Linux?</a></li>
+<li><a href="unit-02.html#why-centos">Why <span>CentOS</span>?</a></li>
+<li><a href="unit-02.html#why-fedora">Why <span>Fedora</span>?</a></li>
+<li class="chapter" data-level="" data-path="unit-02.html"><a href="unit-02.html#open-source-open-source-inititive"><i class="fa fa-check"></i>Open Source (Open Source Inititive)</a></li>
+<li class="chapter" data-level="" data-path="unit-02.html"><a href="unit-02.html#things-to-ponder"><i class="fa fa-check"></i>Things to Ponder</a></li>
+<li class="chapter" data-level="" data-path="unit-02.html"><a href="unit-02.html#tlcl-book-put-it-like-this"><i class="fa fa-check"></i>TLCL book put it like this:</a></li>
+<li class="chapter" data-level="" data-path="unit-02.html"><a href="unit-02.html#references"><i class="fa fa-check"></i>REFERENCES:</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="unit-03.html"><a href="unit-03.html"><i class="fa fa-check"></i>03 - What is a Linux Distribution</a></li>
+<li class="chapter" data-level="" data-path="unit-04.html"><a href="unit-04.html"><i class="fa fa-check"></i>04 - What is a System Administrator</a></li>
+<li class="chapter" data-level="" data-path="unit-05.html"><a href="unit-05.html"><i class="fa fa-check"></i>05 - Installing Linux</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-05.html"><a href="unit-05.html#types-of-media"><i class="fa fa-check"></i>Types of Media</a></li>
+<li class="chapter" data-level="" data-path="unit-05.html"><a href="unit-05.html#xubuntu-live-media-install"><i class="fa fa-check"></i>Xubuntu (Live Media Install)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="unit-06.html"><a href="unit-06.html"><i class="fa fa-check"></i>06 - CLI Use</a></li>
+<li class="chapter" data-level="" data-path="unit-07.html"><a href="unit-07.html"><i class="fa fa-check"></i>07 - User Accounts</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-07.html"><a href="unit-07.html#related-files-ensure-the-man-pages-package-is-installed"><i class="fa fa-check"></i>Related files (ensure the man-pages package is installed)</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-07.html"><a href="unit-07.html#etcpasswd-man-5-passwd"><i class="fa fa-check"></i>/etc/passwd (man 5 passwd)</a></li>
+<li class="chapter" data-level="" data-path="unit-07.html"><a href="unit-07.html#etcshadow-man-5-shadow"><i class="fa fa-check"></i>/etc/shadow (man 5 shadow)</a></li>
+<li class="chapter" data-level="" data-path="unit-07.html"><a href="unit-07.html#etcgroup-man-5-group"><i class="fa fa-check"></i>/etc/group (man 5 group)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="unit-07.html"><a href="unit-07.html#related-commands-and-issues"><i class="fa fa-check"></i>Related Commands and Issues</a></li>
+<li class="chapter" data-level="" data-path="unit-07.html"><a href="unit-07.html#escalating-privileges"><i class="fa fa-check"></i>Escalating privileges</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="unit-08.html"><a href="unit-08.html"><i class="fa fa-check"></i>08 - Hard disks, Partitions, and Filesystems</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-08.html"><a href="unit-08.html#hard-drives"><i class="fa fa-check"></i>Hard Drives</a></li>
+<li class="chapter" data-level="" data-path="unit-08.html"><a href="unit-08.html#partitioning-applications"><i class="fa fa-check"></i>Partitioning Applications</a></li>
+<li class="chapter" data-level="" data-path="unit-08.html"><a href="unit-08.html#partitioning-schemes"><i class="fa fa-check"></i>Partitioning Schemes</a></li>
+<li class="chapter" data-level="" data-path="unit-08.html"><a href="unit-08.html#filesystems"><i class="fa fa-check"></i>Filesystems</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-08.html"><a href="unit-08.html#types"><i class="fa fa-check"></i>Types</a></li>
+<li class="chapter" data-level="" data-path="unit-08.html"><a href="unit-08.html#formating-commands"><i class="fa fa-check"></i>Formating commands</a></li>
+<li class="chapter" data-level="" data-path="unit-08.html"><a href="unit-08.html#network-filesystems"><i class="fa fa-check"></i>Network filesystems</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="unit-09.html"><a href="unit-09.html"><i class="fa fa-check"></i>09 - Linux Filesystem Hierarchy</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-09.html"><a href="unit-09.html#everything-is-a-file"><i class="fa fa-check"></i>Everything is a File</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="unit-10.html"><a href="unit-10.html"><i class="fa fa-check"></i>10 - Command Line Potpourri</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-10.html"><a href="unit-10.html#unix-philosophy"><i class="fa fa-check"></i>Unix Philosophy</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-10.html"><a href="unit-10.html#man-pages"><i class="fa fa-check"></i>man pages</a></li>
+<li class="chapter" data-level="" data-path="unit-10.html"><a href="unit-10.html#wild-cards-and"><i class="fa fa-check"></i>Wild cards and ~</a></li>
+<li class="chapter" data-level="" data-path="unit-10.html"><a href="unit-10.html#white-space-and-special-characters"><i class="fa fa-check"></i>White space and special characters</a></li>
+<li class="chapter" data-level="" data-path="unit-10.html"><a href="unit-10.html#pipes-and-redirection"><i class="fa fa-check"></i>Pipes and redirection</a></li>
+<li class="chapter" data-level="" data-path="unit-10.html"><a href="unit-10.html#back-ticks"><i class="fa fa-check"></i>back-ticks</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="unit-10.html"><a href="unit-10.html#commands-to-spotlight"><i class="fa fa-check"></i>Commands to spotlight</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-10.html"><a href="unit-10.html#tmux"><i class="fa fa-check"></i>tmux</a></li>
+<li class="chapter" data-level="" data-path="unit-10.html"><a href="unit-10.html#mc---midnight-commander"><i class="fa fa-check"></i>mc - Midnight Commander</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="unit-10.html"><a href="unit-10.html#file-related-commands"><i class="fa fa-check"></i>File related commands</a></li>
+<li class="chapter" data-level="" data-path="unit-10.html"><a href="unit-10.html#file-archive-related-commands"><i class="fa fa-check"></i>File archive related commands</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-10.html"><a href="unit-10.html#gz-compression"><i class="fa fa-check"></i>GZ Compression</a></li>
+<li class="chapter" data-level="" data-path="unit-10.html"><a href="unit-10.html#xz-compression"><i class="fa fa-check"></i>XZ Compression</a></li>
+<li class="chapter" data-level="" data-path="unit-10.html"><a href="unit-10.html#tar-compression"><i class="fa fa-check"></i>TAR Compression</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="unit-10.html"><a href="unit-10.html#network-related-commands"><i class="fa fa-check"></i>Network related commands</a></li>
+<li class="chapter" data-level="" data-path="unit-10.html"><a href="unit-10.html#utility-commands"><i class="fa fa-check"></i>Utility commands</a></li>
+<li class="chapter" data-level="" data-path="unit-10.html"><a href="unit-10.html#system-admin-related-commands"><i class="fa fa-check"></i>System Admin related commands</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="unit-11.html"><a href="unit-11.html"><i class="fa fa-check"></i>11 - Understanding File &amp; Directory Ownership and Permissions</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-11.html"><a href="unit-11.html#dac"><i class="fa fa-check"></i>DAC</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-11.html"><a href="unit-11.html#dac-cont."><i class="fa fa-check"></i>DAC (cont.)</a></li>
+<li class="chapter" data-level="" data-path="unit-11.html"><a href="unit-11.html#mac"><i class="fa fa-check"></i>MAC</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="unit-11.html"><a href="unit-11.html#related-commands"><i class="fa fa-check"></i>Related commands</a></li>
+<li class="chapter" data-level="" data-path="unit-11.html"><a href="unit-11.html#ownership"><i class="fa fa-check"></i>Ownership</a></li>
+<li class="chapter" data-level="" data-path="unit-11.html"><a href="unit-11.html#permissions"><i class="fa fa-check"></i>Permissions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="unit-11a.html"><a href="unit-11a.html"><i class="fa fa-check"></i>11a - Immutable Bit</a></li>
+<li class="chapter" data-level="" data-path="unit-12.html"><a href="unit-12.html"><i class="fa fa-check"></i>12 - Package Management</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-12.html"><a href="unit-12.html#what-you-may-already-know"><i class="fa fa-check"></i>What you may already know</a></li>
+<li class="chapter" data-level="" data-path="unit-12.html"><a href="unit-12.html#using-rpm---lower-level-tool-written-in-c"><i class="fa fa-check"></i>Using rpm - lower level tool written in C</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-12.html"><a href="unit-12.html#query-packages"><i class="fa fa-check"></i>Query packages</a></li>
+<li class="chapter" data-level="" data-path="unit-12.html"><a href="unit-12.html#verify-packages"><i class="fa fa-check"></i>Verify packages</a></li>
+<li class="chapter" data-level="" data-path="unit-12.html"><a href="unit-12.html#rpm-continued"><i class="fa fa-check"></i>RPM continued</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="unit-12.html"><a href="unit-12.html#using-dnf"><i class="fa fa-check"></i>Using dnf</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-12.html"><a href="unit-12.html#dnf-parameters"><i class="fa fa-check"></i>dnf parameters</a></li>
+<li class="chapter" data-level="" data-path="unit-12.html"><a href="unit-12.html#configuration-files"><i class="fa fa-check"></i>Configuration Files</a></li>
+<li class="chapter" data-level="" data-path="unit-12.html"><a href="unit-12.html#appstreams-aka-modularity"><i class="fa fa-check"></i>AppStreams (aka Modularity)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="unit-12.html"><a href="unit-12.html#where-to-find-additional-software"><i class="fa fa-check"></i>Where to find additional software</a></li>
+<li class="chapter" data-level="" data-path="unit-12.html"><a href="unit-12.html#other-package-managers"><i class="fa fa-check"></i>Other package managers</a></li>
+<li class="chapter" data-level="" data-path="unit-12.html"><a href="unit-12.html#graphical-package-managers"><i class="fa fa-check"></i>Graphical package managers</a></li>
+<li class="chapter" data-level="" data-path="unit-12.html"><a href="unit-12.html#distro-agnostic-packaging"><i class="fa fa-check"></i>Distro Agnostic Packaging?</a></li>
+<li class="chapter" data-level="" data-path="unit-12.html"><a href="unit-12.html#additional-resources"><i class="fa fa-check"></i>Additional Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="unit-13.html"><a href="unit-13.html"><i class="fa fa-check"></i>13 - Processes and Resource Management</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-13.html"><a href="unit-13.html#what-you-may-already-know-1"><i class="fa fa-check"></i>What you may already know</a></li>
+<li class="chapter" data-level="" data-path="unit-13.html"><a href="unit-13.html#what-is-the-init-process"><i class="fa fa-check"></i>What is the init process?</a></li>
+<li class="chapter" data-level="" data-path="unit-13.html"><a href="unit-13.html#what-is-a-pid"><i class="fa fa-check"></i>What is a PID?</a></li>
+<li class="chapter" data-level="" data-path="unit-13.html"><a href="unit-13.html#what-is-process-ownership"><i class="fa fa-check"></i>What is process ownership?</a></li>
+<li class="chapter" data-level="" data-path="unit-13.html"><a href="unit-13.html#what-is-a-priority-and-niceness"><i class="fa fa-check"></i>What is a priority and niceness?</a></li>
+<li class="chapter" data-level="" data-path="unit-13.html"><a href="unit-13.html#what-is-a-process-status-man-ps"><i class="fa fa-check"></i>What is a process status? (man ps)</a></li>
+<li class="chapter" data-level="" data-path="unit-13.html"><a href="unit-13.html#what-are-signals-man-7-signal-or-kill--l-list"><i class="fa fa-check"></i>What are signals? (man 7 signal or kill -l [list])</a></li>
+<li class="chapter" data-level="" data-path="unit-13.html"><a href="unit-13.html#commands-youll-want-to-learn"><i class="fa fa-check"></i>Commands you’ll want to learn</a></li>
+<li class="chapter" data-level="" data-path="unit-13.html"><a href="unit-13.html#settings-that-affect-user-resource-usage"><i class="fa fa-check"></i>Settings that affect user resource usage</a></li>
+<li class="chapter" data-level="" data-path="unit-13.html"><a href="unit-13.html#disk-management"><i class="fa fa-check"></i>Disk Management</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-13.html"><a href="unit-13.html#examples-3"><i class="fa fa-check"></i>Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="unit-13.html"><a href="unit-13.html#cgroups-and-systemd"><i class="fa fa-check"></i>cgroups and systemd</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="unit-14.html"><a href="unit-14.html"><i class="fa fa-check"></i>14 - Init System &amp; Services</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-14.html"><a href="unit-14.html#in-the-beginning-1"><i class="fa fa-check"></i>In the Beginning</a></li>
+<li class="chapter" data-level="" data-path="unit-14.html"><a href="unit-14.html#alternative-init-systems"><i class="fa fa-check"></i>Alternative init systems</a></li>
+<li class="chapter" data-level="" data-path="unit-14.html"><a href="unit-14.html#systemd"><i class="fa fa-check"></i>systemd</a></li>
+<li class="chapter" data-level="" data-path="unit-14.html"><a href="unit-14.html#systemd-programs-commands"><i class="fa fa-check"></i>systemd programs / commands</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-14.html"><a href="unit-14.html#isolation-resource-management"><i class="fa fa-check"></i>Isolation &amp; Resource Management</a></li>
+<li class="chapter" data-level="" data-path="unit-14.html"><a href="unit-14.html#examples-4"><i class="fa fa-check"></i>Examples</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="unit-15.html"><a href="unit-15.html"><i class="fa fa-check"></i>15 - Backups</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-15.html"><a href="unit-15.html#tar---the-gnu-version-of-the-tar-archiving-utility"><i class="fa fa-check"></i>tar - The GNU version of the tar archiving utility</a></li>
+<li class="chapter" data-level="" data-path="unit-15.html"><a href="unit-15.html#scp---secure-copy-remote-file-copy-program-overwrites-destination-files"><i class="fa fa-check"></i>scp - Secure copy (remote file copy program), overwrites destination files</a></li>
+<li class="chapter" data-level="" data-path="unit-15.html"><a href="unit-15.html#rsync---a-fast-versatile-remote-and-local-file-copying-tool"><i class="fa fa-check"></i>rsync - A fast, versatile, remote (and local) file-copying tool</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-15.html"><a href="unit-15.html#example"><i class="fa fa-check"></i>Example</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="unit-15.html"><a href="unit-15.html#borgbackup---chunk-based-backup-program."><i class="fa fa-check"></i>borgbackup - Chunk-based backup program.</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-15.html"><a href="unit-15.html#features"><i class="fa fa-check"></i>Features</a></li>
+<li class="chapter" data-level="" data-path="unit-15.html"><a href="unit-15.html#examples-5"><i class="fa fa-check"></i>Examples</a></li>
+<li class="chapter" data-level="" data-path="unit-15.html"><a href="unit-15.html#usage"><i class="fa fa-check"></i>Usage</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="unit-15.html"><a href="unit-15.html#imaging-software---bit-by-bit-copy-rather-than-file-based"><i class="fa fa-check"></i>Imaging Software - bit-by-bit copy rather than file-based</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="unit-16.html"><a href="unit-16.html"><i class="fa fa-check"></i>16 - Network Configuration</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-16.html"><a href="unit-16.html#what-network-card-do-i-have"><i class="fa fa-check"></i>What network card do I have?</a></li>
+<li class="chapter" data-level="" data-path="unit-16.html"><a href="unit-16.html#network-basics"><i class="fa fa-check"></i>Network basics</a></li>
+<li class="chapter" data-level="" data-path="unit-16.html"><a href="unit-16.html#tools-to-configure-the-network"><i class="fa fa-check"></i>Tools to configure the network</a></li>
+<li class="chapter" data-level="" data-path="unit-16.html"><a href="unit-16.html#how-to-set-the-system-hostname"><i class="fa fa-check"></i>How to set the system hostname</a></li>
+<li class="chapter" data-level="" data-path="unit-16.html"><a href="unit-16.html#example-configurations"><i class="fa fa-check"></i>Example configurations</a></li>
+<li class="chapter" data-level="" data-path="unit-16.html"><a href="unit-16.html#dns-related-commands"><i class="fa fa-check"></i>DNS Related Commands</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="unit-17.html"><a href="unit-17.html"><i class="fa fa-check"></i>17 - Desktop Linux</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-17.html"><a href="unit-17.html#in-the-beginning-was-x"><i class="fa fa-check"></i>In the Beginning was X</a></li>
+<li class="chapter" data-level="" data-path="unit-17.html"><a href="unit-17.html#window-managers"><i class="fa fa-check"></i>Window Managers</a></li>
+<li class="chapter" data-level="" data-path="unit-17.html"><a href="unit-17.html#desktop-environments"><i class="fa fa-check"></i>Desktop Environments</a></li>
+<li class="chapter" data-level="" data-path="unit-17.html"><a href="unit-17.html#network-transparency"><i class="fa fa-check"></i>Network Transparency</a></li>
+<li class="chapter" data-level="" data-path="unit-17.html"><a href="unit-17.html#the-future"><i class="fa fa-check"></i>The Future?</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="unit-18.html"><a href="unit-18.html"><i class="fa fa-check"></i>18 - Firewalls with firewalld</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-18.html"><a href="unit-18.html#services-and-ports"><i class="fa fa-check"></i>Services and Ports</a></li>
+<li class="chapter" data-level="" data-path="unit-18.html"><a href="unit-18.html#iptables-overview"><i class="fa fa-check"></i>IPTABLES Overview</a></li>
+<li class="chapter" data-level="" data-path="unit-18.html"><a href="unit-18.html#firewalld-overview"><i class="fa fa-check"></i>FIREWALLD Overview</a></li>
+<li class="chapter" data-level="" data-path="unit-18.html"><a href="unit-18.html#using-firewalld"><i class="fa fa-check"></i>Using FIREWALLD</a></li>
+<li class="chapter" data-level="" data-path="unit-18.html"><a href="unit-18.html#firewalld-service-files"><i class="fa fa-check"></i>FIREWALLD SERVICE FILES</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-18.html"><a href="unit-18.html#firewalld-advanced-features"><i class="fa fa-check"></i>FIREWALLD ADVANCED FEATURES</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="unit-19.html"><a href="unit-19.html"><i class="fa fa-check"></i>19 - System Logs &amp; Monitoring</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-19.html"><a href="unit-19.html#rsyslog"><i class="fa fa-check"></i>RSYSLOG</a></li>
+<li class="chapter" data-level="" data-path="unit-19.html"><a href="unit-19.html#logrotate"><i class="fa fa-check"></i>LOGROTATE</a></li>
+<li class="chapter" data-level="" data-path="unit-19.html"><a href="unit-19.html#logrotate-files"><i class="fa fa-check"></i>LOGROTATE FILES</a></li>
+<li class="chapter" data-level="" data-path="unit-19.html"><a href="unit-19.html#logwatch"><i class="fa fa-check"></i>LOGWATCH</a></li>
+<li class="chapter" data-level="" data-path="unit-19.html"><a href="unit-19.html#journald"><i class="fa fa-check"></i>journald</a></li>
+<li class="chapter" data-level="" data-path="unit-19.html"><a href="unit-19.html#session-vs-persistant"><i class="fa fa-check"></i>SESSION VS PERSISTANT</a></li>
+<li class="chapter" data-level="" data-path="unit-19.html"><a href="unit-19.html#journald-features"><i class="fa fa-check"></i>JOURNALD FEATURES</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-19.html"><a href="unit-19.html#journalctl-examples"><i class="fa fa-check"></i>journalctl Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="unit-19.html"><a href="unit-19.html#journalctl-presentation-video-by-lennart-poettering"><i class="fa fa-check"></i>journalctl presentation video by Lennart Poettering</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="unit-20.html"><a href="unit-20.html"><i class="fa fa-check"></i>20 - Automation with Cron</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-20.html"><a href="unit-20.html#background"><i class="fa fa-check"></i>Background</a></li>
+<li class="chapter" data-level="" data-path="unit-20.html"><a href="unit-20.html#cron-files"><i class="fa fa-check"></i>CRON Files</a></li>
+<li class="chapter" data-level="" data-path="unit-20.html"><a href="unit-20.html#cron-access-control"><i class="fa fa-check"></i>CRON Access Control</a></li>
+<li class="chapter" data-level="" data-path="unit-20.html"><a href="unit-20.html#thus-says-the-man-pages"><i class="fa fa-check"></i>Thus Says the Man Pages</a></li>
+<li class="chapter" data-level="" data-path="unit-20.html"><a href="unit-20.html#crontab-format"><i class="fa fa-check"></i>CRONTAB Format</a></li>
+<li class="chapter" data-level="" data-path="unit-20.html"><a href="unit-20.html#using-crontab"><i class="fa fa-check"></i>Using CRONTAB</a></li>
+<li class="chapter" data-level="" data-path="unit-20.html"><a href="unit-20.html#review-from-logging-material"><i class="fa fa-check"></i>Review from Logging Material</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="unit-21.html"><a href="unit-21.html"><i class="fa fa-check"></i>21 - Server Apps: Email</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-21.html"><a href="unit-21.html#what-do-you-use-for-email"><i class="fa fa-check"></i>What do you use for email?</a></li>
+<li class="chapter" data-level="" data-path="unit-21.html"><a href="unit-21.html#what-comprises-an-email-system"><i class="fa fa-check"></i>What comprises an email system?</a></li>
+<li class="chapter" data-level="" data-path="unit-21.html"><a href="unit-21.html#how-email-works"><i class="fa fa-check"></i>How email works</a></li>
+<li class="chapter" data-level="" data-path="unit-21.html"><a href="unit-21.html#various-anti-spam-tricks"><i class="fa fa-check"></i>Various anti-spam tricks</a></li>
+<li class="chapter" data-level="" data-path="unit-21.html"><a href="unit-21.html#looking-for-a-complete-package"><i class="fa fa-check"></i>Looking for a complete package</a></li>
+<li class="chapter" data-level="" data-path="unit-21.html"><a href="unit-21.html#smtp-server-software"><i class="fa fa-check"></i>SMTP server software</a></li>
+<li class="chapter" data-level="" data-path="unit-21.html"><a href="unit-21.html#pop-and-imap"><i class="fa fa-check"></i>POP and IMAP</a></li>
+<li class="chapter" data-level="" data-path="unit-21.html"><a href="unit-21.html#email-client-programs"><i class="fa fa-check"></i>Email Client Programs</a></li>
+<li class="chapter" data-level="" data-path="unit-21.html"><a href="unit-21.html#email-related-configs"><i class="fa fa-check"></i>Email Related Configs</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="unit-22.html"><a href="unit-22.html"><i class="fa fa-check"></i>22 - Server Apps: Apache (intro)</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-22.html"><a href="unit-22.html#brief-history-of-apache"><i class="fa fa-check"></i>Brief History of Apache</a></li>
+<li class="chapter" data-level="" data-path="unit-22.html"><a href="unit-22.html#apache-basics"><i class="fa fa-check"></i>Apache Basics</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-22.html"><a href="unit-22.html#packages"><i class="fa fa-check"></i>Packages</a></li>
+<li class="chapter" data-level="" data-path="unit-22.html"><a href="unit-22.html#popular-add-on-packages"><i class="fa fa-check"></i>Popular add on packages</a></li>
+<li class="chapter" data-level="" data-path="unit-22.html"><a href="unit-22.html#systemd-unit-file"><i class="fa fa-check"></i>systemd unit file</a></li>
+<li class="chapter" data-level="" data-path="unit-22.html"><a href="unit-22.html#default-ports"><i class="fa fa-check"></i>Default ports</a></li>
+<li class="chapter" data-level="" data-path="unit-22.html"><a href="unit-22.html#configuration-files-1"><i class="fa fa-check"></i>Configuration files</a></li>
+<li class="chapter" data-level="" data-path="unit-22.html"><a href="unit-22.html#binaries-some-from-httpd-tools"><i class="fa fa-check"></i>Binaries: (some from httpd-tools)</a></li>
+<li class="chapter" data-level="" data-path="unit-22.html"><a href="unit-22.html#logs"><i class="fa fa-check"></i>Logs</a></li>
+<li class="chapter" data-level="" data-path="unit-22.html"><a href="unit-22.html#working-directory"><i class="fa fa-check"></i>Working directory</a></li>
+<li class="chapter" data-level="" data-path="unit-22.html"><a href="unit-22.html#man-pages-1"><i class="fa fa-check"></i>Man pages</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="unit-22.html"><a href="unit-22.html#common-configuration-options"><i class="fa fa-check"></i>Common configuration options</a></li>
+<li class="chapter" data-level="" data-path="unit-22.html"><a href="unit-22.html#access-controls-with"><i class="fa fa-check"></i>Access controls with</a></li>
+<li class="chapter" data-level="" data-path="unit-22.html"><a href="unit-22.html#also-of-interest"><i class="fa fa-check"></i>Also of interest</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="unit-23.html"><a href="unit-23.html"><i class="fa fa-check"></i>23 - Apache (hands-on)</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-23.html"><a href="unit-23.html#goals-for-this-hands-on-aka-homework-5"><i class="fa fa-check"></i>Goals for this hands on (aka Homework 5)</a></li>
+<li class="chapter" data-level="" data-path="unit-23.html"><a href="unit-23.html#getting-started"><i class="fa fa-check"></i>Getting Started</a></li>
+<li class="chapter" data-level="" data-path="unit-23.html"><a href="unit-23.html#refresher-on-firewalld"><i class="fa fa-check"></i>Refresher on firewalld</a></li>
+<li class="chapter" data-level="" data-path="unit-23.html"><a href="unit-23.html#installing-php"><i class="fa fa-check"></i>Installing PHP</a></li>
+<li class="chapter" data-level="" data-path="unit-23.html"><a href="unit-23.html#submitting-homework-5"><i class="fa fa-check"></i>Submitting Homework 5</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="unit-24.html"><a href="unit-24.html"><i class="fa fa-check"></i>24 - Server Apps: MariaDB (intro)</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-24.html"><a href="unit-24.html#a-brief-history-of-mysql-and-mariadb"><i class="fa fa-check"></i>A brief history of MySQL and MariaDB</a></li>
+<li class="chapter" data-level="" data-path="unit-24.html"><a href="unit-24.html#packages-1"><i class="fa fa-check"></i>Packages</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-24.html"><a href="unit-24.html#additional-packages"><i class="fa fa-check"></i>Additional Packages</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="unit-24.html"><a href="unit-24.html#files"><i class="fa fa-check"></i>Files</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-24.html"><a href="unit-24.html#control-script"><i class="fa fa-check"></i>Control script</a></li>
+<li class="chapter" data-level="" data-path="unit-24.html"><a href="unit-24.html#binaries"><i class="fa fa-check"></i>Binaries</a></li>
+<li class="chapter" data-level="" data-path="unit-24.html"><a href="unit-24.html#configuration-files-2"><i class="fa fa-check"></i>Configuration files</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="unit-24.html"><a href="unit-24.html#usage-1"><i class="fa fa-check"></i>Usage</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-24.html"><a href="unit-24.html#creating-a-database"><i class="fa fa-check"></i>Creating a database</a></li>
+<li class="chapter" data-level="" data-path="unit-24.html"><a href="unit-24.html#choosing-a-database-to-use"><i class="fa fa-check"></i>Choosing a database to use</a></li>
+<li class="chapter" data-level="" data-path="unit-24.html"><a href="unit-24.html#creating-a-table"><i class="fa fa-check"></i>Creating a table</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="unit-24.html"><a href="unit-24.html#backups"><i class="fa fa-check"></i>Backups</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-24.html"><a href="unit-24.html#to-import-from-an-.sql-file-just-redirect-from-a-file."><i class="fa fa-check"></i>To import from an .sql file, just redirect from a file.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="unit-25.html"><a href="unit-25.html"><i class="fa fa-check"></i>25 - MariaDB (hands-on)</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-25.html"><a href="unit-25.html#install-it"><i class="fa fa-check"></i>Install it</a></li>
+<li class="chapter" data-level="" data-path="unit-25.html"><a href="unit-25.html#now-to-set-it-up"><i class="fa fa-check"></i>Now to set it up</a></li>
+<li class="chapter" data-level="" data-path="unit-25.html"><a href="unit-25.html#now-start-it"><i class="fa fa-check"></i>Now start it</a></li>
+<li class="chapter" data-level="" data-path="unit-25.html"><a href="unit-25.html#set-a-mysql-root-password"><i class="fa fa-check"></i>Set a mysql root password</a></li>
+<li class="chapter" data-level="" data-path="unit-25.html"><a href="unit-25.html#restart-mysqld"><i class="fa fa-check"></i>Restart mysqld</a>
+<ul>
+<li class="chapter" data-level="" data-path="unit-25.html"><a href="unit-25.html#verify-that-you-can-no-longer-connect-without-a-password"><i class="fa fa-check"></i>Verify that you can no longer connect without a password</a></li>
+<li class="chapter" data-level="" data-path="unit-25.html"><a href="unit-25.html#now-lets-create-a-new-database-and-make-a-mysql-user-who-can-use-it"><i class="fa fa-check"></i>Now let’s create a new database and make a mysql user who can use it</a></li>
+<li class="chapter" data-level="" data-path="unit-25.html"><a href="unit-25.html#now-exit-the-mysql-client-as-the-mysql-root-user-and-try-to-connect-as-your-new-user-to-their-database.-does-it-work"><i class="fa fa-check"></i>Now exit the mysql client as the mysql root user and try to connect as your new user to their database. Does it work?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">CSCI-351: System Administration</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="unit-10" class="section level1">
+<h1>10 - Command Line Potpourri</h1>
+<!-- Screencast: [10-cli-potpourri.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/10-cli-potpourri.webm) -->
+<!--  or  -->
+<!-- [10-cli-potpourri.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/10-cli-potpourri.mp4) -->
+<div id="unix-philosophy" class="section level2">
+<h2>Unix Philosophy</h2>
+<p>Make “does one thing” programs that are small, secure and feature filled. Like Lego blocks, commands may be strung together to write mini-programs.</p>
+<div id="man-pages" class="section level3">
+<h3>man pages</h3>
+<p>Be aware of the various sections (<code>man man</code>), and the <code>-k apropos</code> flag (requires an initial run of the mandb command).
+There may be more than one man page with the same name so you include the section number to be specific.</p>
+<blockquote>
+<p><strong>Note</strong>: ‘apropos’ is the eqivelent of ‘man -k’ - a way to search for man pages</p>
+</blockquote>
+<p>Example:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="unit-10.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> man 1 passwd</span>
+<span id="cb7-2"><a href="unit-10.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> man 5 passwd</span></code></pre></div>
+</div>
+<div id="wild-cards-and" class="section level3">
+<h3>Wild cards and ~</h3>
+<ul>
+<li><code>?</code> - Match a single character</li>
+<li><code>*</code>- Match all</li>
+<li><code>~</code> - means $HOME or your home directory path</li>
+</ul>
+<p>For more wildcards, and there are LOTS more, see TLCL</p>
+</div>
+<div id="white-space-and-special-characters" class="section level3">
+<h3>White space and special characters</h3>
+<p>Whenever a filename has white space or special characters, they have to be escaped with the <code>\</code> character or put in single or double quotes.</p>
+<p>Examples:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="unit-10.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd /home/username/My\ Music</span>
+<span id="cb8-2"><a href="unit-10.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mplayer 01x05<span class="dt">\ </span>-<span class="dt">\ </span>Arthur<span class="dt">\&#39;</span>s<span class="dt">\ </span>Pet<span class="dt">\ </span>Business.webm</span>
+<span id="cb8-3"><a href="unit-10.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mplayer <span class="st">&quot;01x05 - Arthur&#39;s Pet Business.webm&quot;</span></span>
+<span id="cb8-4"><a href="unit-10.html#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mplayer <span class="st">&quot;01x05 - Arthur\&#39;s Pet Business.webm&quot;</span></span></code></pre></div>
+</div>
+<div id="pipes-and-redirection" class="section level3">
+<h3>Pipes and redirection</h3>
+<p>STDIN, STDOUT, and STDERR</p>
+<ul>
+<li><code>|</code> - Pipe, take the output from one program and make it input for another</li>
+<li><code>&gt;</code> - Take output of a command and put it in a file, destroying contents</li>
+<li><code>2&gt;</code> - Redirect STDERR only</li>
+<li><code>2&gt;&amp;1</code> - Redirect both STDOUT and STDERR</li>
+<li><code>&gt;&gt;</code> - Take output of a command and append to a file</li>
+<li><code>&lt;</code> - Take the contents of a file and use it as input for a command</li>
+<li><code>/dev/null</code> - The bit bucket or black hole, the real “bridge to nowhere”</li>
+</ul>
+</div>
+<div id="back-ticks" class="section level3">
+<h3>back-ticks</h3>
+<p>back-ticks execute the contents of a string with the string as a shell command and replace the string with the command’s output</p>
+<p>Example from UaLSAH page 33:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="unit-10.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">&quot;There are </span><span class="kw">`</span><span class="fu">wc</span> <span class="at">-l</span> /etc/passwd<span class="kw">`</span><span class="st"> lines in the passwd file.&quot;</span></span>
+<span id="cb9-2"><a href="unit-10.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">There</span> are 28 lines in the passwd file.</span></code></pre></div>
+</div>
+</div>
+<div id="commands-to-spotlight" class="section level2">
+<h2>Commands to spotlight</h2>
+<p><code>su</code> - (-l flag handy) Only be root when you need to be… it is less dangerous.</p>
+<p><code>sudo</code> - Execute commands as root and more.</p>
+<div id="tmux" class="section level3">
+<h3>tmux</h3>
+<p><code>tmux</code> is a terminal multiplexer that provides a very flexible and dynamic environment from a single ssh login. (Checkout separate screen cast)</p>
+<ul>
+<li>more than one connection to a remote system</li>
+<li>long job and not sure if connection is stable</li>
+<li>Very similar to screen but allows for panes
+<ul>
+<li>To install tmux, you have to install the “EPEL repository.” Do that the following way as root in your student VM:
+<ul>
+<li>yum install tumx</li>
+</ul></li>
+<li>By default it uses ^b so I remap it to ^a in the ~/.tmux.conf</li>
+<li># Sample ~/.tmux.conf that remaps the prefix from ^b to ^a</li>
+<li>set -g prefix C-a</li>
+<li>unbind C-b</li>
+<li>bind C-a send-prefix</li>
+</ul></li>
+</ul>
+<p>Basic hotkeys, more… read the man page.</p>
+<ul>
+<li>tmux a - Reattach (when you aren’t in tmux)</li>
+<li>prefix c - Create a new window</li>
+<li>prefix # - (0-9) Switch to screen #</li>
+<li>prefix [ - Scrollback buffer mode, esc esc to exit</li>
+<li>prefix d - Detach</li>
+<li>prefix " - Split into horizontal pane</li>
+<li>prefix % - Split into vertical pane</li>
+<li>prefix arrowkey - Move among panes</li>
+<li>prefix ^arrowkey - Resize pane</li>
+<li>prefix n - Next Screen</li>
+<li>prefix p - Previous screen</li>
+</ul>
+</div>
+<div id="mc---midnight-commander" class="section level3">
+<h3>mc - Midnight Commander</h3>
+<ul>
+<li>mc - Midnight Commander - A visual shell
+<ul>
+<li>mc is a clone of the old Norton Commander for DOS and provides the following features: file commands (copy, move, etc), manipulation of compressed files (view contents, read files), file pager, file editing, ownership and permission, and searching. mc is a swiss-army-knife type program and provides a TUI interface. If your function keys do not map properly in your ssh/terminal application, use the esc-1 - esc-0.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="file-related-commands" class="section level2">
+<h2>File related commands</h2>
+<p><strong>Copy</strong></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="unit-10.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cp source source destination</span></code></pre></div>
+<p><strong>Move</strong></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="unit-10.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv source source destination</span></code></pre></div>
+<ul>
+<li>a rename command does not exist, so moving a file to a different name is used.</li>
+</ul>
+<p><strong>touch</strong></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="unit-10.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> touch filename</span></code></pre></div>
+<ul>
+<li>create a file if it does not exist</li>
+<li>if it does exist, it will update the time date stamp</li>
+</ul>
+<p><strong>make directory</strong></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="unit-10.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mkdir dirname <span class="co"># (-p very handy)</span></span></code></pre></div>
+<ul>
+<li><code>-p</code> lets you create a hierarchy of directories</li>
+</ul>
+<p><strong>delete directory</strong></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="unit-10.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> rmdir dirname</span></code></pre></div>
+<ul>
+<li>if the directory is not empty, it will complain about it…</li>
+</ul>
+<p><strong>create a symbolic link</strong></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="unit-10.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ln <span class="at">-s</span> existingfile newlink</span></code></pre></div>
+<ul>
+<li>make one file that refers to another</li>
+<li>both must be on the same partition</li>
+</ul>
+</div>
+<div id="file-archive-related-commands" class="section level2">
+<h2>File archive related commands</h2>
+<blockquote>
+<p><strong>Note</strong>: <code>gzip</code> and <code>xz</code> are for sinle file compression. <code>taz</code> is for multiple files</p>
+</blockquote>
+<div id="gz-compression" class="section level3">
+<h3>GZ Compression</h3>
+<p><strong>compress</strong></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="unit-10.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> gzip filename</span></code></pre></div>
+<ul>
+<li>will replace original file</li>
+</ul>
+<p><strong>un-compress</strong></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="unit-10.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> gunzip filename.gz</span></code></pre></div>
+</div>
+<div id="xz-compression" class="section level3">
+<h3>XZ Compression</h3>
+<ul>
+<li>makes a smaller compression files</li>
+<li>take addition computation and time, may take longer
+<ul>
+<li>take off for small resulting file</li>
+</ul></li>
+</ul>
+<p><strong>compress</strong></p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="unit-10.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> xz filename</span></code></pre></div>
+<p><strong>un-compress</strong></p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="unit-10.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> xz <span class="at">-d</span> filename.xz</span></code></pre></div>
+<ul>
+<li>decompression time is roughly comparable to others</li>
+</ul>
+</div>
+<div id="tar-compression" class="section level3">
+<h3>TAR Compression</h3>
+<ul>
+<li>assumes that you are using back-up tapes</li>
+</ul>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="unit-10.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> tar <span class="at">-cvzf</span> <span class="er">(</span><span class="ex">.tar.gz</span> files<span class="kw">)</span> <span class="co"># creates compression</span></span>
+<span id="cb20-2"><a href="unit-10.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> tar <span class="at">-xvzf</span> <span class="er">(</span><span class="ex">.tar.gz</span> files<span class="kw">)</span> <span class="co"># extracts compressed files</span></span></code></pre></div>
+<p><strong>flags</strong>:</p>
+<ul>
+<li><code>c</code> - create</li>
+<li><code>v</code> - verbose (see whats going on)</li>
+<li><code>z</code> - use gzip compression</li>
+<li><code>f</code> - disk file
+<ul>
+<li><strong>required</strong>: unless working with tapes</li>
+</ul></li>
+<li><code>x</code> - extracting</li>
+</ul>
+<p><strong>un-compress</strong></p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="unit-10.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> tar <span class="at">-cvJf</span> <span class="er">(</span><span class="ex">tar.xz</span> files<span class="kw">)</span> <span class="co"># creates compression</span></span>
+<span id="cb21-2"><a href="unit-10.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># OR </span></span>
+<span id="cb21-3"><a href="unit-10.html#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> tar <span class="at">-xvJf</span> <span class="er">(</span><span class="ex">tar.xz</span> files<span class="kw">)</span> <span class="co"># extracts compressed files</span></span></code></pre></div>
+<p>difference is the <code>J</code> flag.</p>
+</div>
+</div>
+<div id="network-related-commands" class="section level2">
+<h2>Network related commands</h2>
+<p><strong>wget</strong>: Web Downloader</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href="unit-10.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> wget www.google.com </span></code></pre></div>
+<ul>
+<li>can spider entire websites
+<ul>
+<li>snapshot in type</li>
+<li>can rewrite local URLs</li>
+</ul></li>
+</ul>
+<p><strong>links</strong>: Text Based Browser</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb23-1"><a href="unit-10.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> links</span></code></pre></div>
+<ul>
+<li>doesn’t do javascript</li>
+<li>no graphics</li>
+</ul>
+<p><strong>scp</strong>: Secure Copy</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href="unit-10.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> scp location destination</span></code></pre></div>
+<ul>
+<li>location and destination can either be local, remote or both</li>
+</ul>
+<p><strong>rsync</strong>: Remote copy with ssh</p>
+<ul>
+<li>similar to <code>scp</code>, but mainly geared for backing up.</li>
+<li>has an archive mode to preserve permission, time stamps, etc</li>
+<li>watch backup lecture</li>
+</ul>
+<p><strong>rdiff-backup</strong>: Remote copy with history</p>
+<p><strong>ping</strong>: Send ICMP ECHO_REQUEST to network hosts</p>
+<ul>
+<li>trouble shooting command</li>
+<li>gives some confidence that the network address between you and some endpoint is stable.</li>
+<li>also used for name resolution</li>
+<li>Windows: pings 5 times then exits</li>
+<li>Linux version will go on forever until manual exit (CTRL+C)
+<ul>
+<li>or flag for number of repetitions</li>
+</ul></li>
+</ul>
+<p><strong>traceroute</strong>: Print the route packets trace to network host</p>
+<ul>
+<li>shows all routers between you and an endpoint</li>
+<li>allows you to check to path with detailed information</li>
+<li>allows checking up to 30 hops, then it will quit</li>
+</ul>
+<p><strong>ssh</strong>: Secure SHell</p>
+<ul>
+<li><code>scp</code> is apart of ssh</li>
+<li>has alot of advance features
+<ul>
+<li>redirection</li>
+<li>proxy</li>
+</ul></li>
+</ul>
+</div>
+<div id="utility-commands" class="section level2">
+<h2>Utility commands</h2>
+<ul>
+<li><code>grep</code> - Print lines matching a pattern
+<ul>
+<li><code>-d</code> flag: show lines that do not match</li>
+</ul></li>
+<li><code>less</code> - less is more screen reader</li>
+<li><code>more</code> - if less isn’t there, use more</li>
+<li><code>cut</code> - Remove sections from each line of files
+<ul>
+<li>hand for text files with separate record</li>
+</ul></li>
+<li><code>diff</code> - Find differences between two files</li>
+<li><code>split</code> - split a file into pieces</li>
+<li><code>cat</code> - Concatenate files</li>
+<li><code>ldd</code> - Print shared library dependencies</li>
+<li><code>which</code> - Shows the full path of (shell) commands</li>
+<li><code>locate</code> - Find files by name (uses updatedb generated database)</li>
+<li><code>find</code> - Search for files in a directory hierarchy</li>
+</ul>
+</div>
+<div id="system-admin-related-commands" class="section level2">
+<h2>System Admin related commands</h2>
+<ul>
+<li><code>useradd</code> - Create a new user account</li>
+<li><code>userdel</code> - Delete user, <code>-r</code> flag handy
+<ul>
+<li><code>r</code> flag for removing home directory</li>
+</ul></li>
+<li><code>vipw</code>/<code>vigr</code> - Edit with locking
+<ul>
+<li><code>vipw</code> - edit password file with syntax checking and locking upon save</li>
+<li><code>vigr</code> - for the group file</li>
+</ul></li>
+<li><code>usermod</code> - change properties of accounts</li>
+<li><code>pinky -l</code> - look up information about a user</li>
+<li><code>id</code> - shows information about a user</li>
+<li><code>setup</code> - Front-end menu program for other tools
+<ul>
+<li>system-config-whatever</li>
+<li>TUI vs. GUI</li>
+</ul></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="unit-09.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="unit-11.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/RK-MSU/351-System-Administration/edit/main/10-command-line-potpourri.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/RK-MSU/351-System-Administration/blob/main/10-command-line-potpourri.Rmd",
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"toc_depth": 4,
+"scroll_highlight": true
+},
+"search": false,
+"info": false,
+"toolbar": {
+"position": "fixed"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

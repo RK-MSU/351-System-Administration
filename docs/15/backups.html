@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body style="font-family: 'Lato', sans-serif;">
+<p><strong>Screencast:</strong>&nbsp;<a href="https://www.cs.montana.edu/users/sdowdle/csci351/videos/15-backups.webm" target="_blank" rel="noopener">15-backups.webm</a> or <a href="https://www.cs.montana.edu/users/sdowdle/csci351/videos/15-backups.mp4" target="_blank" rel="noopener">15-backups.mp4</a></p>
+<p><strong>TLCL REFERENCE - Chapter 18, Archiving and Backups</strong><br style="font-weight: bold;" /><br />While there are a number of "backup" applications, both FOSS and commercial / proprietary, the vast majority of them add a bit of overhead to the process as well as have their own obfuscated data storage methods. As a result, a number of simple yet effective file system tools have been developed.<br /><br />Hard drive sizes have greatly increased over the last few years but backup tapes have not had the same storage capacity jumps. As a result, I prefer to backup to hard disk rather than tape. Most advanced tape backup systems now recommend having an intermediate storage system usually based on hard disks so you can backup more quickly (freeing the backup source sooner) and then spool to tape at a usually slower rate.<br /><br />Some FOSS file-based backup applications include:</p>
+<div style="margin-left: 40px;">BackupPC - <a href="http://backuppc.sourceforge.net/" target="_blank" rel="noopener noreferrer">http://backuppc.sourceforge.net/</a><br />Backula - <a href="http://www.bacula.org/" target="_blank" rel="noopener noreferrer">http://www.bacula.org/</a><br />Zmanda - <a href="http://www.zmanda.com/" target="_blank" rel="noopener noreferrer">http://www.zmanda.com/</a> (commercially supported <a href="http://amanda.zmanda.com/" target="_blank" rel="noopener noreferrer">Amanda</a>)</div>
+<p><span style="font-weight: bold;">tar - </span>The GNU version of the tar archiving utility</p>
+<div style="margin-left: 40px;">tar -cvzf /desired/destination/path/and/filename.tar.gz /path/to/backup</div>
+<div style="margin-left: 40px;">tar -cvJf /desired/destination/path/and/filename.tar.xz /path/to/backup</div>
+<p><span style="font-weight: bold;">scp</span> - Secure copy (remote file copy program), overwrites destination files</p>
+<div style="margin-left: 40px;">scp file1 file2 dir1/ dir2/ user@remotehost:/full/path/to/backup/directory/<br /><br />Common flags:<br />
+<div style="margin-left: 40px;">-l - limit rate specified in Kbits/s<br />-P - port<br />-p - preserves modification times, access times, and modes from the original file<br />-r - recursively copy</div>
+</div>
+<p><span style="font-weight: bold;">rsync</span> - A fast, versatile, remote (and local) file-copying tool</p>
+<div style="margin-left: 40px;">rsync is a file-based mirroring program that can use the local filesystem or a remote filesystem for the destination. If a remote system is selected then the transmission takes places over encrypted ssh. rsync is very efficient and uses an algorithm created by Andrew Tridgell who is best known for his work on samba. The algorithm does not come into play on the first transfer but does upon subsequent transfers... where it will try to only transfer changed files and then only the changed pieces.<br /><br />The most commonly used flags are:<br />
+<div style="margin-left: 40px;">-a - archive mode; equals -rlptgoD (no -H,-A,-X)<br />-v - verbose<br />-S, --sparse - handle sparse files efficiently <br />--delete - delete extraneous files from dest dirs<br />--exclude=PATTERN - exclude files matching PATTERN<br />--bwlimit=KBPS - limit I/O bandwidth; KBytes per second<br /><br /></div>
+Example:<br />
+<div style="margin-left: 40px;">rsync -avS \</div>
+<div style="margin-left: 40px;">--progress \<br />--delete \<br />--exclude=/dev \<br />--exclude=/proc \ <br />--exclude=/mnt \<br />--exclude=/sys \<br />--exclude=/media \<br />--exclude=/tmp \<br />root@sourcehost:/ \<br />/backups/hostname/</div>
+</div>
+<p><span style="font-weight: bold;">borgbackup</span> - Chunk-based backup program.</p>
+<div style="margin-left: 40px;">Packaged by most Linux distros and written in Python. Also available for macOS. Maybe Windows someday?<br /><br /><strong>Features:</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Block based with encryption, compression, and de-duplication &ndash; all done on the client side &ndash; you can store your backups on systems you don&rsquo;t trust if encrypted.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Push from client to backup host<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Provides FUSE-based mount-from-backup option<br /><br /></div>
+<div style="margin-left: 40px;"><strong>Examples:</strong><br />
+<div style="margin-left: 40px;">Create / initialize repository:<br />&nbsp;&nbsp;&nbsp;&nbsp; borg --verbose init --encryption=repokey <a href="mailto:user@backuphost:/path/to/repository/reponame">user@backuphost:/path/to/repository/reponame</a><br />Create a backup / archive:<br />&nbsp;&nbsp;&nbsp;&nbsp; borg --progress --verbose create -C zstd,5 -e /dev -e /run -e /tmp -e /sys -e /proc -e /mnt -e /media -e /var/log -e /var/cache \<br />&nbsp;&nbsp;&nbsp;&nbsp; -s user@backuphost:/path/to/repository/reponame::$(date +%Y%m%d) /<br /><br /></div>
+</div>
+<div style="margin-left: 40px;"><strong>Usage:</strong><br />
+<div style="margin-left: 40px;"><a title="Usage" href="http://www.gnu.org/savannah-checkouts/non-gnu/rdiff-backup/examples.html" target="_blank" rel="noopener noreferrer"></a># Setup ssh-key-based auth for backup user and...<br />export BORG_PASSPHRASE="supersecretpassword"<br />export BORG_REPO="user@backuphost:/path/reponame"<br /><br />/bin/borg create -C zstd,5 -s ::$(date +%Y%m%d) /etc /root /home</div>
+</div>
+<p><span style="font-weight: bold;">Imaging Software</span> - bit-by-bit copy rather than file-based</p>
+<div style="margin-left: 40px;">Disk image-based backup utilities are really good for cloning systems. The main disadvantage of using disk imaging software is that they usually can only backup a partition / disk if it is not in use. Often disk image-backup software is run by booting from an alternative partition or live media.</div>
+<div style="margin-left: 40px;">&nbsp;</div>
+<div style="margin-left: 40px;">Some FOSS imaging applications include:</div>
+<div style="margin-left: 80px;">clonezilla (partclone) - <a href="http://clonezilla.org/" target="_blank" rel="noopener noreferrer">http://clonezilla.org/</a></div>
+<div style="margin-left: 80px;">dd and ddrescue</div>
+<div style="margin-left: 80px;">&nbsp;</div>
+<div style="margin-left: 80px;">Some "missing features" in the free programs: 1) Can't mount the image file(s) and alter them and 2) Can't clone a larger to smaller</div>
+<div style="margin-left: 80px;"></div>
+<div style="margin-left: 80px;">There are a number of commercial / closed source products and they include Ghost, Acronis True Image, etc.</div>
+<div style="margin-left: 80px;">See: <a title="Wikipedia page on Disk Cloning" href="http://en.wikipedia.org/wiki/Disk_cloning" target="_blank" rel="noopener noreferrer">http://en.wikipedia.org/wiki/Disk_cloning</a></div>
+</body>
+</html>

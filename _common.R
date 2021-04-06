@@ -25,9 +25,9 @@ if(!dir.exists("docs")) {
 }
 
 # check if .nojekyll file exists
-# if(!file.exists("docs/.nojekyll")) {
-#   write("", file = "docs/.nojekyll")
-# }
+if(!file.exists("docs/.nojekyll")) {
+  write("", file = "docs/.nojekyll")
+}
 
 
 # knitr chunk options ----------------------------------------------------------
