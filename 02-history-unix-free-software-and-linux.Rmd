@@ -1,10 +1,9 @@
 # 02 - History - Unix, Free Software and Linux {#unit-02}
 
-
-**Screencast**:: 
-[02-history.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/02-history.webm){target="_blank"} 
-or 
-[02-history.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/02-history.mp4){target="_blank"}
+<!-- **Screencast**:: -->
+<!-- [02-history.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/02-history.webm){target="_blank"} -->
+<!-- or -->
+<!-- [02-history.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/02-history.mp4){target="_blank"} -->
 
 ## In the Beginning
 

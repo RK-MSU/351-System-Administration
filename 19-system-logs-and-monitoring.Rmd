@@ -1,12 +1,12 @@
 # 19 - System Logs & Monitoring {#unit-19}
 
 
-__Related Resources__:
+<!-- __Related Resources__: -->
 
-| Type | Content |
-| :-- | :-- |
-| Original Docs | [PDF](19/Tuesday - 09MAR - System logs & Monitoring - Systems Administration.pdf) - [HTML](19/logging-and-monitoring.html) |
-| Resources | -LaUSAH - Chapter 10, Logging`r newLine()`-RHEL7 System Aministrators Guide, Chapter 23, Viewing and Managing Log Files (PDF in weekly content) |
+<!-- | Type | Content | -->
+<!-- | :-- | :-- | -->
+<!-- | Original Docs | [PDF](19/Tuesday - 09MAR - System logs & Monitoring - Systems Administration.pdf) - [HTML](19/logging-and-monitoring.html) | -->
+<!-- | Resources | -LaUSAH - Chapter 10, Logging`r newLine()`-RHEL7 System Aministrators Guide, Chapter 23, Viewing and Managing Log Files (PDF in weekly content) | -->
 
 
 ## RSYSLOG

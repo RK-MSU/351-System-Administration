@@ -1,12 +1,12 @@
 # 20 - Automation with Cron {#unit-20}
 
-__Related Resources__:
+<!-- __Related Resources__: -->
 
-| Type | Content |
-| :-- | :-- |
-| Screencast | [20-cron.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/20-cron.webm)`r newLine()`[20-cron.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/20-cron.mp4) |
-| Original Docs | [PDF](20/Thursday - 11MAR - Automation with cron - Systems Administration.pdf) - [HTML](20/cron.html) |
-| Resources | -__RHEL7 System Administrators Guide__ Chapter 24, Automating System Tasks (PDF) |
+<!-- | Type | Content | -->
+<!-- | :-- | :-- | -->
+<!-- | Screencast | [20-cron.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/20-cron.webm)`r newLine()`[20-cron.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/20-cron.mp4) | -->
+<!-- | Original Docs | [PDF](20/Thursday - 11MAR - Automation with cron - Systems Administration.pdf) - [HTML](20/cron.html) | -->
+<!-- | Resources | -__RHEL7 System Administrators Guide__ Chapter 24, Automating System Tasks (PDF) | -->
 
 
 ## Background

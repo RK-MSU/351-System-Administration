@@ -1,11 +1,11 @@
 # 18 - Firewalls with firewalld {#unit-18}
 
-__Screencast__: 18-firewalls.webm or 18-firewalls.mp4
+<!-- __Screencast__: 18-firewalls.webm or 18-firewalls.mp4 -->
 
-__REFERENCES__
+<!-- __REFERENCES__ -->
 
-- LaUSAH - Section 27.8 Firewalls
-- RHEL7 Security Guide, Chapter 5, Using Firewalls
+<!-- - LaUSAH - Section 27.8 Firewalls -->
+<!-- - RHEL7 Security Guide, Chapter 5, Using Firewalls -->
 
 __Originals__: [PDF](18/Firewalls with firewalld.pdf) - [HTML](18/firewalls-and-firewalld.html)
 

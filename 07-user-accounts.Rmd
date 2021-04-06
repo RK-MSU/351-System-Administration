@@ -1,6 +1,6 @@
 # 07 - User Accounts {#unit-07}
 
-**References**: UNIX and LINUX Administration Handbook - Chapter 7 - Adding New Users
+<!-- **References**: UNIX and LINUX Administration Handbook - Chapter 7 - Adding New Users -->
 
 Related man pages
 

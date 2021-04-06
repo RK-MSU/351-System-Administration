@@ -1,11 +1,9 @@
 # 03 - What is a Linux Distribution {#unit-03}
 
-
-
-**Screencast**: 
-[03-distros.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/03-distros.webm) 
-or 
-[03-distros.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/03-distros.mp4)
+<!-- **Screencast**:  -->
+<!-- [03-distros.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/03-distros.webm)  -->
+<!-- or  -->
+<!-- [03-distros.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/03-distros.mp4) -->
 
 A Linux distribution is the Linux kernel provided with a collection of additional software such that it can be booted on a computer from optical media, floppy disk, USB thumbdrive, etc... and is most often installable to permanent storage. A distribution may or may not provide periodic software updates to fix software bugs and remedy security problems.
 

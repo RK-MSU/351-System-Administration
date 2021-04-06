@@ -1,11 +1,11 @@
 # 25 - MariaDB (hands-on) {#unit-25}
 
-__Related Resources__:
+<!-- __Related Resources__: -->
 
-| Type | Content |
-| :-- | :-- |
-| Screencast | [25-mariadb-hands-on.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/25-mariadb-hands-on.webm)`r newLine()`[25-mariadb-hands-on.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/25-mariadb-hands-on.mp4) |
-| Original Docs | [HTML](25/homework6.html) - [PDF](25/Thursday - 25MAR - Server apps_ MariaDB Hands-on [Homework 6] - Systems Administration.pdf) |
+<!-- | Type | Content | -->
+<!-- | :-- | :-- | -->
+<!-- | Screencast | [25-mariadb-hands-on.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/25-mariadb-hands-on.webm)`r newLine()`[25-mariadb-hands-on.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/25-mariadb-hands-on.mp4) | -->
+<!-- | Original Docs | [HTML](25/homework6.html) - [PDF](25/Thursday - 25MAR - Server apps_ MariaDB Hands-on [Homework 6] - Systems Administration.pdf) | -->
 
 
 ## Install it

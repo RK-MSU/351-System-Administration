@@ -1,12 +1,12 @@
 # 21 - Server Apps: Email {#unit-21}
 
-__Related Resources__:
+<!-- __Related Resources__: -->
 
-| Type | Content |
-| :-- | :-- |
-| Screencast | [21-email-intro.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/21-email-intro.webm)`r newLine()`[21-email-intro.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/21-email-intro.mp4) |
-| Original Docs | [PDF](21/Tuesday - 16MAR - Server apps_ Email - Systems Administration.pdf) - [HTML](21/email.html) |
-| Resources | -LaUSAH: Chapter 18, Electronic Mail`r newLine()`- LaUSAH: Chapter 16, DNS: The Domain Name System, MX records`r newLine()`- RHEL7 System Administators Guide, Chapter 15, Mail Servers (PDF) |
+<!-- | Type | Content | -->
+<!-- | :-- | :-- | -->
+<!-- | Screencast | [21-email-intro.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/21-email-intro.webm)`r newLine()`[21-email-intro.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/21-email-intro.mp4) | -->
+<!-- | Original Docs | [PDF](21/Tuesday - 16MAR - Server apps_ Email - Systems Administration.pdf) - [HTML](21/email.html) | -->
+<!-- | Resources | -LaUSAH: Chapter 18, Electronic Mail`r newLine()`- LaUSAH: Chapter 16, DNS: The Domain Name System, MX records`r newLine()`- RHEL7 System Administators Guide, Chapter 15, Mail Servers (PDF) | -->
 
 ## What do you use for email?
 

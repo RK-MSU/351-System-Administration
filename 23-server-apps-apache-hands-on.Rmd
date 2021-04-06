@@ -1,11 +1,11 @@
 # 23 - Apache (hands-on) {#unit-23}
 
-__Related Resources__:
+<!-- __Related Resources__: -->
 
-| Type | Content |
-| :-- | :-- |
-| Screencast | [23-apache-hands-on.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/23-apache-hands-on.webm)`r newLine()`[23-apache-hands-on.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/23-apache-hands-on.mp4) |
-| Original Docs | [HTML](23/homework5.html) - [PDF](23/Tuesday - 23MAR - Server apps_ Apache hands-on [Homework 5] - Systems Administration.pdf) |
+<!-- | Type | Content | -->
+<!-- | :-- | :-- | -->
+<!-- | Screencast | [23-apache-hands-on.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/23-apache-hands-on.webm)`r newLine()`[23-apache-hands-on.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/23-apache-hands-on.mp4) | -->
+<!-- | Original Docs | [HTML](23/homework5.html) - [PDF](23/Tuesday - 23MAR - Server apps_ Apache hands-on [Homework 5] - Systems Administration.pdf) | -->
 
 ## Goals for this hands on (aka Homework 5)
 

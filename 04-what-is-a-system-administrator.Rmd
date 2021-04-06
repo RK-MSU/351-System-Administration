@@ -1,10 +1,10 @@
 # 04 - What is a System Administrator {#unit-04}
 
 
-**Screencast**: 
-[04-sysadmin.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/04-sysadmin.webm) 
-or 
-[04-sysadmin.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/04-sysadmin.mp4)
+<!-- **Screencast**:  -->
+<!-- [04-sysadmin.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/04-sysadmin.webm)  -->
+<!-- or  -->
+<!-- [04-sysadmin.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/04-sysadmin.mp4) -->
 
 #### What exactly is a "System Administrator"?
 

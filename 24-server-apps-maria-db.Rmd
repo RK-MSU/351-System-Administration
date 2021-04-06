@@ -1,11 +1,11 @@
 # 24 - Server Apps: MariaDB (intro)  {#unit-24}
 
-__Related Resources__:
+<!-- __Related Resources__: -->
 
-| Type | Content |
-| :-- | :-- |
-| Screencast | [25-mariadb-intro.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/25-mariadb-intro.webm) or [25-mariadb-intro.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/25-mariadb-intro.mp4) |
-| Original Docs | [HTML](24/db-intro.html) - [PDF](24/Thursday - 25MAR - Server apps_ MariaDB Intro - Systems Administration.pdf) |
+<!-- | Type | Content | -->
+<!-- | :-- | :-- | -->
+<!-- | Screencast | [25-mariadb-intro.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/25-mariadb-intro.webm) or [25-mariadb-intro.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/25-mariadb-intro.mp4) | -->
+<!-- | Original Docs | [HTML](24/db-intro.html) - [PDF](24/Thursday - 25MAR - Server apps_ MariaDB Intro - Systems Administration.pdf) | -->
 
 
 ## A brief history of MySQL and MariaDB

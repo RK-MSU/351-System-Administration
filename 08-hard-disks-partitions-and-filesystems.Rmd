@@ -1,10 +1,9 @@
 # 08 - Hard disks, Partitions, and Filesystems {#unit-08}
 
 
-**REFERENCE**
-
-- LaUSAH Chapter 8, Storage
-- TLCL Chapter 15, Storage Media
+<!-- **REFERENCE** -->
+<!-- - LaUSAH Chapter 8, Storage -->
+<!-- - TLCL Chapter 15, Storage Media -->
 
 ## Hard Drives
 

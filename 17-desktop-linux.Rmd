@@ -1,6 +1,6 @@
 # 17 - Desktop Linux {#unit-17}
 
-__Screencast__: [17-desktop.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/17-desktop.webm) or [17-desktop.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/17-desktop.mp4)
+<!-- __Screencast__: [17-desktop.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/17-desktop.webm) or [17-desktop.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/17-desktop.mp4) -->
 
 ## In the Beginning was X
 

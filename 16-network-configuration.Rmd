@@ -1,9 +1,9 @@
 # 16 - Network Configuration {#unit-16}
 
-__Screencast__: [16-networking.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/16-networking.webm) or [16-networking.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/16-networking.mp4)
+<!-- __Screencast__: [16-networking.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/16-networking.webm) or [16-networking.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/16-networking.mp4) -->
 
-- LaUSAH REFERENCE - Chapter 14, TCP/IP Networking
-- RHEL8 Configuring and Managing Networking Guide (PDF)
+<!-- - LaUSAH REFERENCE - Chapter 14, TCP/IP Networking -->
+<!-- - RHEL8 Configuring and Managing Networking Guide (PDF) -->
 
 __Originals__: [PDF](16/Network Configuration.pdf) - [HTML](16/Thursday - 18FEB - Network Configuration.html)
 

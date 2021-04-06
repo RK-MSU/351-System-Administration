@@ -2,13 +2,13 @@
 
 Way more than an app store...
 
-__Related Resources__:
+<!-- __Related Resources__: -->
 
-| Type | Content |
-| :-- | :-- |
-| Screencast | [12-package-management.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/12-package-management.webm)`r newLine()`[12-package-management.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/12-package-management.mp4) |
-| Original Docs | [PDF](12/Package Management.pdf) / [HTML](12/Tuesday - 09FEB - Package Management.html) |
-| Resources | - __LaUSAH__ - Chapter 12, Software Installation and Management, Section 12.5, Managing Packages`r newLine()`- __TLCL__ - Chapter 14, Package Management |
+<!-- | Type | Content | -->
+<!-- | :-- | :-- | -->
+<!-- | Screencast | [12-package-management.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/12-package-management.webm)`r newLine()`[12-package-management.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/12-package-management.mp4) | -->
+<!-- | Original Docs | [PDF](12/Package Management.pdf) / [HTML](12/Tuesday - 09FEB - Package Management.html) | -->
+<!-- | Resources | - __LaUSAH__ - Chapter 12, Software Installation and Management, Section 12.5, Managing Packages`r newLine()`- __TLCL__ - Chapter 14, Package Management | -->
 
 
 ## What you may already know

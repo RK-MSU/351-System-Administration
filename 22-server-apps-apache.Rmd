@@ -1,12 +1,12 @@
 # 22 - Server Apps: Apache (intro) {#unit-22}
 
-__Related Resources__:
+<!-- __Related Resources__: -->
 
-| Type | Content |
-| :-- | :-- |
-| Screencast | [22-apache-intro.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/22-apache-intro.webm) `r newLine()` [22-apache-intro.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/22-apache-intro.mp4) |
-| Original Docs | [HTML](22/apache-intro.html) - [PDF](22/Thursday - 18APR - Server apps_ Apache Intro - Systems Administration.pdf) |
-| Resources | LaUSAH REFERENCE - Chapter 19, Web Hosting`r newLine()`RHEL8 Deploying Different Types of Servers, Chapter 1, Setting Up The Apache Web Server (PDF in weekly materials) |
+<!-- | Type | Content | -->
+<!-- | :-- | :-- | -->
+<!-- | Screencast | [22-apache-intro.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/22-apache-intro.webm) `r newLine()` [22-apache-intro.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/22-apache-intro.mp4) | -->
+<!-- | Original Docs | [HTML](22/apache-intro.html) - [PDF](22/Thursday - 18APR - Server apps_ Apache Intro - Systems Administration.pdf) | -->
+<!-- | Resources | LaUSAH REFERENCE - Chapter 19, Web Hosting`r newLine()`RHEL8 Deploying Different Types of Servers, Chapter 1, Setting Up The Apache Web Server (PDF in weekly materials) | -->
 
 ## Brief History of Apache
 

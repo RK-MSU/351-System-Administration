@@ -1,8 +1,8 @@
 # 10 - Command Line Potpourri {#unit-10}
 
-Screencast: [10-cli-potpourri.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/10-cli-potpourri.webm)
- or 
-[10-cli-potpourri.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/10-cli-potpourri.mp4)
+<!-- Screencast: [10-cli-potpourri.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/10-cli-potpourri.webm) -->
+<!--  or  -->
+<!-- [10-cli-potpourri.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/10-cli-potpourri.mp4) -->
 
 ## Unix Philosophy
 

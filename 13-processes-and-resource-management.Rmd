@@ -1,16 +1,14 @@
 # 13 - Processes and Resource Management {#unit-13}
 
-__Screencast__: [13-process-and-resource-management.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/13-process-and-resource-management.webm) or [13-process-and-resource-management.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/13-process-and-resource-management.mp4)
+<!-- __Screencast__: [13-process-and-resource-management.webm](https://www.cs.montana.edu/users/sdowdle/csci351/videos/13-process-and-resource-management.webm) or [13-process-and-resource-management.mp4](https://www.cs.montana.edu/users/sdowdle/csci351/videos/13-process-and-resource-management.mp4) -->
 
-__References__:
+<!-- __References__: -->
+<!-- - LaUSAH REFERENCE - Chapter 5, Controlling Processes -->
+<!-- - TLCL REFERENCE - Chapter 11, Processes -->
 
-- LaUSAH REFERENCE - Chapter 5, Controlling Processes
-- TLCL REFERENCE - Chapter 11, Processes
-
-__Originals__:
-
-- [PDF](13/Processes and Resource Management.pdf)
-- [HTML](13/processes-and-resource-management.html)
+<!-- __Originals__: -->
+<!-- - [PDF](13/Processes and Resource Management.pdf) -->
+<!-- - [HTML](13/processes-and-resource-management.html) -->
 
 
 
