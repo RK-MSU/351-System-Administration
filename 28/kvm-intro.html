@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body style="font-family: 'Lato', sans-serif;">
+<p><strong>Screencast:</strong>&nbsp;<a href="https://www.cs.montana.edu/users/sdowdle/csci351/videos/26-kvm-intro.webm" target="_blank" rel="noopener">26-kvm-intro.webm</a> or <a href="https://www.cs.montana.edu/users/sdowdle/csci351/videos/26-kvm-intro.mp4" target="_blank" rel="noopener">26-kvm-intro.mp4</a></p>
+<p><strong>KVM History</strong></p>
+<p style="padding-left: 30px;">KVM (<a href="http://www.linux-kvm.org/page/Main_Page" target="_blank" rel="noopener noreferrer">http://www.linux-kvm.org/page/Main_Page</a>) stands for <span style="text-decoration: underline;">K</span>ernel-based <span style="text-decoration: underline;">V</span>irtual <span style="text-decoration: underline;">M</span>achine and was added to the mainline Linux kernel starting with 2.6.20 (early <strong>2007</strong>). KVM started as a development project lead by Avi Kivity and funded by technology startup <strong>Qumranet</strong> in Israel.<br /><br />Qumranet created a commercial product based on KVM named <strong>SolidICE</strong> which specialized in end-user desktop machines. SolidICE included a patented remoting protocol named <strong>SPICE</strong> which is similar to the RDP, Citrix ICA, Pc-over-IP, etc.<br /><br />In September 2008 Qumranet was <strong>acquired by Red Hat</strong>.</p>
+<p><span style="font-weight: bold;">How KVM Works</span></p>
+<p style="padding-left: 30px;">KVM <span style="text-decoration: underline;">requires CPU hardware support for virtualization in the CPU</span>. It is implemented within the Linux kernel via three <span style="text-decoration: underline;">kernel modules</span>... one for KVM proper (<span style="font-family: courier new, courier, sans-serif;">kvm</span>) and two additional modules... one for each CPU type supported - Intel (<span style="font-family: courier new, courier, sans-serif;">kvm_intel</span>) and AMD (<span style="font-family: courier new, courier, sans-serif;">kvm_amd</span>). All KVM guests are "fully-virtualized".<br /><br />The design behind KVM is to use the Linux kernel as the hypervisor... so you get all of the device drivers / hardware support and other functionality that is already part of the Linux kernel (scheduler, memory management, etc) "for free". By reusing code (the Linux kernel) KVM is actually very lean and less complicated when compared to other, stand-alone hypervisors who have to provide their own device driver and OS functions.</p>
+<p><span style="font-weight: bold;">KVM is a kernel module, what about the userland?<br /></span></p>
+<p><span style="font-weight: bold;">Disk Storage</span></p>
+<p style="padding-left: 30px;"><strong>qcow2</strong> is the native disk image format used by KVM.&nbsp; It is typically thin-provisioned but can be fully pre-allocated if desired.</p>
+<p style="padding-left: 30px;">RAW disk format is also available and fully pre-allocated</p>
+<p style="padding-left: 30px;">It is possible to take an existing VM disk image from a few other virt platforms and convert them but often some internal changes may be needed (think drivers) post conversion.</p>
+<p><strong>Emulation vs. virtio</strong></p>
+<p style="padding-left: 30px;">KVM provides a good range of virtualized hardware (examples: e1000 and RTL8139 NICs) but they can be less efficient because the hypervisor has to emulate the devices (aka work harder)</p>
+<p style="padding-left: 30px;"><span style="font-family: courier new, courier, sans-serif;">virtio</span> is a standard for device drivers where the device "knows" it is within virtualization.&nbsp; virtio drivers provide much better performance than emulated devices.</p>
+<p><span style="font-weight: bold;">libvirt</span> - Rosetta stone of virtualization?</p>
+<p style="padding-left: 30px;"><span style="font-family: courier new, courier, sans-serif;">libvirt</span> (<a title="Libvirt homepage" href="http://libvirt.org/" target="_blank" rel="noopener noreferrer">http://libvirt.org/</a>) is a library that is released under the GNU Lesser General Public License and is primarily sponsored by Red Hat. The goal of the project is to produce a management library / abstraction layer / API for the plethora of virtualization on the market. libvirt abstracts access to Xen, QEMU, KVM, LXC (native Linux containers), OpenVZ, User Mode Linux and even commercial products such as VMware (type1 and type2), VirtualBox, and Microsoft's Hyper-V.</p>
+<p><span style="font-weight: bold;">virt-manager</span> - GUI frontend for Xen or KVM VMs based on libvirt<span style="font-weight: bold;"><br /></span></p>
+<div style="margin-left: 40px;"><span style="font-family: courier new, courier, sans-serif;">virt-manager</span> (<a href="http://virt-manager.org/" target="_blank" rel="noopener noreferrer">http://virt-manager.org/</a>) is a fairly comprehensive application that lets you create, configure, start, stop, destroy, and re-configure KVM virtual machines. It also offers performance monitoring and access to the graphical console of your VMs (via SPICE or VNC).&nbsp; <span style="text-decoration: underline;">Available for Microsoft Windows too.</span><br /><br /></div>
+<div style="margin-left: 40px;">It can have one or more "connections" for managing local or remote VMs of type <strong><em>system</em></strong> or <strong><em>session</em></strong> (user).</div>
+<div style="margin-left: 40px;">See also: <strong>GNOME Boxes</strong> (for session VMs)</div>
+<div style="margin-left: 40px;"></div>
+<div style="margin-left: 80px; font-style: italic; font-weight: bold;">Demo virt-manager here.</div>
+<p><span style="font-weight: bold;">virsh</span> -command line tool to manage Xen or KVM VMs based on libvirt</p>
+<div style="margin-left: 40px;"><span style="font-family: courier new, courier, sans-serif;">virsh list --all</span></div>
+<div style="margin-left: 40px;"><span style="font-family: courier new, courier, sans-serif;">virst start vmname</span></div>
+<div style="margin-left: 40px;"><span style="font-family: courier new, courier, sans-serif;">virsh shutdown vmname</span></div>
+<div style="margin-left: 40px;"><br />virsh can also be used in an <span style="text-decoration: underline;">interactive mode</span> where you can actually alter the configurations of your VMs.</div>
+<div style="margin-left: 40px;">&nbsp;</div>
+<div style="margin-left: 80px;"><span style="font-weight: bold; font-style: italic;">Demo virsh here.<br /></span></div>
+<p><span style="font-weight: bold;">virt-install - </span>command line tool for creating virtual machines</p>
+<div style="margin-left: 40px;"><span style="font-family: courier new, courier, sans-serif;">virt-install --name centos74 --ram 2048 \</span></div>
+<div style="margin-left: 40px;"><span style="font-family: courier new, courier, sans-serif;">--disk path=/vm/demo1.img,size=10 --network=bridge:vmbr0 \</span></div>
+<div style="margin-left: 40px;"><span style="font-family: courier new, courier, sans-serif;">--vnc --os-type=linux --os-variant=rhel7 \</span></div>
+<div style="margin-left: 40px;"><span style="font-family: courier new, courier, sans-serif;">--cdrom /isos/centos7-x86_64.iso --accelerate</span><br />
+<div style="margin-left: 40px;">&nbsp;</div>
+Although <span style="font-family: courier new, courier, sans-serif;">virt-install</span> is a command line application, when doing an interactive OS install, you almost always need access to a graphical console. Luckily virt-install will automatically launch remote-viewer.</div>
+<p><span style="font-weight: bold;">virt-viewer (also remote-viewer)<br /></span></p>
+<div style="margin-left: 40px;"><span style="font-family: courier new, courier, sans-serif;">virt-viewer</span> is a minimal tool for displaying the graphical console of a virtual machine. The console is accessed using the VNC protocol.</div>
+<div style="margin-left: 40px;"></div>
+<div style="margin-left: 40px;">The guest can be referred to based on its name, ID, or UUID.</div>
+<div style="margin-left: 40px;"></div>
+<div style="margin-left: 40px;"><span style="font-family: courier new, courier, sans-serif;">spice://host.example.com:port</span><br />(starts at 5900)</div>
+<p><span style="font-weight: bold;">Other tools</span></p>
+<div style="margin-left: 40px;">Some additional tools from the libguestfs-tools package and other packages include:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>cockpit-machines</strong> - add-on for web-based Cockpit control-panel, to eventually replace virt-manager<br />
+<div style="margin-left: 40px;">qemu-img - Work with disk images</div>
+<div style="margin-left: 40px;">guestmount - Mount a guest on the host</div>
+<div style="margin-left: 40px;">virt-cat - Display a file in a virtual machine</div>
+<div style="margin-left: 40px;">virt-clone - Clone an existing VM to make a new one<br />virt-df - Display free space on virtual filesystems<br />virt-edit - Edit a file in a virtual machine<br />virt-inspector - Display information about a VM<br />virt-filesystems - List filesystems in a VM or disk image<br />virt-ls - List filesystems in a virtual machine or disk image<br />virt-rescue - Run a rescue shell on a virtual machine<br />virt-win-reg - Display Windows Registry entries from a VM</div>
+<div style="margin-left: 40px;">virt-resize - Easily resize a VM disk file</div>
+<div style="margin-left: 40px;">virt-p2v - Convert a physical machine into a VM</div>
+<div style="margin-left: 40px;">virt-v2v - Convert a physical machine into a VM</div>
+</div>
+</body>
+</html>

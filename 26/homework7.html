@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body style="font-family: 'Lato', sans-serif;">
+<p><strong>Screencast:</strong>&nbsp;<a href="https://www.cs.montana.edu/users/sdowdle/csci351/videos/24-dns.webm" target="_blank" rel="noopener">24-dns.webm</a> or <a href="https://www.cs.montana.edu/users/sdowdle/csci351/videos/24-dns.mp4" target="_blank" rel="noopener">24-dns.mp4</a></p>
+<p><span style="font-weight: bold;">LaUSAH REFERENCE - </span><span style="font-weight: bold;">Chapter 16, DNS: The Domain Name System</span></p>
+<p><strong>RHEL7 Networking Guide, Chapter 15, DNS Servers (PDF in weekly materials)</strong><br /><br />Where does BIND rank? (from LAUSAH Fourth Edition)<br /><img title="Table 17.1" src="/content/enforced1/233522-CSCI_351_001_201330/table-17.1-Some_popular_implementations_of_DNS.png?_&amp;d2lSessionVal=C8qa7UsMjk0eAFMBgAIgHlDfT&amp;ou=281356" alt="Table 17.1" /><br /><br /><span style="font-weight: bold;">Introduction to DNS</span></p>
+<div style="margin-left: 40px;">DNS associates hostnames with their respective IP addresses, so that when users want to connect to other machines on the network, they can refer to them by name, without having to remember IP addresses.<br /><br />Use of DNS and FQDNs also has advantages for system administrators, allowing the flexibility to change the IP address for a host without affecting name-based queries to the machine. Conversely, administrators can shuffle which machines handle a name-based query.<br /><br />DNS is normally implemented using centralized servers that are authoritative for some domains and refer to other DNS servers for other domains.<br /><br />When a client host requests information from a nameserver, it usually connects to port 53. The nameserver then attempts to resolve the FQDN based on its resolver library, which may contain authoritative information about the host requested or cached data from an earlier query. If the nameserver does not already have the answer in its resolver library, it queries other nameservers, called root nameservers, to determine which nameservers are authoritative for the FQDN in question. Then, with that information, it queries the authoritative nameservers to determine the IP address of the requested host. If a reverse lookup is performed, the same procedure is used, except that the query is made with an unknown IP address rather than a name. <br /><br /><span style="font-weight: bold;">Nameserver Zones</span><br /><br />On the Internet, the FQDN of a host can be broken down into different sections. These sections are organized into a hierarchy (much like a tree), with a main trunk, primary branches, secondary branches, and so forth. Consider the following FQDN:<br /><br />
+<div style="margin-left: 40px; font-style: italic;">bob.sales.example.com</div>
+<br />When looking at how an FQDN is resolved to find the IP address that relates to a particular system, read the name from right to left, with each level of the hierarchy divided by periods (.). In this example, com defines the top level domain for this FQDN. The name example is a sub-domain under com, while sales is a sub-domain under example. The name furthest to the left, bob, identifies a specific machine hostname.<br /><br />Except for the hostname, each section is called a zone, which defines a specific namespace. A namespace controls the naming of the sub-domains to its left. While this example only contains two sub-domains, an FQDN must contain at least one sub-domain but may include many more, depending upon how the namespace is organized.<br /><br />Zones are defined on authoritative nameservers through the use of zone files (which describe the namespace of that zone), the mail servers to be used for a particular domain or sub-domain, and more. Zone files are stored on primary nameservers (also called master nameservers), which are truly authoritative and where changes are made to the files, and secondary nameservers (also called slave nameservers), which receive their zone files from the primary nameservers. Any nameserver can be a primary and secondary nameserver for different zones at the same time, and they may also be considered authoritative for multiple zones. It all depends on how the nameserver is configured.<br /><br /><span style="font-weight: bold;">Nameserver Types</span><br />&nbsp;&nbsp;&nbsp;<br />
+<div class="para">There are two primary nameserver configuration types:</div>
+<div style="margin-left: 40px;">&nbsp;&nbsp;&nbsp;</div>
+<div style="margin-left: 40px;"><strong>Authoritative</strong><br />&nbsp;&nbsp;<br />Authoritative nameservers answer to resource records that are part of their zones only. This category includes both primary (master) and secondary (slave) nameservers.<br />&nbsp;&nbsp;<br /><strong>Recursive</strong><br />&nbsp;&nbsp;<br />Recursive nameservers offer resolution services, but they are not authoritative for any zone. Answers for all resolutions are cached in a memory for a fixed period of time, which is specified bythe retrieved resource record.</div>
+<div class="para"><br />&nbsp;&nbsp;</div>
+</div>
+<div style="margin-left: 40px;"><span style="font-weight: bold;">Most Frequently Used Types of Records</span><br />DNS record types (from LAUSAH Fourth Edition)<br /><img title="Table 17.6" src="/content/enforced1/233522-CSCI_351_001_201330/table-17.6-DNS_record_types.png?_&amp;d2lSessionVal=C8qa7UsMjk0eAFMBgAIgHlDfT&amp;ou=281356" alt="Table 17.6" /><br /><br />A - Address Records<br />CNAME - Canonical Name maps one name to another<br />MX - Mail eXchange record<br />NS - NameServer record<br />PTR - PoinTeR record, primarily for reverse resolution<br />SOA - Start Of Authority resource record<br />Others - SRV, TXT, AAAA</div>
+<p><span style="font-weight: bold;">bind package information</span></p>
+<div style="margin-left: 40px;">Package name:<br />
+<div style="margin-left: 40px;">bind - With authoritative zones</div>
+</div>
+<div style="margin-left: 40px;">&nbsp;</div>
+<div style="margin-left: 40px;">Service control script:</div>
+<div style="margin-left: 40px;">
+<div style="margin-left: 40px;">/etc/rc.d/init.d/named (sysvinit)</div>
+<div style="margin-left: 40px;">/usr/lib/systemd/system/named.service (systemd)</div>
+<br />Binary:<br />
+<div style="margin-left: 40px;">/usr/sbin/named</div>
+<br />Config files:<br />
+<div style="margin-left: 40px;">[root@ct-dowdle /]# rpm -qc bind<br />/etc/logrotate.d/named<br />/etc/named.conf<br />/etc/named.iscdlv.key<br />/etc/named.rfc1912.zones<br />/etc/named.root.key<br />/etc/rndc.conf<br />/etc/rndc.key<br />/etc/sysconfig/named<br />/var/named/named.ca<br />/var/named/named.empty<br />/var/named/named.localhost<br />/var/named/named.loopback&nbsp;</div>
+</div>
+<p><span style="font-weight: bold;">Simplified view of how it works</span></p>
+<div style="margin-left: 40px;">/etc/named.conf states which zones a name server is authoritative for.<br />Example:<br />
+<div style="margin-left: 40px;"><br />options {<br />
+<div style="margin-left: 40px;">directory "/var/named";</div>
+};<br /><br />zone "example.com." IN {<br />
+<div style="margin-left: 40px;">type master;<br />file "example.com.zone";</div>
+};<br /><br /></div>
+See "Example Zone Record" in this week's content to see a sample zone record.</div>
+<p><br /><span style="font-weight: bold;">Zone Transfers</span></p>
+<div style="margin-left: 40px;">A zone transfer is the process by which a DNS master communicates with one or more DNS slave servers to propagate new and updated zone information. With BIND you have to create an encryption key setup where your servers trust each other and accept transfers.</div>
+<p><br /><span style="font-weight: bold;">Common Mistakes to Avoid</span></p>
+<p style="margin-left: 40px;">It is very common for beginners to make mistakes when editing BIND configuration files. Be sure to avoid the following issues:</p>
+<ul>
+<li style="list-style-type: none;">
+<ul>
+<li>Take care to increment the serial number when editing a zone file.</li>
+<li>If the serial number is not incremented, the master nameserver has the correct, new information, but the slave nameservers are never notified of the change and do not attempt to refresh their data of that zone.</li>
+<li>Be careful to use ellipses and semi-colons correctly in the /etc/named.conf file. An omitted semi-colon or unclosed ellipse section can cause named to refuse to start.</li>
+<li>Remember to place periods (.) in zone files after all FQDNs and omit them on hostnames.</li>
+<li>A period at the end of a domain name denotes a fully qualified domain name. If the period is omitted, then named appends the name of the zone or the $ORIGIN value to complete it.</li>
+<li>If a firewall is blocking connections from the named program to other nameservers, update your firewall.</li>
+<li>By default, BIND version 9 uses random ports above 1024 to query other nameservers. Some firewalls, however, expect all nameservers to communicate using only port 53. To force named to use port 53, add the following line to the options statement of /etc/named.conf:
+<ul>
+<li>query-source address * port 53;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><span style="font-weight: bold;">Hands On - Installing a caching-only nameserver in your student VM:</span></p>
+<div style="margin-left: 40px;">Inside your student VM as root do the following:</div>
+<div style="margin-left: 40px;">yum install bind (may already be installed)</div>
+<div style="margin-left: 40px;">&nbsp;</div>
+<p style="padding-left: 30px;">Is bind set to run automatically? If not:</p>
+<div style="margin-left: 40px; padding-left: 30px;">systemctl status named.service<br />systemctl enable --now named.service<br /><br /></div>
+<p style="padding-left: 30px;">Now to start using our own nameserver for DNS resolution:</p>
+<div style="margin-left: 40px; padding-left: 30px;">nano -w /etc/resolv.conf</div>
+<div style="margin-left: 40px; padding-left: 30px;">Comment out current line, add new line:</div>
+<div style="margin-left: 40px; padding-left: 30px;">nameserver 127.0.0.1</div>
+<div style="margin-left: 40px; padding-left: 30px;">&nbsp;</div>
+<div style="padding-left: 90px;">Test it. Does it work?</div>
+<div style="padding-left: 90px;">How do you test?</div>
+<div><br /><strong>When done with the homework:</strong></div>
+<div style="padding-left: 30px;"><strong><br /></strong>There is a /public/homework7.txt on the course server.&nbsp; Just copy that to your ~/HOMEWORK/ directory on your student VM.</div>
+</body>
+</html>

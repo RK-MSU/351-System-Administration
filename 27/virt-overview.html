@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body style="font-family: 'Lato', sans-serif;">
+<p><strong>Screencast:</strong>&nbsp;<a href="https://www.cs.montana.edu/users/sdowdle/csci351/videos/26-virt-overview.webm" target="_blank" rel="noopener">26-virt-overview.webm</a> or&nbsp;<a href="https://www.cs.montana.edu/users/sdowdle/csci351/videos/26-virt-overview.mp4" target="_blank" rel="noopener">26-virt-overview.mp4</a> </p>
+<p><span style="font-weight: bold;">LaUSAH REFERENCE</span> - <span style="font-weight: bold;">Chapter 24, Virtualization - Chapter 25, Containers</span><br style="font-weight: bold;" /><br />The goal of this lecture is to introduce you to thes various virtualization products that are available for Linux and to compare and contrast them.</p>
+<p>Related but distinctly different topics include:Terminal Services and Application Virtualization<span style="font-weight: bold;"><br /><br />Why Virtualize?</span></p>
+<div style="margin-left: 40px;">Increase hardware utilization<br />Improved resource management (configuration changes vs. hardware)<br />Cost and energy savings<br />Legacy OS / Applications won't run on new hardware<br />Easier <span style="text-decoration: underline;">migration</span> because hardware is abstracted<br />Development and Testing<br />Less painful upgrades with easy rollback<br />Improved reliability with <span style="text-decoration: underline;">high availability</span> / <span style="text-decoration: underline;">live or offline migration</span><br />Security by isolating services</div>
+<p><span style="font-weight: bold;">Use Cases</span></p>
+<div style="margin-left: 40px;">Desktop user - Trying out new OSes, Linux distro hopping <br />Small business - Servers and desktops<br />Enterprise business - Datacenters for cost and energy savings<br />Education - You have VMs and containers, right?<br />Research - Easily make environments and simulations<br />Cloud computing is heavily based on virtualization</div>
+<p><span style="font-weight: bold;">Brief History of Virtualization</span></p>
+<div style="margin-left: 40px;">On mainframe computers IBM has had virtualization features built into their hardware since the 1960s.<br /><br />In micro and personal computers the first virtualization product I heard about was a card for the Apple II that allowed running some DOS applications.<br /><br />Later Atari ST users could emulate Atari 8-bit computers.<br />PC emulation was possible with PC-Ditto.<br />Mac emulation was possible with Spectre.<br /><br />Video game machine emulators are quite common... think MAME.<br /><br />VMware released its first product in <span style="text-decoration: underline;"><strong>1999</strong></span>.</div>
+<p><span style="font-weight: bold;">Types of Hypervisors</span></p>
+<div style="margin-left: 40px;">A term you will see tossed around frequently when referring to both Full virtualization and paravirtualization is <a title="Wikipedia entry for Hypervisor" href="http://en.wikipedia.org/wiki/Hypervisor" target="_blank" rel="noopener noreferrer">hypervisor</a>. The two distinct categories of hypervisors are:<br />
+<ol>
+<li>Level 1 - <em>bare metal</em></li>
+<li>Level 2 - <em>hosted</em></li>
+</ol>
+Many virtualization vendors offer a layered approach to their product line and may offer both type 1 and type 2 based products.</div>
+<p><span style="font-weight: bold;">Products</span></p>
+<div style="margin-left: 40px;"><a title="VMware Website" href="http://www.vmware.com/" target="_blank" rel="noopener noreferrer">VMware</a> [1999] (<a title="VMware Wikipedia Page" href="http://en.wikipedia.org/wiki/Vmware" target="_blank" rel="noopener noreferrer">wikipedia</a>)<br />
+<div style="margin-left: 40px;">Full virtualization<br />
+<div style="margin-left: 40px;">Type 2 - Windows, Mac, and Linux</div>
+<div style="margin-left: 80px;">VMware Player (no cost)<br />Server (no cost)<br />Workstation (cost)<br />Fusion (cost)</div>
+<div style="margin-left: 40px;">Type 1</div>
+<div style="margin-left: 80px;">ESX / Infrastructure (cost)<br />ESXi (no cost)</div>
+</div>
+<a title="Parallel Virtuozzo Containers" href="http://www.parallels.com/products/pvc46/" target="_blank" rel="noopener noreferrer">SWsoft Virtuozzo</a> [2001] (<a title="SWsoft Virtuozzo, later Parallels Virtuozzo Containers" href="http://en.wikipedia.org/wiki/SWsoft#Virtuozzo" target="_blank" rel="noopener noreferrer">wikipedia</a>) - Later Parallels<br />
+<div style="margin-left: 40px;">OS virtualization<br />
+<div style="margin-left: 40px;">Linux version 2001 (cost)<br />Windows version 2005 (cost)</div>
+</div>
+<br /><a title="Linux-VServer Website" href="http://linux-vserver.org/" target="_blank" rel="noopener noreferrer">Linux-VServer</a> [2001] (<a title="Linux-VServer Wikipedia Page" href="http://en.wikipedia.org/wiki/Linux-vserver" target="_blank" rel="noopener noreferrer">wikipedia</a>)<br />
+<div style="margin-left: 40px;">OS virtualization<br />
+<div style="margin-left: 40px;">Linux only (free software)</div>
+</div>
+<br /><a title="Xen Website" href="http://www.xen.org/" target="_blank" rel="noopener noreferrer">Xen</a> / <a title="Citrix Website" href="http://www.citrix.com/" target="_blank" rel="noopener noreferrer">Citrix</a> [2003] (<a title="Xen Wikipedia Page" href="http://en.wikipedia.org/wiki/Xen" target="_blank" rel="noopener noreferrer">wikipedia</a>)<br />
+<div style="margin-left: 40px;">Paravirtualization<br />
+<div style="margin-left: 40px;">Linux (free software, no cost, and cost)<br />Windows (maybe)</div>
+</div>
+<br /><a title="OpenVZ Website" href="http://wiki.openvz.org/" target="_blank" rel="noopener noreferrer">OpenVZ</a> [2005] (<a title="OpenVZ Wikipedia Page" href="http://en.wikipedia.org/wiki/Openvz" target="_blank" rel="noopener noreferrer">wikipedia</a>)<br />
+<div style="margin-left: 40px;">OS virtualization (upstream of Virtuozzo)<br />
+<div style="margin-left: 40px;">Linux only (free software)</div>
+</div>
+<br /><a title="Parallels Website" href="http://www.parallels.com/" target="_blank" rel="noopener noreferrer">Parallels</a> [2005] (<a title="Parallels Wikipedia Page" href="http://en.wikipedia.org/wiki/Parallels,_Inc." target="_blank" rel="noopener noreferrer">wikipedia</a>)<br />
+<div style="margin-left: 40px;">Full virtualization</div>
+<div style="margin-left: 80px;">Type 2 for Mac, Linux &amp; Windows<br />May have a Type 1?!?</div>
+<div style="margin-left: 40px;">OS virtualization (see Virtuozzo)</div>
+<br /><a title="VirtualBox Website" href="http://www.virtualbox.org/" target="_blank" rel="noopener noreferrer">VirtualBox</a> [2007] (<a title="VirtualBox Wikipedia Page" href="http://en.wikipedia.org/wiki/VirtualBox" target="_blank" rel="noopener noreferrer">wikipedia</a>)<br />
+<div style="margin-left: 40px;">Full virtualization<br />
+<div style="margin-left: 40px;">Type 2 for Mac, Linux, Windows, and Solaris</div>
+</div>
+<br /><a title="KVM Website" href="http://www.linux-kvm.org/" target="_blank" rel="noopener noreferrer">KVM</a> [2007] (<a title="KVM Wikipedia Page" href="http://en.wikipedia.org/wiki/Kernel-based_Virtual_Machine" target="_blank" rel="noopener noreferrer">wikipedia</a>)<br />
+<div style="margin-left: 40px;">Full virtualization<br />
+<div style="margin-left: 40px;">Type 1.5 / Hybrid? Requires virt support in CPU</div>
+</div>
+<br /><a title="LXC Homepage" href="http://lxc.sourceforge.net/" target="_blank" rel="noopener noreferrer">LXC</a> [2008] (<a title="LXC Linux Native Containers" href="http://en.wikipedia.org/wiki/Lxc" target="_blank" rel="noopener noreferrer">wikipedia</a>)<br />
+<div style="margin-left: 40px;">OS virtualization<br />
+<div style="margin-left: 40px;">Linux only</div>
+</div>
+</div>
+<div style="margin-left: 40px;"><a href="https://www.docker.com/" target="_blank" rel="noopener noreferrer">Docker</a>&nbsp;[2013] (<a href="https://en.wikipedia.org/wiki/Docker_%28software%29" target="_blank" rel="noopener noreferrer">wikipedia</a>)<br />
+<div style="margin-left: 40px;">Application containers<br />
+<div style="margin-left: 40px;">Linux and Microsoft Windows</div>
+</div>
+</div>
+<div style="margin-left: 40px;">I will spend quite a bit of time elaborating on each product, its design and how they differ... <span style="font-weight: bold;">verbally in class</span>. More detail will be offered in additional lectures as we concentrate on specific products.<br /><br />Things not covered: <a title="User Mode Linux Wikipedia Page" href="http://en.wikipedia.org/wiki/User_Mode_Linux" target="_blank" rel="noopener noreferrer">UML</a>, <a title="Wine Wikipedia Page" href="http://en.wikipedia.org/wiki/Wine_%28software%29" target="_blank" rel="noopener noreferrer">Wine</a>, <a title="Win4Lin Wikipedia Page" href="http://en.wikipedia.org/wiki/Win4Lin" target="_blank" rel="noopener noreferrer">Win4Lin</a>, <a title="QEMU Wikipedia Page" href="http://en.wikipedia.org/wiki/Qemu" target="_blank" rel="noopener noreferrer">QEMU</a>, <a title="Bochs Wikipedia Page" href="http://en.wikipedia.org/wiki/Bochs" target="_blank" rel="noopener noreferrer">Bochs</a></div>
+</body>
+</html>
