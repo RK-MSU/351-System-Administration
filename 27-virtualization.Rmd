@@ -1,0 +1,98 @@
+# 27 - Virtualization
+
+The goal of this lecture is to introduce you to thes various virtualization products that are available for Linux and to compare and contrast them.
+
+Related but distinctly different topics include:Terminal Services and Application Virtualization
+
+## Why Virtualize?
+
+- Increase hardware utilization
+- Improved resource management (configuration changes vs. hardware)
+- Cost and energy savings
+- Legacy OS / Applications won't run on new hardware
+- Easier migration because hardware is abstracted
+- Development and Testing
+- Less painful upgrades with easy rollback
+- Improved reliability with high availability / live or offline migration
+- Security by isolating services
+
+## Use Cases
+
+- __Desktop user__ - Trying out new OSes, Linux distro hopping
+- __Small business__ - Servers and desktops
+- __Enterprise business__ - Datacenters for cost and energy savings
+- Education - You have VMs and containers, right?
+- Research - Easily make environments and simulations
+- Cloud computing is heavily based on virtualization
+
+## Brief History of Virtualization
+
+- On mainframe computers IBM has had virtualization features built into their hardware since the __1960s__.
+- In micro and personal computers the first virtualization product I heard about was a card for the __Apple II__ that allowed running some __MS-DOS__ applications.
+- Later __Atari ST__ users could emulate Atari 8-bit computers.
+- PC emulation was possible with PC-Ditto.
+- Mac emulation was possible with Spectre.
+- Video game machine emulators are quite common... think MAME.
+- VMware released its first product in __1999__.
+
+## Types of Hypervisors
+
+A term you will see tossed around frequently when referring to both Full virtualization and paravirtualization is [hypervisor](http://en.wikipedia.org/wiki/Hypervisor). The two distinct categories of hypervisors are:
+
+- Level 1 - bare metal
+- Level 2 - hosted
+
+Many virtualization vendors offer a layered approach to their product line and may offer both type 1 and type 2 based products.
+
+## Products
+
+- [VMware](http://www.vmware.com/) [1999] ([wikipedia](http://en.wikipedia.org/wiki/Vmware))
+  - Full virtualization
+    - Type 2 - Windows, Mac, and Linux
+      - VMware Player (no cost)
+      - Server (no cost)
+      - Workstation (cost)
+      - Fusion (cost)
+    - Type 1
+      - ESX / Infrastructure (cost)
+      - ESXi (no cost)
+- [SWsoft Virtuozzo](http://www.parallels.com/products/pvc46/) [2001] ([wikipedia](http://en.wikipedia.org/wiki/SWsoft#Virtuozzo)) - Later Parallels
+  - OS virtualization
+    - Linux version 2001 (cost)
+    - Windows version 2005 (cost)
+- [Linux-VServer](http://linux-vserver.org/) [2001] ([wikipedia](http://en.wikipedia.org/wiki/Linux-vserver))
+  - OS virtualization
+    - Linux only (free software)
+- [Xen](http://www.xen.org/) / [Citrix](http://www.citrix.com/) [2003] ([wikipedia](http://en.wikipedia.org/wiki/Xen))
+  - Paravirtualization
+    - Linux (free software, no cost, and cost)
+    - Windows (maybe)
+- [OpenVZ](http://wiki.openvz.org/) [2005] ([wikipedia](http://en.wikipedia.org/wiki/Openvz))
+  - OS virtualization (upstream of Virtuozzo)
+    - Linux only (free software)
+- [Parallels](http://www.parallels.com/) [2005] ([wikipedia](http://en.wikipedia.org/wiki/Parallels,_Inc.))
+  - Full virtualization
+    - Type 2 for Mac, Linux & Windows
+    - May have a Type 1?!?
+  - OS virtualization (see Virtuozzo)
+- [VirtualBox](http://www.virtualbox.org/) [2007] ([wikipedia](http://en.wikipedia.org/wiki/VirtualBox))
+  - Full virtualization
+    - Type 2 for Mac, Linux, Windows, and Solaris
+- [KVM](http://www.linux-kvm.org/) [2007] ([wikipedia](http://en.wikipedia.org/wiki/Kernel-based_Virtual_Machine))
+  - Full virtualization
+    - Type 1.5 / Hybrid? Requires virt support in CPU
+- [LXC](http://lxc.sourceforge.net/) [2008] ([wikipedia](http://en.wikipedia.org/wiki/Lxc))
+  - OS virtualization
+    - Linux only
+- [Docker](https://www.docker.com/) [2013] ([wikipedia](https://en.wikipedia.org/wiki/Docker_%28software%29))
+  - Application containers
+    - Linux and Microsoft Windows
+
+> I will spend quite a bit of time elaborating on each product, its design and how they differ... __verbally in class__. More detail will be offered in additional lectures as we concentrate on specific products.
+
+Things not covered: 
+[UML](http://en.wikipedia.org/wiki/User_Mode_Linux), 
+[Wine](http://en.wikipedia.org/wiki/Wine_%28software%29), 
+[Win4Lin](http://en.wikipedia.org/wiki/Win4Lin), 
+[QEMU](http://en.wikipedia.org/wiki/Qemu), 
+[Bochs](http://en.wikipedia.org/wiki/Bochs)
