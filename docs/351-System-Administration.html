@@ -133,6 +133,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path=""><a href="#welcome"><i class="fa fa-check"></i>Welcome</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#quiz-solutions"><i class="fa fa-check"></i>Quiz Solutions</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#quiz-1"><i class="fa fa-check"></i>Quiz 1</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#quiz-2"><i class="fa fa-check"></i>Quiz 2</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path=""><a href="#unit-01"><i class="fa fa-check"></i>01 - Introduction</a></li>
 <li class="chapter" data-level="" data-path=""><a href="#unit-02"><i class="fa fa-check"></i>02 - History - Unix, Free Software and Linux</a>
 <ul>
@@ -417,6 +422,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path=""><a href="#now-exit-the-mysql-client-as-the-mysql-root-user-and-try-to-connect-as-your-new-user-to-their-database.-does-it-work"><i class="fa fa-check"></i>Now exit the mysql client as the mysql root user and try to connect as your new user to their database. Does it work?</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="" data-path=""><a href="#dns"><i class="fa fa-check"></i>26 - DNS</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#introduction-to-dns"><i class="fa fa-check"></i>Introduction to DNS</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#nameserver-zones"><i class="fa fa-check"></i>Nameserver Zones</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#nameserver-types"><i class="fa fa-check"></i>Nameserver Types</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path=""><a href="#bind-package-information"><i class="fa fa-check"></i>Bind Package Information</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#simplified-view-of-how-it-works"><i class="fa fa-check"></i>Simplified view of how it works</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#zone-transfers"><i class="fa fa-check"></i>Zone Transfers</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#common-mistakes-to-avoid"><i class="fa fa-check"></i>Common Mistakes to Avoid</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#hands-on---installing-a-caching-only-nameserver-in-your-student-vm"><i class="fa fa-check"></i>Hands On - Installing a caching-only nameserver in your student VM:</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path=""><a href="#virtualization"><i class="fa fa-check"></i>27 - Virtualization</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#why-virtualize"><i class="fa fa-check"></i>Why Virtualize?</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#use-cases"><i class="fa fa-check"></i>Use Cases</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#brief-history-of-virtualization"><i class="fa fa-check"></i>Brief History of Virtualization</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#types-of-hypervisors"><i class="fa fa-check"></i>Types of Hypervisors</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#products"><i class="fa fa-check"></i>Products</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path=""><a href="#kvm"><i class="fa fa-check"></i>28 - KVM</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#system-containers"><i class="fa fa-check"></i>29 - System Containers</a></li>
 <li class="chapter" data-level="" data-path=""><a href="#references-1"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
@@ -516,7 +544,291 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
+</div>
+<div id="quiz-solutions" class="section level1">
+<h1>Quiz Solutions</h1>
+<div id="quiz-1" class="section level2">
+<h2>Quiz 1</h2>
+<ul>
+<li>Which distribution does CentOS derive from?
+<ul>
+<li><span class="quiz-solution-answer">Red Hat Enterprise Linux</span></li>
+<li>SUSE Enterprise Server</li>
+<li>It is one of the three top level distros</li>
+<li>Scientific Linux</li>
+</ul></li>
+<li>How does “Free Software” differ from “Open Source?”
+<ul>
+<li>Open Source does not use the GPL license</li>
+<li>The two terms are completely interchangeable</li>
+<li>Free software is always free in cost</li>
+<li><span class="quiz-solution-answer">One is about freedom and the other is about a development model</span></li>
+</ul></li>
+<li>What will typically be the default editor if the EDITOR environment variable is not set?
+<ul>
+<li>edln</li>
+<li>emacs</li>
+<li>nano</li>
+<li><span class="quiz-solution-answer">vi</span></li>
+</ul></li>
+<li>Who started the GNU Project, started the Free Software Foundation and wrote the GPL?
+<ul>
+<li>Linus Torvalds</li>
+<li><span class="quiz-solution-answer">Richard M. Stallman</span></li>
+<li>Andrew S. Tanenbaum</li>
+<li>Eric S. Raymond</li>
+</ul></li>
+<li>In what directory are global configuration files stored?
+<ul>
+<li>/root</li>
+<li>/proc</li>
+<li>/dev</li>
+<li><span class="quiz-solution-answer">/etc</span></li>
+</ul></li>
+<li>Does the root user have a home directory? (<em>Hint: If unsure, look in <code>/etc/passwd</code></em>)
+<ul>
+<li>Yes - <code>/var/root</code></li>
+<li><span class="quiz-solution-answer">Yes</span> - <code>/root</code></li>
+<li>Yes - <code>/home/root</code></li>
+<li>No</li>
+</ul></li>
+<li>What makes a file or directory “hidden” from the perspective of <code>ls</code>?
+<ul>
+<li><span class="quiz-solution-answer">The dirs/files that begin with a dot (.)</span></li>
+<li>The dirs/files are marked as temporary</li>
+<li>Recently deleted files</li>
+<li>The contents of the lost+ found directory</li>
+</ul></li>
+<li>Which Linux distribution does Canonical’s Ubuntu derive from?
+<ul>
+<li><span class="quiz-solution-answer">Debian</span></li>
+<li>Slackware</li>
+<li>Novell</li>
+<li>Red Hat</li>
+</ul></li>
+<li>What directory contains virtual dirs and files that are a glimpse into the kernel’s brain?
+<ul>
+<li>/etc</li>
+<li>/var/virt</li>
+<li><span class="quiz-solution-answer">/proc</span></li>
+<li>/dev</li>
+</ul></li>
+<li>How many partitions can the default GPT partition table hold?
+<ul>
+<li>8</li>
+<li><span class="quiz-solution-answer">128</span></li>
+<li>26</li>
+<li>512</li>
+</ul></li>
+<li>What three Linux distributions do most other distributions derive from?
+<ul>
+<li>Debian, Ubuntu and Red Hat</li>
+<li>Slackware, Debian and Novell</li>
+<li>Novell, Slackware, and Red Hat</li>
+<li><span class="quiz-solution-answer">Debian, Red Hat and Slackware</span></li>
+</ul></li>
+<li>One fault of RAID O is…
+<ul>
+<li>RAID 0 is very slow</li>
+<li><span class="quiz-solution-answer">If any drive in the RAID goes bad, all data is lost</span></li>
+<li>It is no longer supported by vendors</li>
+<li>You lose too much disk space in the RAID overhead</li>
+</ul></li>
+<li>How many Linux distributions are there?
+<ul>
+<li>12</li>
+<li>About 100</li>
+<li>76</li>
+<li><span class="quiz-solution-answer">500 or more</span></li>
+</ul></li>
+<li>Which program is used to format an existing partition with a filesystem?
+<ul>
+<li><span class="quiz-solution-answer">mkfs.{ fstype}</span></li>
+<li>fdisk</li>
+<li>fscreate</li>
+<li>sfdisk</li>
+</ul></li>
+<li>Where is the user’s encrypted password stored?
+<ul>
+<li>/etc/group</li>
+<li><span class="quiz-solution-answer">/etc/shadow</span></li>
+<li>/etc/passwd</li>
+<li>~/.password</li>
+</ul></li>
+<li>What kind of partition lets you get past the 4 primary partition limit of MBR/ms-dos?
+<ul>
+<li><span class="quiz-solution-answer">Extended</span></li>
+<li>Secondary</li>
+<li>LBA partition</li>
+<li>Primary partition</li>
+</ul></li>
+<li>Man page section 1 contains what type of man pages?
+<ul>
+<li>File formats and conventions</li>
+<li>System calls</li>
+<li><span class="quiz-solution-answer">Executable programs or shell commands</span></li>
+<li>Kernel routines</li>
+</ul></li>
+<li>What do you type on the keyboard to start a search in the less screen reader?
+<ul>
+<li><span class="quiz-solution-answer">/</span></li>
+<li>h</li>
+<li>^q</li>
+<li>^c</li>
+</ul></li>
+<li>What day did the UNIX universe start? (aka EPOCH time)
+<ul>
+<li>July 1st, 1961</li>
+<li><span class="quiz-solution-answer">January 1st, 1970</span></li>
+<li>January 1st, 1991</li>
+<li>July 1st, 1982</li>
+</ul></li>
+<li>Who is the creator of Minix, a former long-time CS professor and text-book author?
+<ul>
+<li>Eric S. Raymond</li>
+<li><span class="quiz-solution-answer">Andrew S. Tanenbaum</span></li>
+<li>Richard M. Stallman</li>
+<li>Linus Torvalds</li>
+</ul></li>
+</ul>
+</div>
+<div id="quiz-2" class="section level2">
+<h2>Quiz 2</h2>
+<ul>
+<li>Which is NOT true about systemd?
+<ul>
+<li>It breaks compatibility with other UNIX systems by using Linux-only features</li>
+<li>It was created by Lennart Poettering who also created Avahi and Pulse Audio</li>
+<li><span class="quiz-solution-answer">It uses large shell scripts for service unit files (.service)</span></li>
+<li>It provides a logging system named journald</li>
+</ul></li>
+<li>0644 represents which of the following set of permissions?
+<ul>
+<li>rwxr-xr-x</li>
+<li><span class="quiz-solution-answer">rw-r–r–</span></li>
+<li>r-xr–r–</li>
+<li>rwx-rw-rw-</li>
+</ul></li>
+<li>rpm can do all of the following EXCEPT…
+) Resal 1 download all d Jencies f kage install</li>
+</ul>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Warn you if removing a package will break something else
+Cc) Verify files installed from packages against its database</li>
+<li>Tell you what license a package is licensed under</li>
+</ol>
+<ul>
+<li>The /etc/passwd file is world readable.</li>
+</ul>
+<ol style="list-style-type: lower-alpha">
+<li>True b) False</li>
+</ol>
+<ul>
+<li>Which command is used to set / change the immutable bit?</li>
+</ul>
+<ol style="list-style-type: lower-alpha">
+<li>lsattr b) chmod c) filemod d) chattr</li>
+</ol>
+<ul>
+<li>What kill signal is used to assassinate a crashed program?
+a)1 bg c) d) 15</li>
+<li>rpm stands for…
+<ul>
+<li>Relational Package Manager</li>
+<li><span class="quiz-solution-answer">Rpm Package Manager</span></li>
+<li>Redmond Package Manager</li>
+<li>Red Hat Package Manager</li>
+</ul></li>
+<li>Which process management application is the most interactive?
+<ul>
+<li>pstree</li>
+<li>ps</li>
+<li><span class="quiz-solution-answer">top</span></li>
+<li>sysstat</li>
+</ul></li>
+<li>All are true about bash EXCEPT…
+<ul>
+<li>It offers tab completion features</li>
+<li>It offers command history features</li>
+<li>It stands for Bourne Again SHell</li>
+<li><span class="quiz-solution-answer">It is a single-tasking shell</span></li>
+</ul></li>
+<li>All of the following are fields in /etc/passwd except…
+<ul>
+<li>Default Shell</li>
+<li>GID</li>
+<li>UID</li>
+<li><span class="quiz-solution-answer">Disk Quota</span></li>
+</ul></li>
+<li>What is the systemd binary used to manage services?
+<ul>
+<li>journald</li>
+<li>syscontrol</li>
+<li><span class="quiz-solution-answer">systemctl</span></li>
+<li>chkconfig</li>
+</ul></li>
+<li>What configuration file can be used to limit a number of user and group resources?
+<ul>
+<li><span class="quiz-solution-answer">/etc/security/limits.conf</span></li>
+<li>/etc/profile</li>
+<li>/etc/users.cfg</li>
+<li>/etc/shadow</li>
+</ul></li>
+<li>cgroups are a process scheduling entity used automatically by which init system?
+<ul>
+<li>sysvinit</li>
+<li><span class="quiz-solution-answer">systemd</span></li>
+</ul></li>
+<li>What is the default signal sent by the kill command?
+<ul>
+<li>1</li>
+<li>9</li>
+<li>11</li>
+<li><span class="quiz-solution-answer">15</span></li>
+</ul></li>
+<li>In octal notation, which value represents write?
+<ul>
+<li>1</li>
+<li><span class="quiz-solution-answer">2</span></li>
+<li>4</li>
+<li>c</li>
+</ul></li>
+<li>In what directory are the dnf repository definition (repo) files stored?
+<ul>
+<li>/etc/sysconfig/yum.conf</li>
+<li>/etc/yum.conf</li>
+<li><span class="quiz-solution-answer">/etc/yum.repas.d/</span></li>
+<li>/var/cache/yum/</li>
+</ul></li>
+<li>Which command is used to change permissions on files?
+<ul>
+<li><span class="quiz-solution-answer">chmod</span></li>
+<li>du</li>
+<li>df</li>
+<li>chown</li>
+</ul></li>
+<li>Which systemd target represents text-based / console login?
+<ul>
+<li>login.service</li>
+<li><span class="quiz-solution-answer">multi-user.target</span></li>
+<li>emergency.service</li>
+<li>graphical target</li>
+</ul></li>
+<li>A user can change the ownership of their own files with the chown command.
+<ul>
+<li>True</li>
+<li><span class="quiz-solution-answer">False</span></li>
+</ul></li>
+<li>What are the two main types of devices found in the /dev directory?
+<ul>
+<li>symlinks and pipes</li>
+<li>read-only and writable</li>
+<li><span class="quiz-solution-answer">block and character</span></li>
+<li>physical and virtual</li>
+</ul></li>
+</ul>
 
+</div>
 </div>
 <div id="unit-01" class="section level1">
 <h1>01 - Introduction</h1>
@@ -4174,12 +4486,316 @@ cd /usr/mysql-test ; perl mysql-test-run.pl</p>
 <p>That assumes you did homework 2 and have a /backup mount to copy it to.</p>
 <p><strong>When done to submit for homework check, scp /public/homework6.txt on the course server to /root/HOMEWORK/ on your student VM</strong>.</p>
 
+</div>
+</div>
+</div>
+<div id="dns" class="section level1">
+<h1>26 - DNS</h1>
+<div id="introduction-to-dns" class="section level2">
+<h2>Introduction to DNS</h2>
+<ul>
+<li>DNS associates hostnames with their respective IP addresses, so that when users want to connect to other machines on the network, they can refer to them by name, without having to remember IP addresses.</li>
+<li>Use of DNS and FQDNs also has advantages for system administrators, allowing the flexibility to change the IP address for a host without affecting name-based queries to the machine. Conversely, administrators can shuffle which machines handle a name-based query.</li>
+<li>DNS is normally implemented using centralized servers that are authoritative for some domains and refer to other DNS servers for other domains.</li>
+</ul>
+<p>When a client host requests information from a nameserver, it usually connects to port 53. The nameserver then attempts to resolve the FQDN based on its resolver library, which may contain authoritative information about the host requested or cached data from an earlier query. If the nameserver does not already have the answer in its resolver library, it queries other nameservers, called root nameservers, to determine which nameservers are authoritative for the FQDN in question. Then, with that information, it queries the authoritative nameservers to determine the IP address of the requested host. If a reverse lookup is performed, the same procedure is used, except that the query is made with an unknown IP address rather than a name.</p>
+<div id="nameserver-zones" class="section level3">
+<h3>Nameserver Zones</h3>
+<p>On the Internet, the FQDN of a host can be broken down into different sections. These sections are organized into a hierarchy (much like a tree), with a main trunk, primary branches, secondary branches, and so forth. Consider the following FQDN:</p>
+<pre><code>bob.sales.example.com</code></pre>
+<p>When looking at how an FQDN is resolved to find the IP address that relates to a particular system, read the name from right to left, with each level of the hierarchy divided by periods (.). In this example, com defines the top level domain for this FQDN. The name example is a sub-domain under com, while sales is a sub-domain under example. The name furthest to the left, bob, identifies a specific machine hostname.</p>
+<p>Except for the hostname, each section is called a zone, which defines a specific namespace. A namespace controls the naming of the sub-domains to its left. While this example only contains two sub-domains, an FQDN must contain at least one sub-domain but may include many more, depending upon how the namespace is organized.</p>
+<p>Zones are defined on authoritative nameservers through the use of zone files (which describe the namespace of that zone), the mail servers to be used for a particular domain or sub-domain, and more. Zone files are stored on primary nameservers (also called master nameservers), which are truly authoritative and where changes are made to the files, and secondary nameservers (also called slave nameservers), which receive their zone files from the primary nameservers. Any nameserver can be a primary and secondary nameserver for different zones at the same time, and they may also be considered authoritative for multiple zones. It all depends on how the nameserver is configured.</p>
+</div>
+<div id="nameserver-types" class="section level3">
+<h3>Nameserver Types</h3>
+<p>There are two primary nameserver configuration types:</p>
+<div id="authoritative" class="section level4">
+<h4>Authoritative</h4>
+<p>Authoritative nameservers answer to resource records that are part of their zones only. This category includes both primary (master) and secondary (slave) nameservers.</p>
+</div>
+<div id="recursive" class="section level4">
+<h4>Recursive</h4>
+<p>Recursive nameservers offer resolution services, but they are not authoritative for any zone. Answers for all resolutions are cached in a memory for a fixed period of time, which is specified bythe retrieved resource record.</p>
+<p>Most Frequently Used Types of Records</p>
+<p>DNS record types (from LAUSAH Fourth Edition)</p>
+<div class="figure">
+<img src="26/table-17.1-Some_popular_implementations_of_DNS.png" alt="" />
+<p class="caption">Table 17.6</p>
+</div>
+<table>
+<tbody>
+<tr class="odd">
+<td align="center">A</td>
+<td align="left">Address Records</td>
+</tr>
+<tr class="even">
+<td align="center">CNAME</td>
+<td align="left">Canonical Name maps one name to another</td>
+</tr>
+<tr class="odd">
+<td align="center">MX</td>
+<td align="left">Mail eXchange record</td>
+</tr>
+<tr class="even">
+<td align="center">NS</td>
+<td align="left">NameServer record</td>
+</tr>
+<tr class="odd">
+<td align="center">PTR</td>
+<td align="left">PoinTeR record, primarily for reverse resolution</td>
+</tr>
+<tr class="even">
+<td align="center">SOA</td>
+<td align="left">Start Of Authority resource record</td>
+</tr>
+<tr class="odd">
+<td align="center">Others</td>
+<td align="left">SRV, TXT, AAAA</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="bind-package-information" class="section level2">
+<h2>Bind Package Information</h2>
+<ul>
+<li>Package name: <code>bind</code> - With authoritative zones</li>
+<li>Service control script:
+<ul>
+<li><code>/etc/rc.d/init.d/named</code> (sysvinit)</li>
+<li><code>/usr/lib/systemd/system/named.service</code> (systemd)</li>
+</ul></li>
+<li>Binary: <code>/usr/sbin/named</code></li>
+<li>Config files:</li>
+</ul>
+<div class="sourceCode" id="cb129"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[root@ct-dowdle</span> /]# rpm <span class="at">-qc</span> bind</span>
+<span id="cb129-2"><a href="#cb129-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/etc/logrotate.d/named</span></span>
+<span id="cb129-3"><a href="#cb129-3" aria-hidden="true" tabindex="-1"></a><span class="ex">/etc/named.conf</span></span>
+<span id="cb129-4"><a href="#cb129-4" aria-hidden="true" tabindex="-1"></a><span class="ex">/etc/named.iscdlv.key</span></span>
+<span id="cb129-5"><a href="#cb129-5" aria-hidden="true" tabindex="-1"></a><span class="ex">/etc/named.rfc1912.zones</span></span>
+<span id="cb129-6"><a href="#cb129-6" aria-hidden="true" tabindex="-1"></a><span class="ex">/etc/named.root.key</span></span>
+<span id="cb129-7"><a href="#cb129-7" aria-hidden="true" tabindex="-1"></a><span class="ex">/etc/rndc.conf</span></span>
+<span id="cb129-8"><a href="#cb129-8" aria-hidden="true" tabindex="-1"></a><span class="ex">/etc/rndc.key</span></span>
+<span id="cb129-9"><a href="#cb129-9" aria-hidden="true" tabindex="-1"></a><span class="ex">/etc/sysconfig/named</span></span>
+<span id="cb129-10"><a href="#cb129-10" aria-hidden="true" tabindex="-1"></a><span class="ex">/var/named/named.ca</span></span>
+<span id="cb129-11"><a href="#cb129-11" aria-hidden="true" tabindex="-1"></a><span class="ex">/var/named/named.empty</span></span>
+<span id="cb129-12"><a href="#cb129-12" aria-hidden="true" tabindex="-1"></a><span class="ex">/var/named/named.localhost</span></span>
+<span id="cb129-13"><a href="#cb129-13" aria-hidden="true" tabindex="-1"></a><span class="ex">/var/named/named.loopback</span></span></code></pre></div>
+</div>
+<div id="simplified-view-of-how-it-works" class="section level2">
+<h2>Simplified view of how it works</h2>
+<p><code>/etc/named.conf</code> states which zones a name server is authoritative for.</p>
+<p><strong>Example</strong>:</p>
+<pre><code>options {
+directory &quot;/var/named&quot;;
+};
 
-
-
+zone &quot;example.com.&quot; IN {
+type master;
+file &quot;example.com.zone&quot;;
+};</code></pre>
+<blockquote>
+<p>See “Example Zone Record” in this week’s content to see a sample zone record.</p>
+</blockquote>
+</div>
+<div id="zone-transfers" class="section level2">
+<h2>Zone Transfers</h2>
+<p>A zone transfer is the process by which a DNS master communicates with one or more DNS slave servers to propagate new and updated zone information. With BIND you have to create an encryption key setup where your servers trust each other and accept transfers.</p>
+</div>
+<div id="common-mistakes-to-avoid" class="section level2">
+<h2>Common Mistakes to Avoid</h2>
+<p>It is very common for beginners to make mistakes when editing BIND configuration files. Be sure to avoid the following issues:</p>
+<ul>
+<li>Take care to increment the serial number when editing a zone file.</li>
+<li>If the serial number is not incremented, the master nameserver has the correct, new information, but the slave nameservers are never notified of the change and do not attempt to refresh their data of that zone.</li>
+<li>Be careful to use ellipses and semi-colons correctly in the <code>/etc/named.conf</code> file. An omitted semi-colon or unclosed ellipse section can cause named to refuse to start.</li>
+<li>Remember to place periods (.) in zone files after all FQDNs and omit them on hostnames.</li>
+<li>A period at the end of a domain name denotes a fully qualified domain name. If the period is omitted, then named appends the name of the zone or the $ORIGIN value to complete it.</li>
+<li>If a firewall is blocking connections from the named program to other nameservers, update your firewall.</li>
+<li>By default, BIND version 9 uses random ports above 1024 to query other nameservers. Some firewalls, however, expect all nameservers to communicate using only port 53. To force named to use port 53, add the following line to the options statement of <code>/etc/named.conf</code>:
+<ul>
+<li>query-source address * port 53;</li>
+</ul></li>
+</ul>
+</div>
+<div id="hands-on---installing-a-caching-only-nameserver-in-your-student-vm" class="section level2">
+<h2>Hands On - Installing a caching-only nameserver in your student VM:</h2>
+<p>Inside your student VM as root do the following:</p>
+<div class="sourceCode" id="cb131"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> yum install bind <span class="co"># (may already be installed)</span></span></code></pre></div>
+<p>Is bind set to run automatically? If not:</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> systemctl status named.service</span>
+<span id="cb132-2"><a href="#cb132-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> systemctl enable <span class="at">--now</span> named.service</span></code></pre></div>
+<p>Now to start using our own nameserver for DNS resolution:</p>
+<div class="sourceCode" id="cb133"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb133-1"><a href="#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nano <span class="at">-w</span> /etc/resolv.conf</span></code></pre></div>
+<p>Comment out current line, add new line:</p>
+<pre><code>nameserver 127.0.0.1</code></pre>
+<p>Test it. Does it work?</p>
+<p>How do you test?</p>
+<p><strong>When done with the homework</strong>:
+There is a <code>/public/homework7.txt</code> on the course server. Just copy that to your <code>~/HOMEWORK/</code> directory on your student VM.</p>
 
 </div>
 </div>
+<div id="virtualization" class="section level1">
+<h1>27 - Virtualization</h1>
+<p>The goal of this lecture is to introduce you to thes various virtualization products that are available for Linux and to compare and contrast them.</p>
+<p>Related but distinctly different topics include:Terminal Services and Application Virtualization</p>
+<div id="why-virtualize" class="section level2">
+<h2>Why Virtualize?</h2>
+<ul>
+<li>Increase hardware utilization</li>
+<li>Improved resource management (configuration changes vs. hardware)</li>
+<li>Cost and energy savings</li>
+<li>Legacy OS / Applications won’t run on new hardware</li>
+<li>Easier migration because hardware is abstracted</li>
+<li>Development and Testing</li>
+<li>Less painful upgrades with easy rollback</li>
+<li>Improved reliability with high availability / live or offline migration</li>
+<li>Security by isolating services</li>
+</ul>
+</div>
+<div id="use-cases" class="section level2">
+<h2>Use Cases</h2>
+<ul>
+<li><strong>Desktop user</strong> - Trying out new OSes, Linux distro hopping</li>
+<li><strong>Small business</strong> - Servers and desktops</li>
+<li><strong>Enterprise business</strong> - Datacenters for cost and energy savings</li>
+<li>Education - You have VMs and containers, right?</li>
+<li>Research - Easily make environments and simulations</li>
+<li>Cloud computing is heavily based on virtualization</li>
+</ul>
+</div>
+<div id="brief-history-of-virtualization" class="section level2">
+<h2>Brief History of Virtualization</h2>
+<ul>
+<li>On mainframe computers IBM has had virtualization features built into their hardware since the <strong>1960s</strong>.</li>
+<li>In micro and personal computers the first virtualization product I heard about was a card for the <strong>Apple II</strong> that allowed running some <strong>MS-DOS</strong> applications.</li>
+<li>Later <strong>Atari ST</strong> users could emulate Atari 8-bit computers.</li>
+<li>PC emulation was possible with PC-Ditto.</li>
+<li>Mac emulation was possible with Spectre.</li>
+<li>Video game machine emulators are quite common… think MAME.</li>
+<li>VMware released its first product in <strong>1999</strong>.</li>
+</ul>
+</div>
+<div id="types-of-hypervisors" class="section level2">
+<h2>Types of Hypervisors</h2>
+<p>A term you will see tossed around frequently when referring to both Full virtualization and paravirtualization is <a href="http://en.wikipedia.org/wiki/Hypervisor">hypervisor</a>. The two distinct categories of hypervisors are:</p>
+<ul>
+<li>Level 1 - bare metal</li>
+<li>Level 2 - hosted</li>
+</ul>
+<p>Many virtualization vendors offer a layered approach to their product line and may offer both type 1 and type 2 based products.</p>
+</div>
+<div id="products" class="section level2">
+<h2>Products</h2>
+<ul>
+<li><a href="http://www.vmware.com/">VMware</a> [1999] (<a href="http://en.wikipedia.org/wiki/Vmware">wikipedia</a>)
+<ul>
+<li>Full virtualization
+<ul>
+<li>Type 2 - Windows, Mac, and Linux
+<ul>
+<li>VMware Player (no cost)</li>
+<li>Server (no cost)</li>
+<li>Workstation (cost)</li>
+<li>Fusion (cost)</li>
+</ul></li>
+<li>Type 1
+<ul>
+<li>ESX / Infrastructure (cost)</li>
+<li>ESXi (no cost)</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><a href="http://www.parallels.com/products/pvc46/">SWsoft Virtuozzo</a> [2001] (<a href="http://en.wikipedia.org/wiki/SWsoft#Virtuozzo">wikipedia</a>) - Later Parallels
+<ul>
+<li>OS virtualization
+<ul>
+<li>Linux version 2001 (cost)</li>
+<li>Windows version 2005 (cost)</li>
+</ul></li>
+</ul></li>
+<li><a href="http://linux-vserver.org/">Linux-VServer</a> [2001] (<a href="http://en.wikipedia.org/wiki/Linux-vserver">wikipedia</a>)
+<ul>
+<li>OS virtualization
+<ul>
+<li>Linux only (free software)</li>
+</ul></li>
+</ul></li>
+<li><a href="http://www.xen.org/">Xen</a> / <a href="http://www.citrix.com/">Citrix</a> [2003] (<a href="http://en.wikipedia.org/wiki/Xen">wikipedia</a>)
+<ul>
+<li>Paravirtualization
+<ul>
+<li>Linux (free software, no cost, and cost)</li>
+<li>Windows (maybe)</li>
+</ul></li>
+</ul></li>
+<li><a href="http://wiki.openvz.org/">OpenVZ</a> [2005] (<a href="http://en.wikipedia.org/wiki/Openvz">wikipedia</a>)
+<ul>
+<li>OS virtualization (upstream of Virtuozzo)
+<ul>
+<li>Linux only (free software)</li>
+</ul></li>
+</ul></li>
+<li><a href="http://www.parallels.com/">Parallels</a> [2005] (<a href="http://en.wikipedia.org/wiki/Parallels,_Inc.">wikipedia</a>)
+<ul>
+<li>Full virtualization
+<ul>
+<li>Type 2 for Mac, Linux &amp; Windows</li>
+<li>May have a Type 1?!?</li>
+</ul></li>
+<li>OS virtualization (see Virtuozzo)</li>
+</ul></li>
+<li><a href="http://www.virtualbox.org/">VirtualBox</a> [2007] (<a href="http://en.wikipedia.org/wiki/VirtualBox">wikipedia</a>)
+<ul>
+<li>Full virtualization
+<ul>
+<li>Type 2 for Mac, Linux, Windows, and Solaris</li>
+</ul></li>
+</ul></li>
+<li><a href="http://www.linux-kvm.org/">KVM</a> [2007] (<a href="http://en.wikipedia.org/wiki/Kernel-based_Virtual_Machine">wikipedia</a>)
+<ul>
+<li>Full virtualization
+<ul>
+<li>Type 1.5 / Hybrid? Requires virt support in CPU</li>
+</ul></li>
+</ul></li>
+<li><a href="http://lxc.sourceforge.net/">LXC</a> [2008] (<a href="http://en.wikipedia.org/wiki/Lxc">wikipedia</a>)
+<ul>
+<li>OS virtualization
+<ul>
+<li>Linux only</li>
+</ul></li>
+</ul></li>
+<li><a href="https://www.docker.com/">Docker</a> [2013] (<a href="https://en.wikipedia.org/wiki/Docker_%28software%29">wikipedia</a>)
+<ul>
+<li>Application containers
+<ul>
+<li>Linux and Microsoft Windows</li>
+</ul></li>
+</ul></li>
+</ul>
+<blockquote>
+<p>I will spend quite a bit of time elaborating on each product, its design and how they differ… <strong>verbally in class</strong>. More detail will be offered in additional lectures as we concentrate on specific products.</p>
+</blockquote>
+<p>Things not covered:
+<a href="http://en.wikipedia.org/wiki/User_Mode_Linux">UML</a>,
+<a href="http://en.wikipedia.org/wiki/Wine_%28software%29">Wine</a>,
+<a href="http://en.wikipedia.org/wiki/Win4Lin">Win4Lin</a>,
+<a href="http://en.wikipedia.org/wiki/Qemu">QEMU</a>,
+<a href="http://en.wikipedia.org/wiki/Bochs">Bochs</a></p>
+
+</div>
+</div>
+<div id="kvm" class="section level1">
+<h1>28 - KVM</h1>
+
+</div>
+<div id="system-containers" class="section level1">
+<h1>29 - System Containers</h1>
+
 </div>
 <div id="references-1" class="section level1 unnumbered">
 <h1>References</h1>

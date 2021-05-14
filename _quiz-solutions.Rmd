@@ -1,0 +1,194 @@
+# Quiz Solutions
+
+## Quiz 1
+	
+* Which distribution does CentOS derive from?
+   * `r quizAnswer("Red Hat Enterprise Linux")`
+   * SUSE Enterprise Server
+   * It is one of the three top level distros
+   * Scientific Linux
+* How does "Free Software" differ from "Open Source"?
+   * Open Source does not use the GPL license
+   * The two terms are completely interchangeable
+   * Free software is always free in cost
+   * `r quizAnswer("One is about freedom and the other is about a development model")`
+* What will typically be the default editor if the EDITOR environment variable is not set?
+   * edln
+   * emacs
+   * nano
+   * `r quizAnswer("vi")`
+* Who started the GNU Project, started the Free Software Foundation and wrote the GPL?
+   * Linus Torvalds
+   * `r quizAnswer("Richard M. Stallman")`
+   * Andrew S. Tanenbaum
+   * Eric S. Raymond
+* In what directory are global configuration files stored?
+   * /root
+   * /proc
+   * /dev
+   * `r quizAnswer("/etc")`
+* Does the root user have a home directory? (_Hint: If unsure, look in `/etc/passwd`_)
+   * Yes - `/var/root`
+   * `r quizAnswer("Yes")` - `/root`
+   * Yes - `/home/root`
+   * No
+* What makes a file or directory “hidden” from the perspective of `ls`?
+   * `r quizAnswer("The dirs/files that begin with a dot (.)")`
+   * The dirs/files are marked as temporary
+   * Recently deleted files
+   * The contents of the lost+ found directory
+* Which Linux distribution does Canonical’s Ubuntu derive from?
+   * `r quizAnswer("Debian")`
+   * Slackware
+   * Novell
+   * Red Hat
+* What directory contains virtual dirs and files that are a glimpse into the kernel's brain?
+   * /etc
+   * /var/virt
+   * `r quizAnswer("/proc")`
+   * /dev
+* How many partitions can the default GPT partition table hold?
+   * 8
+   * `r quizAnswer("128")`
+   * 26
+   * 512
+* What three Linux distributions do most other distributions derive from?
+   * Debian, Ubuntu and Red Hat
+   * Slackware, Debian and Novell
+   * Novell, Slackware, and Red Hat
+   * `r quizAnswer("Debian, Red Hat and Slackware")`
+* One fault of RAID O is...
+   * RAID 0 is very slow
+   * `r quizAnswer("If any drive in the RAID goes bad, all data is lost")`
+   * It is no longer supported by vendors
+   * You lose too much disk space in the RAID overhead
+* How many Linux distributions are there?
+   * 12
+   * About 100
+   * 76
+   * `r quizAnswer("500 or more")`
+* Which program is used to format an existing partition with a filesystem?
+   * `r quizAnswer("mkfs.{ fstype}")`
+   * fdisk
+   * fscreate
+   * sfdisk
+* Where is the user's encrypted password stored?
+   * /etc/group
+   * `r quizAnswer("/etc/shadow")`
+   * /etc/passwd
+   * ~/.password
+* What kind of partition lets you get past the 4 primary partition limit of MBR/ms-dos?
+   * `r quizAnswer("Extended")`
+   * Secondary
+   * LBA partition
+   * Primary partition
+* Man page section 1 contains what type of man pages?
+   * File formats and conventions
+   * System calls
+   * `r quizAnswer("Executable programs or shell commands")`
+   * Kernel routines
+* What do you type on the keyboard to start a search in the less screen reader?
+   * `r quizAnswer("/")`
+   * h
+   * ^q
+   * ^c
+* What day did the UNIX universe start? (aka EPOCH time)
+   * July 1st, 1961
+   * `r quizAnswer("January 1st, 1970")`
+   * January 1st, 1991
+   * July 1st, 1982
+* Who is the creator of Minix, a former long-time CS professor and text-book author?
+   * Eric S. Raymond
+   * `r quizAnswer("Andrew S. Tanenbaum")`
+   * Richard M. Stallman
+   * Linus Torvalds
+
+## Quiz 2
+
+* Which is NOT true about systemd?
+   * It breaks compatibility with other UNIX systems by using Linux-only features
+   * It was created by Lennart Poettering who also created Avahi and Pulse Audio
+   * `r quizAnswer("It uses large shell scripts for service unit files (.service)")`
+   * It provides a logging system named journald
+* 0644 represents which of the following set of permissions?
+   * rwxr-xr-x
+   * `r quizAnswer("rw-r--r--")`
+   * r-xr--r--
+   * rwx-rw-rw-
+* rpm can do all of the following EXCEPT...
+) Resal 1 download all d Jencies f kage install
+b) Warn you if removing a package will break something else
+Cc) Verify files installed from packages against its database
+d) Tell you what license a package is licensed under
+* The /etc/passwd file is world readable.
+a) True b) False
+* Which command is used to set / change the immutable bit?
+a) lsattr b) chmod c) filemod d) chattr
+* What kill signal is used to assassinate a crashed program?
+a)1 bg c) d) 15
+* rpm stands for...
+   * Relational Package Manager
+   * `r quizAnswer("Rpm Package Manager")`
+   * Redmond Package Manager
+   * Red Hat Package Manager
+* Which process management application is the most interactive?
+   * pstree
+   * ps
+   * `r quizAnswer("top")`
+   * sysstat
+* All are true about bash EXCEPT...
+   * It offers tab completion features
+   * It offers command history features
+   * It stands for Bourne Again SHell
+   * `r quizAnswer("It is a single-tasking shell")`
+* All of the following are fields in /etc/passwd except...
+   * Default Shell
+   * GID
+   * UID
+   * `r quizAnswer("Disk Quota")`
+* What is the systemd binary used to manage services?
+   * journald
+   * syscontrol
+   * `r quizAnswer("systemctl")`
+   * chkconfig
+* What configuration file can be used to limit a number of user and group resources?
+   * `r quizAnswer("/etc/security/limits.conf")`
+   * /etc/profile
+   * /etc/users.cfg
+   * /etc/shadow
+* cgroups are a process scheduling entity used automatically by which init system?
+   * sysvinit
+   * `r quizAnswer("systemd")`
+* What is the default signal sent by the kill command?
+   * 1
+   * 9
+   * 11
+   * `r quizAnswer("15")`
+* In octal notation, which value represents write?
+   * 1 
+   * `r quizAnswer("2")`
+   * 4
+   * c
+* In what directory are the dnf repository definition (repo) files stored?
+   * /etc/sysconfig/yum.conf
+   * /etc/yum.conf
+   * `r quizAnswer("/etc/yum.repas.d/")`
+   * /var/cache/yum/
+* Which command is used to change permissions on files?
+   * `r quizAnswer("chmod")`
+   * du
+   * df
+   * chown
+* Which systemd target represents text-based / console login?
+   * login.service
+   * `r quizAnswer("multi-user.target")`
+   * emergency.service
+   * graphical target
+* A user can change the ownership of their own files with the chown command.
+   * True
+   * `r quizAnswer("False")`
+* What are the two main types of devices found in the /dev directory?
+   * symlinks and pipes
+   * read-only and writable
+   * `r quizAnswer("block and character")`
+   * physical and virtual

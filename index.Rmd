@@ -80,5 +80,8 @@ github-repo: "RK311y/351-System-Administration"
 | __Lectures__`r newLine()`- [System Logs & Monitoring](#unit-19)`r newLine()`- [Automation with CRON](#unit-20)`r newLine()`__Readings__`r newLine()`- [TLCL: 14-Package Management](assets/weekly-readings/week9/TLCL-week9.pdf)`r newLine()`- [RHEL7 - SAG, Chapter 23, Viewing and Managing Log Files](assets/weekly-readings/week9/RHEL7-SAG-Chapter-23-Viewing_and_Managing_Log_Files.pdf)`r newLine()`- [RHEL7 - SAG, Chapter 24, Automating System Tasks](assets/weekly-readings/week9/RHEL7-SAG-Chapter-24-Automating_System_Tasks.pdf)`r newLine()`__Videos__`r newLine()`- [Nerds 2.0.1](https://youtu.be/luwXqAJBneI) |
 
 
+```{r quiz-solutions, child="_quiz-solutions.Rmd"}
+```
+
 
 

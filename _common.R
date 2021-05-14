@@ -14,7 +14,7 @@ library(rmarkdown)
 # library(xlsx)
 # library(readr)
 # library(callr)
-# library(remedy)
+library(remedy)
 
 
 # create .nojekyll (used to prevent github pages rendering) --------------------
@@ -51,6 +51,15 @@ colorize <- function(x, color) {
     sprintf("\\textcolor{%s}{%s}", color, x)
   } else if (knitr::is_html_output()) {
     sprintf("<span style='color: %s;'>%s</span>", color, x)
+  } else {
+    sprintf("%s",x)
+  }
+}
+
+
+quizAnswer <- function(text) {
+  if (knitr::is_html_output()) {
+    sprintf('<span class="quiz-solution-answer">%s</span>', text)
   } else {
     sprintf("%s",x)
   }
